@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { openModal } from '../../actions/modal_actions';
 
 const Greeting = (props) => {
     // debugger
     const sessionLinks = () => (
         <nav className="login-signup">
-            <Link to="/login">Login</Link>
+            {/* <Link to="/login">Login</Link> */}
+            <button onClick={()=>props.openModal("login")}>Login</button>
             &nbsp;or&nbsp;
-            <Link to="/signup">Sign up!</Link>
+            <button onClick={()=>props.openModal("signup")}>Signup</button>
+
+            {/* <Link to="/signup">Sign up!</Link> */}
         </nav>
     );
 

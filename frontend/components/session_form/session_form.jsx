@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {withRouter} from 'react-router-dom';
 
 class SessionForm extends React.Component {
     constructor(props){
@@ -17,8 +17,9 @@ class SessionForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user)
+        this.props.processForm(user).then(this.props.closeModal)
     }
+
 
     renderErrors(){
         return (
@@ -34,8 +35,12 @@ class SessionForm extends React.Component {
         
         return (
         <div className="login-form-container">
-            <h1>{this.props.formType} or {this.props.navLink}</h1>
+            <button className="demo-login"onClick={() => this.props.login({ username: "jmoney", password: "password" })}>Demo Login</button>
+
+            <h1>{this.props.formType} or {this.props.otherform}</h1>
+            <div onClick={this.props.closeModal} className="close-x">X</div>
                 {this.renderErrors()}
+
             <form onSubmit={this.handleSubmit}>
                 <label>Email:
                     <input type="text" value={this.state.email} onChange={this.update("email")}/>
@@ -48,10 +53,10 @@ class SessionForm extends React.Component {
                 </label>
                 <input type="submit" value={this.props.formType} />
             </form>
+
         </div>
         )
-
     }
 }
 
-export default SessionForm
+export default withRouter(SessionForm)
