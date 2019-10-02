@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 
 
 const msp = (state, ownProps) => ({
-    // debugger
+    email: state.session.email,
     errors: state.errors.session,
     formType: "Login", 
     // navLink: <Link to="/signup"> Don't have an account</Link>
@@ -16,7 +16,7 @@ const mdp = dispatch => ({
     login: (user)=> dispatch(login(user)),
     processForm: (user) => dispatch(login(user)),
     otherform:(
-        <button OnClick={() => dispatch(openModal())}>
+        <button onClick={() => dispatch(openModal())}>
             Signup
         </button>
     ), 

@@ -1,3 +1,4 @@
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,6 +14,18 @@
  *= require_tree .
  *= require_self
  */
+html, body{
+  height: 100%;
+ }
+ main{
+   width: 1200px;
+    height: 100%;
+   background: white;
+   margin: 0 auto;
+ }
+ body{
+   background-color: #eeeeee;
+ }
 .modal-background {
   position: fixed;
   top: 0;
@@ -28,4 +41,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+header{
+  width: 100%;
+  display: flex;
+}
+
+
+.main-nav{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
 }

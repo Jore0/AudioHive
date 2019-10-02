@@ -38,10 +38,10 @@ class SessionForm extends React.Component {
             <button className="demo-login"onClick={() => this.props.login({ username: "jmoney", password: "password" })}>Demo Login</button>
 
             <h1>{this.props.formType} or {this.props.otherform}</h1>
-            <div onClick={this.props.closeModal} className="close-x">X</div>
                 {this.renderErrors()}
 
             <form onSubmit={this.handleSubmit}>
+            <div onClick={this.props.closeModal} className="close-x">X</div>
                 <label>Email:
                     <input type="text" value={this.state.email} onChange={this.update("email")}/>
                 </label>

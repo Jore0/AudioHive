@@ -18,3 +18,10 @@ export const logout = ()=>(
         url: "/api/session",
     })
 )
+export const emailValidate = (email)=>(
+    $.ajax({
+        method: "POST",
+        url: "/api/session/validate",
+        data: {user: email}
+    })
+)

@@ -5,20 +5,18 @@ import LoginFormContainer from "./session_form/login_form_container";
 import SignupFormContainer from "./session_form/signup_form_container";
 import { AuthRoute, ProtectedRoute} from "../util/route_util";
 import Modal from "./modal/modal";
+import Nav from "./nav/nav"
 
 const App = () => (
     <div>
         <header>
-            <Modal/>
-            <Link to="/" className="header-link">
-                <h1>AudioHive from the app.jsx</h1>
-            </Link>
-                <GreetingContainer />
+            <Nav/>
         </header>
         <Switch>
             {/* <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} /> */}
         </Switch>
+
     </div>
 );
 

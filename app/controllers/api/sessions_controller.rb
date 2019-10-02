@@ -21,5 +21,22 @@ class Api::SessionsController < ApplicationController
         end 
     end 
 
+    def validate_email
+        @user= User.find_by(email: params[:user][:email])
+
+        if @user
+            render json: {email: @user.email, formType: "login"}, status: 200
+        else 
+            if is_email?(params[:user][:email])
+                render json: {email: params[:user][:email], formType: "signup" }
+            else
+                render json: ["Enter a valid email."], status: 422
+            end 
+        end 
+    end 
+
+    def is_email?(email)
+        email.include?("@") && email.include?(".") && email.count("@") == 1
+    end 
 
 end

@@ -5,4 +5,8 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
   end 
+
+  post "api/session/validate", to: "api/sessions#validate_email", defaults: {format: :json}
+
+
 end
