@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 
 const msp = (state, ownProps) => ({
     email: state.session.email,
+    userEmail: state.session.currentUserEmail,
     errors: state.errors.session,
     formType: "Login", 
     // navLink: <Link to="/signup"> Don't have an account</Link>

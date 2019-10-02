@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 const msp = (state, ownProps) => ({
     // debugger
     errors: state.errors.session,
+    userEmail: state.session.currentUserEmail,
     formType: "Create Account",
     navLink: <Link to="/login">Are you trying to sign in? </Link>
 })
