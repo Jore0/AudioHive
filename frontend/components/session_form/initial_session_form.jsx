@@ -42,7 +42,7 @@ class InitialSessionForm extends React.Component {
                     <label>
                         <input type="text" placeholder=" Your email address *" onChange={this.update("email")} />
                     </label>
-                        <input type="submit" value="Continue" />
+                    <input type="submit" value="Continue" />
                 </form>
                     <ul className="errors">{this.renderErrors()}</ul>
                 <div className="terms">
