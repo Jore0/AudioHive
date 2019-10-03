@@ -15,10 +15,10 @@ const Greeting = (props) => {
     );
 
     const personalGreeting = () => (
-        <div className="header-group">
+        <nav className="login-signup">
             <h2 className="header-name">Welcome, {props.currentUser.username}!</h2>
-            <button className="header-logout-button" onClick={props.logout}>Log Out</button>
-        </div>
+            <button className="orange-button" onClick={props.logout}>Log Out</button>
+        </nav>
     );
 
     return props.currentUser ? personalGreeting() : sessionLinks();
