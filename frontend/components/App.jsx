@@ -9,13 +9,18 @@ import Nav from "./nav/nav"
 
 const App = () => (
     <div>
-        <header>
+        {/* <header> */}
             <Nav/>
-        </header>
+        {/* </header> */}
         <Switch>
             {/* <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} /> */}
         </Switch>
+        <div className="footerWrap">
+            <footer>
+                <a target="_blank" href="https://github.com/Jore0/AudioHive"><img src={window.github}  /></a>
+            </footer>
+        </div>
 
     </div>
 );

@@ -7,13 +7,12 @@ const _nullUser = Object.freeze({
 
 const sessionReducer = (state = _nullUser, action) => {
     Object.freeze(state); 
-    // debugger
+
     switch(action.type){
 
         case RECEIVE_CURRENT_USER:
             return {id: action.currentUser.id};
 
-///receive login infor to add email bnm
         case LOGOUT_CURRENT_USER:
             return _nullUser;
         

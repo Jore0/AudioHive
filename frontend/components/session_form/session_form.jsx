@@ -26,7 +26,7 @@ class SessionForm extends React.Component {
         return (
             <ul>
                 {this.props.errors.map((error, i)=>{
-                   return  <li key={i}>{error}</li>
+                   return  <li className="errors"key={i}>{error}</li>
                 })}
             </ul>
         )
@@ -35,11 +35,15 @@ class SessionForm extends React.Component {
     render(){
         let image;
         let username;
+        let usernameHTML;
         let password;
         if (this.props.formType === "Create Account"){
             image = <img src={window.create} className="socialButton" />
             username = "Choose a username";
             password = "Choose a password";
+            usernameHTML = <label>{username}<span className="errors">*</span>
+                <input type="text" value={this.state.username} onChange={this.update("username")} />
+            </label>
         }else {
             image = <img src={window.login} className="socialButton" />
             username = "Username";
@@ -56,12 +60,10 @@ class SessionForm extends React.Component {
                 <div onClick={this.props.closeModal} className="close-x">&#x2715;</div>
 
                 <button type="button" onClick={() => this.props.openModal("initial")}> &#8672;     {this.props.userEmail}</button>
-                <label>{username}<span className="errors">*</span>
-                    <input type="text" value={this.state.username} onChange={this.update("username")} />
-                </label>
+                {usernameHTML}
 
                 <label>{password}<span className="errors">*</span>
-                    <input type="text" value={this.state.password} onChange={this.update("password")}/>
+                    <input type="password" value={this.state.password} onChange={this.update("password")}/>
                 </label>
 
                 {this.renderErrors()}

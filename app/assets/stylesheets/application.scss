@@ -17,7 +17,6 @@
 html, body{
   height: 100%;
   font-family: 'Roboto', sans-serif;
-
  }
  main{
    width: 1240px;
@@ -25,6 +24,7 @@ html, body{
    background: white;
    margin: 0 auto;
    border-top:4px solid #f50;
+   
  }
  body{
    background-color: #eeeeee;
@@ -136,16 +136,20 @@ form{
   margin-top: 40px;
   font-size: 40px;
 }
-
+form >ul >li{
+  text-align: left;
+}
 form input, form button {
   border-radius: 5px;
   height: 40px;
   width: 400px;
-  font-size: 24px;
+  font-size: 20px;
   box-sizing: border-box;
   padding: 7px 8px;
   border:1px solid grey;
+  text-align: left;
 }
+
 
 input[type=submit]{
   margin-top: 10px;
@@ -157,6 +161,8 @@ input[type=submit]{
   height: 40px;
   width: 400px;
   font-size: 14px;
+    text-align: center;
+
 }
 
 .terms p {
@@ -178,6 +184,7 @@ input[type=submit]{
 
 .errors{
   color: red;
+  font-size: 12px;
 }
 
 .mini-logo{
@@ -187,4 +194,29 @@ input[type=submit]{
 h2{
   color: white;
   font-size: 24px;
+}
+.footerWrap {
+    width:100%;
+    position:fixed;
+    bottom: 0px;
+        display: flex;
+
+ align-items: center;
+}
+footer {
+    border-top: 1px solid  rgba(211,211,211, 0.4);
+    width: 1240px;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    padding: 10px;
+}
+footer a{
+    justify-content: center;  
+    align-items: center;
+}
+footer img{
+  width: 80px;
+  padding: 0px;
+
 }

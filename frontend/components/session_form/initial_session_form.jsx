@@ -24,7 +24,7 @@ class InitialSessionForm extends React.Component {
         return (
             <ul>
                 {this.props.errors.map((error, i) => {
-                    return <li key={i}>{error}</li>
+                    return <li className="errors" key={i}>{error}</li>
                 })}
             </ul>
         ) 
@@ -42,16 +42,11 @@ class InitialSessionForm extends React.Component {
                     <label>
                         <input type="text" placeholder=" Your email address *" onChange={this.update("email")} />
                     </label>
+                    <ul className="errors">{this.renderErrors()}</ul>
                     <input type="submit" value="Continue" />
                 </form>
-                    <ul className="errors">{this.renderErrors()}</ul>
                 <div className="terms">
-                <p >
-                    We may use your email and devices for updates and tips on SoundCloud's products and services, and for activities notifications. You can unsubscribe for free at any time in your notification settings.
-                </p>
-                <p>
-                     We may use information you provide us in order to show you targeted ads as described in our <span><a href="">Privacy Policy</a></span>.
-                </p>
+
                 </div>
             </div>
         </div>
