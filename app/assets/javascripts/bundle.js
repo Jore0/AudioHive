@@ -289,14 +289,24 @@ var Greeting = function Greeting(props) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
       className: "login-signup"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "clear-button",
       onClick: function onClick() {
         return props.openModal("initial");
       }
-    }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, "Sign in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "orange-button",
       onClick: function onClick() {
         return props.openModal("initial");
       }
-    }, "Signup"));
+    }, "Create Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "clear-button",
+      onClick: function onClick() {
+        return props.login({
+          username: "jmoney",
+          password: "password"
+        });
+      }
+    }, "Demo Login"));
   };
 
   var personalGreeting = function personalGreeting() {
@@ -346,6 +356,9 @@ var mdp = function mdp(dispatch) {
   return {
     logout: function logout() {
       return dispatch(Object(_actions_session_action__WEBPACK_IMPORTED_MODULE_2__["logout"])());
+    },
+    login: function login(user) {
+      return dispatch(Object(_actions_session_action__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
     },
     openModal: function openModal(modal) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
@@ -458,10 +471,15 @@ __webpack_require__.r(__webpack_exports__);
 var Nav = function Nav() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "main-nav"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    className: "top-nav"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/",
     className: "header-link"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "AudioHive from the app.jsx")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.mini,
+    className: "mini-logo"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Nav);

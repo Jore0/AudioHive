@@ -7,8 +7,9 @@ const Greeting = (props) => {
     const sessionLinks = () => (
         <nav className="login-signup">
             {/* <Link to="/login">Login</Link> */}
-            <button onClick={() => props.openModal("initial")}>Login</button>
-            <button onClick={() => props.openModal("initial")}>Signup</button>
+            <button className="clear-button"  onClick={() => props.openModal("initial")}>Sign in</button>
+            <button className="orange-button" onClick={() => props.openModal("initial")}>Create Account</button>
+            <button className="clear-button" onClick={() => props.login({ username: "jmoney", password: "password" })}>Demo Login</button>
             {/* <Link to="/signup">Sign up!</Link> */}
         </nav>
     );

@@ -6,14 +6,19 @@ import { Link, Switch, Route } from "react-router-dom";
 const Nav = () => (
 
     <nav className = "main-nav">
-        <Modal />
+        
         {/* <div className="carousel"> 
             <img src={window.header1}/>
         </div> */}
-        <Link to="/" className="header-link">
-            <h1>AudioHive from the app.jsx</h1>
-        </Link>
-        <GreetingContainer />
+      
+        <nav className="top-nav">
+                <Link to="/" className="header-link">
+                    <img src={window.mini} className="mini-logo" />
+                </Link>
+                <GreetingContainer />
+            
+            <Modal />
+        </nav>
     </nav>
 
 )
