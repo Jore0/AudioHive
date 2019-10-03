@@ -61,7 +61,7 @@ header{
   width: 100%;
   display: flex;
   /* justify-content: space-between; */
-  background-image: url(header2.jpg);
+  background-image: image-url("header2.jpg");
   height: 450px;
   background-position:center;
   background-size: cover ;
