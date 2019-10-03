@@ -21,7 +21,6 @@ const Greeting = (props) => {
         // </nav>
         <LoginGreeting/>
     );
-
     return props.currentUser ? personalGreeting() : sessionLinks();
 };
 

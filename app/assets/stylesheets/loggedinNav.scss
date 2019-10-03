@@ -1,5 +1,5 @@
 .login-nav {
-  overflow: hidden;
+
   background-color: #333;
   position: fixed;
   top: 0;
@@ -93,4 +93,16 @@ nav.main-nav {
 
 main#root {
     box-sizing: border-box;
+}
+.dropDown {
+    position: relative;
+}
+
+.menu {
+    position: absolute;
+    z-index: 100;
+}
+a.nav-button {
+    display: inline-block;
+    padding: 10px 20px;
 }

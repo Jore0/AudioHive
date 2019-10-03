@@ -5,20 +5,15 @@ import { Link, Switch, Route } from "react-router-dom";
 
 
 const Nav = () => (
-
-    <nav className = "main-nav">
-
-    
+    <nav >
         <nav className="top-nav">
                 <Link to="/" className="header-link">
                     <img src={window.mini} className="mini-logo" />
                 </Link>
                 <GreetingContainer />
-            
-            <Modal />
+                <Modal/>
         </nav>
     </nav>
-
 )
 
 export default Nav;

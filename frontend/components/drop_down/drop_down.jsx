@@ -30,7 +30,7 @@ class DropDown extends Component {
 
     render(){
         return (
-            <div>
+            <div className="dropDown">
                 <button onClick={this.showMenu}> <i className="fas fa-ellipsis-h"></i></button>
                 {
                     this.state.vis 
