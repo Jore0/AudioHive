@@ -640,18 +640,29 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-x"
-      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Enter Email"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "\u2715"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "formContent"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.soundcloud,
+        className: "socialButton"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        placeholder: "Your email address *",
+        placeholder: " Your email address *",
         onChange: this.update("email")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Continue"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We may use your email and devices for updates and tips on SoundCloud's products and services, and for activities notifications. You can unsubscribe for free at any time in your notification settings. We may use information you provide us in order to show you targeted ads as described in our ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "errors"
+      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "terms"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We may use your email and devices for updates and tips on SoundCloud's products and services, and for activities notifications. You can unsubscribe for free at any time in your notification settings."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We may use information you provide us in order to show you targeted ads as described in our ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: ""
-      }, "Privacy Policy")), "."));
+      }, "Privacy Policy")), "."))));
     }
   }]);
 
@@ -687,6 +698,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state, ownProps) {
   return {
+    currentUser: state.entities.users[state.session.id],
     email: state.session.email,
     userEmail: state.session.currentUserEmail,
     errors: state.errors.session,
@@ -710,6 +722,9 @@ var mdp = function mdp(dispatch) {
     }, "Signup"),
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
     }
   };
 };
@@ -803,37 +818,55 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
+      var image;
+      var username;
+      var password;
+
+      if (this.props.formType === "Create Account") {
+        image = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.create,
+          className: "socialButton"
+        });
+        username = "Choose a username";
+        password = "Choose a password";
+      } else {
+        image = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.login,
+          className: "socialButton"
+        });
+        username = "Username";
+        password = "Password";
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "demo-login",
-        onClick: function onClick() {
-          return _this3.props.login({
-            username: "jmoney",
-            password: "password"
-          });
-        }
-      }, "Demo Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.formType, " or ", this.props.otherform), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, image, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "formContent"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-x"
-      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.props.userEmail,
-        onChange: this.update("email")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Username:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "\u2715"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.props.openModal("initial");
+        }
+      }, " \u21E0     ", this.props.userEmail), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, username, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "errors"
+      }, "*"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.username,
         onChange: this.update("username")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, password, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "errors"
+      }, "*"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.password,
         onChange: this.update("password")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: this.props.formType
-      })));
+      }))));
     }
   }]);
 
@@ -859,6 +892,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_form */ "./frontend/components/session_form/session_form.jsx");
 /* harmony import */ var _actions_session_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_action */ "./frontend/actions/session_action.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -868,17 +903,21 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, ownProps) {
   return {
     // debugger
+    currentUser: state.entities.users[state.session.id],
     errors: state.errors.session,
     userEmail: state.session.currentUserEmail,
-    formType: "Create Account",
-    navLink: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
-      to: "/login"
-    }, "Are you trying to sign in? ")
+    formType: "Create Account"
   };
 };
 
 var mdp = function mdp(dispatch) {
   return {
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])(modal));
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["closeModal"])());
+    },
     processForm: function processForm(user) {
       return dispatch(Object(_actions_session_action__WEBPACK_IMPORTED_MODULE_3__["signup"])(user));
     }

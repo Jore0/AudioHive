@@ -32,27 +32,41 @@ class SessionForm extends React.Component {
     }
 
     render(){
-        
+        let image;
+        let username;
+        let password;
+        if (this.props.formType === "Create Account"){
+            image = <img src={window.create} className="socialButton" />
+            username = "Choose a username";
+            password = "Choose a password";
+        }else {
+            image = <img src={window.login} className="socialButton" />
+            username = "Username";
+            password = "Password";
+        }
+
         return (
         <div className="login-form-container">
-            <button className="demo-login"onClick={() => this.props.login({ username: "jmoney", password: "password" })}>Demo Login</button>
-
-            <h1>{this.props.formType} or {this.props.otherform}</h1>
-                {this.renderErrors()}
-
+            {/* <button className="demo-login"onClick={() => this.props.login({ username: "jmoney", password: "password" })}>Demo Login</button> */}
+            {image}
+         <div className="formContent">
             <form onSubmit={this.handleSubmit}>
-            <div onClick={this.props.closeModal} className="close-x">X</div>
-                <label>Email:
-                    <input type="text" value={this.props.userEmail} onChange={this.update("email")}/>
+
+                <div onClick={this.props.closeModal} className="close-x">&#x2715;</div>
+
+                <button onClick={() => this.props.openModal("initial")}> &#8672;     {this.props.userEmail}</button>
+                <label>{username}<span className="errors">*</span>
+                    <input type="text" value={this.state.username} onChange={this.update("username")} />
                 </label>
-                <label>Username:
-                    <input type="text" value={this.state.username} onChange={this.update("username")}/>
-                </label>
-                <label>Password:
+
+                <label>{password}<span className="errors">*</span>
                     <input type="text" value={this.state.password} onChange={this.update("password")}/>
                 </label>
+
+                {this.renderErrors()}
                 <input type="submit" value={this.props.formType} />
             </form>
+            </div> 
 
         </div>
         )

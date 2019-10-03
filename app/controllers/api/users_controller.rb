@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
             login(@user)
             render "api/users/show" 
         else 
-            render json: ['username already exists'], status: 422
+            render json: ['Please Fill In All Credintials Correctly '], status: 422
         end 
     end 
 

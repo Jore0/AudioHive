@@ -16,13 +16,14 @@
  */
 html, body{
   height: 100%;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
  }
  main{
-   width: 1200px;
+   width: 950px;
     height: 100%;
    background: white;
    margin: 0 auto;
+   border-top:4px solid #f50;
  }
  body{
    background-color: #eeeeee;
@@ -50,25 +51,30 @@ header{
   flex-direction: row;
 }
 
-header h1{
-  font-size: 40px;
+header{
   text-align: center;
 }
 .main-nav{
   width: 100%;
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+  background-image: url(header2.jpg);
+  height: 450px;
+  background-size:950px ; 
+  background-position:center;
+  background-size: cover ;
+   background-repeat: no-repeat;
 }
 
 .login-form-container{
   background-color: white;
-  height: 600px;
+  height: 620px;
   width: 450px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 25px;
   box-sizing: border-box;
+
 }
 
 .close-x{
@@ -83,19 +89,46 @@ form{
   flex-direction: column;
   margin: 0;
 }
-form input {
+.formContent h1{
+  margin-top: 40px;
+  font-size: 40px;
+}
+
+form input, form button {
   border-radius: 5px;
   height: 40px;
   width: 400px;
   font-size: 24px;
+  box-sizing: border-box;
+  padding: 7px 8px;
+  border:1px solid grey;
 }
 
 input[type=submit]{
-  margin-top: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border-radius: 5px;
   height: 40px;
   width: 400px;
   background-color: #f50;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
+  border: none;
+}
+
+.terms p {
+  font-size: 12px; 
+  margin: 10px 0px;
+  color:#9999;
+}
+
+.formContent {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  /* justify-content: space-around; */
+  flex-direction: column;
+}
+.errors{
+  color: red;
 }

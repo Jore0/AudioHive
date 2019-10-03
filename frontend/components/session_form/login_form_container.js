@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 
 
 const msp = (state, ownProps) => ({
+    currentUser: state.entities.users[state.session.id],
     email: state.session.email,
     userEmail: state.session.currentUserEmail,
     errors: state.errors.session,
@@ -21,7 +22,8 @@ const mdp = dispatch => ({
             Signup
         </button>
     ), 
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()), 
+    openModal: modal => dispatch(openModal(modal)),
 })
 
 export default connect(msp, mdp)(SessionForm)
