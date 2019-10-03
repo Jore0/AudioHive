@@ -15,6 +15,7 @@ class SessionForm extends React.Component {
         return e => this.setState({[field]: e.target.value})
     }
     handleSubmit(e){
+        debugger 
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user).then(this.props.closeModal)
@@ -54,7 +55,7 @@ class SessionForm extends React.Component {
 
                 <div onClick={this.props.closeModal} className="close-x">&#x2715;</div>
 
-                <button onClick={() => this.props.openModal("initial")}> &#8672;     {this.props.userEmail}</button>
+                <button type="button" onClick={() => this.props.openModal("initial")}> &#8672;     {this.props.userEmail}</button>
                 <label>{username}<span className="errors">*</span>
                     <input type="text" value={this.state.username} onChange={this.update("username")} />
                 </label>

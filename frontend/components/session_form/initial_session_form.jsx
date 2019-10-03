@@ -27,7 +27,7 @@ class InitialSessionForm extends React.Component {
                     return <li key={i}>{error}</li>
                 })}
             </ul>
-        )
+        ) 
     }
 
     render(){

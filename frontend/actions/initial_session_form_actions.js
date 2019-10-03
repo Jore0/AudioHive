@@ -1,5 +1,7 @@
 import * as APIUtil from '../util/session_util_api_util';
+import {closeModal} from "./modal_actions"
 export const RECEIVE_LOGIN_INFO = "RECEIVE_LOGIN_INFO";
+
 
 const receiveLoginInfo = (userInfo) => ({
     type: RECEIVE_LOGIN_INFO,
@@ -14,10 +16,10 @@ const receiveErrors = (errors) => ({
 }) 
 
 export const nextForm = (email) => dispatch => (
-    APIUtil.emailValidate(email).then(
-        (loginInfo) => dispatch(receiveLoginInfo(loginInfo)), error => (
-            dispatch(receiveErrors(error.responseJSON))
-        ))
+    APIUtil.emailValidate(email)
+        .then((loginInfo) => dispatch(receiveLoginInfo(loginInfo)))
+        // .then(() => dispatch(closeModal()))
+        .fail(error => (dispatch(receiveErrors(error.responseJSON))))
 );
 
 
