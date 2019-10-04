@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   post "api/session/validate", to: "api/sessions#validate_email", defaults: {format: :json}
 
-
+  resources :songs, only:[:show]
 end
