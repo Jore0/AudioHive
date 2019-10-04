@@ -6,13 +6,12 @@ import Modal from "./modal/modal";
 
 const App = () => (
     <>
-
-        <div className="hero-image">
-            <GreetingContainer />
-            <Modal />
-        </div>
         <Switch>
+            <Route to="/" component={GreetingContainer}/>
         </Switch>
+        
+        <Modal/>
+        
         <div className="footerWrap">
             <footer>
                 <a target="_blank" href="https://github.com/Jore0/AudioHive"><img src={window.github}  /></a>

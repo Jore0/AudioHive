@@ -4,14 +4,17 @@ import { connect } from "react-redux";
 const Greeting = (props) => {
     // debugger
     const sessionLinks = () => (
-        <nav className="login-signup">
-            <img src={window.mini} className="mini-logo" />
-            <div className="buttons">
-            <button className="clear-button"  onClick={() => props.openModal("initial")}>Sign in</button>
-            <button className="orange-button" onClick={() => props.openModal("initial")}>Create Account</button>
-            <button className="clear-button" onClick={() => props.login({ email: "test@gmail.com", password: "password" })}>Demo Login</button>
-            </div>
-        </nav>
+        <div className="hero-image">
+            <nav className="login-signup">
+                <img src={window.mini} className="mini-logo" />
+                <div className="buttons">
+                <button className="clear-button"  onClick={() => props.openModal("initial")}>Sign in</button>
+                <button className="orange-button" onClick={() => props.openModal("initial")}>Create Account</button>
+                <button className="clear-button" onClick={() => props.login({ email: "test@gmail.com", password: "password" })}>Demo Login</button>
+                </div>
+            
+            </nav>
+        </div>
     );
 
     const personalGreeting = () => (
