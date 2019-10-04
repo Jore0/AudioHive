@@ -8,7 +8,7 @@ import Modal from "./modal/modal";
 import Nav from "./nav/nav"
 
 const App = () => (
-    <div>
+    <>
 
         <Nav/>
         <Switch>
@@ -24,7 +24,7 @@ const App = () => (
             </footer>
         </div>
 
-    </div>
+    </>
 );
 
 export default App;
