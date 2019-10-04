@@ -1,0 +1,25 @@
+
+.footerWrap {
+    width:100%;
+    position:fixed;
+    bottom: 0px;
+        display: flex;
+
+ align-items: center;
+}
+footer {
+    border-top: 1px solid  rgba(211,211,211, 0.4);
+    width: 1240px;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    padding: 10px;
+}
+footer a{
+    justify-content: center;  
+    align-items: center;
+}
+footer img{
+  width: 80px;
+  padding: 0px;
+}

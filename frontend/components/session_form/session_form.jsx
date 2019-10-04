@@ -54,8 +54,7 @@ class SessionForm extends React.Component {
         <div className="login-form-container">
             {/* <button className="demo-login"onClick={() => this.props.login({ username: "jmoney", password: "password" })}>Demo Login</button> */}
             {image}
-         <div className="formContent">
-            <form onSubmit={this.handleSubmit}>
+                <form className="formContent" onSubmit={this.handleSubmit}>
 
                 <div onClick={this.props.closeModal} className="close-x">&#x2715;</div>
 
@@ -70,8 +69,6 @@ class SessionForm extends React.Component {
                 <input type="submit" value={this.props.formType} />
             </form>
             </div> 
-
-        </div>
         )
     }
 }

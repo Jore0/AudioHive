@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { Link } from "react-router-dom";
 
-class DropDown extends Component {
+class DropDown extends React.Component {
     constructor(props){
-        debugger
+        // debugger
         super(props)
         this.state = {
             vis: false,
@@ -30,15 +31,13 @@ class DropDown extends Component {
 
     render(){
         return (
-            <div className="dropDown">
-                <button onClick={this.showMenu}> <i className="fas fa-ellipsis-h"></i></button>
+            <div className="dropdown">
+                <button className="dropdownbtn"onClick={this.showMenu}> <i className="fas fa-ellipsis-h"></i></button>
                 {
                     this.state.vis 
                     ? (
-                        <div className="menu" ref={(element)=> {this.dropdownMenu = element}}>
-                            <button className="orange-button" onClick={this.props.logout}>Log Out</button>
-                            <button>Menu item 2</button>
-                            <button>Menu item 3</button>
+                        <div className="dropdown-content" >
+                            <a onClick={this.props.logout} ref={(element) => { this.dropdownMenu = element }}>Log Out</a>
                         </div>
                         )
                     : (null)

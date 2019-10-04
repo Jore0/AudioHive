@@ -35,10 +35,9 @@ class InitialSessionForm extends React.Component {
         <div className="login-form-container">
         
             <div onClick={this.props.closeModal} className="close-x">&#x2715;</div>
-            <div className="formContent">
                     <a href="" ><img src={window.soundcloud} className="socialButton"/></a>
                     
-                <form onSubmit={this.handleSubmit}>
+                    <form className="formContent" onSubmit={this.handleSubmit}>
                     <label>
                         <input type="text" placeholder=" Your email address *" onChange={this.update("email")} />
                     </label>
@@ -48,7 +47,6 @@ class InitialSessionForm extends React.Component {
                 <div className="terms">
 
                 </div>
-            </div>
         </div>
         )
     }

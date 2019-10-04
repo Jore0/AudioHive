@@ -1,108 +1,91 @@
 .login-nav {
-
   background-color: #333;
   position: fixed;
   top: 0;
   width: 100%;
+  height: 46px;
   margin: 0;
   left: 0;
   display: flex;
-  color: white;
+  color:#ccc;
   justify-content: center;
+  font-size: 14px;
+  
 }
-
+.inner-login-nav{
+  width: 1240px;
+  display: flex;
+  justify-content: space-evenly;
+}
 .header-middle, .header-left, .header-right {
   display: flex;
 }
-
-a {
-  text-decoration: none;
-  color: white;
+.header-middle{
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 45px;
 }
+.inner-login-nav a:hover{
+  color: white;
+} 
+.inner-login-nav a{
+  color:#ccc;
+text-decoration: none;
+} 
 
-ul {
+.login-nav ul {
   display: flex;
 }
 
-button.search-button {
-  width: auto;
-  background: none;
-  border: none;
-}
 
-input[type="search"] {
-  background: none;
-  border: none;
-}
-
-form.header-search-form {
+.header-search-form {
+  width: 450px;
+  height:25px;
   background: #ffffff;
   border-radius: 6px;
   flex-direction: row;
+  // padding: 9px 10px 8px;
+  box-sizing: border-box;
+  
+}
+.header-search-form input[type="search"] {
+  width: 90%;
+  color: #666;
+  outline: 0;
+  border: 0;
+  padding: 5px 7px;
+  background: #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 6px;
 }
 
-.header-search {
-  margin-left: auto;
-}
 
-.header-middle {
-  align-items: center;
+button.search-button {
+  width: auto;
+  border: none;
+  background: #e5e5e5;
 }
-
-header.header-inner {
-  justify-content: center;
-}
-
-.icon-logo {
-  width: 50px;
-}
-
-.nav-button {
+.left-nav-button {
   padding: 20px;
   border-right: 0.5px solid #111;
 }
-.header-left-items {
-    display: flex;
-    align-items: center;
-}
-
-.headerlogo-left {
-    display: flex;
-    align-items: center;
-}
-
-.headerlogo-left a {
-    display: flex;
-}
-
-.header-right {
-    align-items: center;
+.header-left-items, .header-right{
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .header-right > * {
-    padding: 0px 20px;
+  padding: 0px 20px;
 }
 
 .header-right-items > * {
-    padding: 0px 20px;
+  padding: 0px 20px;
 }
 
-nav.main-nav {
-    margin-top: 36px;
-}
 
-main#root {
-    box-sizing: border-box;
-}
-.dropDown {
-    position: relative;
-}
+// main#root {
+//     box-sizing: border-box;
+// }
 
-.menu {
-    position: absolute;
-    z-index: 100;
-}
-a.nav-button {
-    display: inline-block;
-    padding: 10px 20px;
-}

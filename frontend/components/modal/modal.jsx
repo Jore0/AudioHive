@@ -11,7 +11,7 @@ function Modal({ modal, closeModal }) {
     let component;
     switch (modal) {
         case "initial":
-            component = <InitialSessionFormContainer/>
+            component = <InitialSessionFormContainer />
         break;
         case 'login':
             component = <LoginFormContainer />;
@@ -24,9 +24,11 @@ function Modal({ modal, closeModal }) {
     }
     return (
         <div className="modal-background" onClick={closeModal}>
+            
             <div className="modal-child" onClick={e => e.stopPropagation()}>
                 {component}
             </div>
+            
         </div>
     );
 }

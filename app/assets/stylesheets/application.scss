@@ -18,51 +18,30 @@ html, body{
   height: 100%;
   font-family: 'Roboto', sans-serif;
  }
- main{
-   width: 1240px;
-    height: 100%;
-   background: white;
-   margin: 0 auto;
-   border-top:4px solid #f50;
-   
+main{
+  width: 1240px;
+  height: 100%;
+  background: white;
+  margin: 0 auto;
+  border-top:4px solid #f50;
  }
  body{
-   background-color: #eeeeee;
+  background-color: #eeeeee;
  }
-.modal-background {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 10;
-  
-}
-
-.modal-child {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0px 0px 26px;
-  border-radius: 5px;
-}
 
 header{
   width: 100%;
   display: flex;
   flex-direction: row;
-}
-
-header{
   text-align: center;
 }
-.main-nav{
+
+
+.hero-image{
   width: 100%;
   display: flex;
   /* justify-content: space-between; */
-  background-image: image-url("header2.jpg");
+  background-image: image-url("header1.jpg");
   height: 450px;
   background-position:center;
   background-size: cover ;
@@ -77,146 +56,18 @@ header{
   justify-content: space-between;
  
 }
-.login-signup{
-  width: 375px;
-  height: 30px;
-  display: flex;
-  justify-content: space-evenly;
-}
 
-.login-form-container{
-  background-color: white;
-  height: 620px;
-  width: 450px;
-  display: flex;
-  flex-direction: column;
-  padding: 25px;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-.orange-button{
-  border-radius: 5px;
-  background-color: #f50;
-  color: white;
-  border: none;
-  height: 30px;
-  font-size: 12px;
-  cursor: pointer;
-  padding: 2px 15px;
-
-}
-.clear-button{
-  border-radius: 5px;
-  color:#e5e5e5;
-  height: 30px;
-  font-size: 12px;
-  background-color: transparent;
-  border: 1px solid #e5e5e5;
-  cursor: pointer;
-  padding: 2px 15px;
- 
-}
-.clear-button:hover{
-  border: 1px solid white;
-  cursor: pointer;
-}
-.close-x{
-  position: absolute; 
-  top: 15px;
-  right: 15px
-}
-
-form{
-  margin: auto auto;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-}
-.formContent h1{
-  margin-top: 40px;
-  font-size: 40px;
-}
-form >ul >li{
-  text-align: left;
-}
-form input, form button {
-  border-radius: 5px;
-  height: 40px;
-  width: 400px;
-  font-size: 20px;
-  box-sizing: border-box;
-  padding: 7px 8px;
-  border:1px solid grey;
-  text-align: left;
-}
-
-
-input[type=submit]{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  background-color: #f50;
-  color: white;
-  border: none;
-  height: 40px;
-  width: 400px;
-  font-size: 14px;
-    text-align: center;
-
-}
-
-.terms p {
-  font-size: 12px; 
-  margin: 10px 0px;
-  color:#9999;
-}
-
-.formContent {
-  width: 400px;
-  height: 400px;
-  display: flex;
-  /* justify-content: space-around; */
-  flex-direction: column;
-}
-.socialButton {
-  padding-bottom: 15px;
-}
-
-.errors{
-  color: red;
-  font-size: 12px;
-}
+// form{
+//   margin: auto auto;
+//   display: flex;
+//   flex-direction: column;
+//   margin: 0;
+// }
+// .formContent h1{
+//   margin-top: 40px;
+//   font-size: 40px;
+// }
 
 .mini-logo{
   width:184px;
-}
-
-h2{
-  color: white;
-  font-size: 24px;
-}
-.footerWrap {
-    width:100%;
-    position:fixed;
-    bottom: 0px;
-        display: flex;
-
- align-items: center;
-}
-footer {
-    border-top: 1px solid  rgba(211,211,211, 0.4);
-    width: 1240px;
-    display: flex;
-    justify-content: center;  
-    align-items: center;
-    padding: 10px;
-}
-footer a{
-    justify-content: center;  
-    align-items: center;
-}
-footer img{
-  width: 80px;
-  padding: 0px;
-
 }
