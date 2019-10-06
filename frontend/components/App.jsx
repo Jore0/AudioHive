@@ -1,5 +1,6 @@
 import React from "react";
-import GreetingContainer from "./greeting/greeting_container";
+import LoginNav from "./greeting/login_nav_container";
+import NavBar from "./greeting/nav_bar";
 import {Link, Switch ,Route} from "react-router-dom";
 import { AuthRoute, ProtectedRoute} from "../util/route_util";
 import Modal from "./modal/modal";
@@ -8,8 +9,9 @@ import DicoverPageContainer from "./discover_page/discover_page_container";
 const App = () => (
     <>
         <Switch>
-            {/* <Route to="/" component={GreetingContainer}/> */}
-            <Route to="/discover" component={DicoverPageContainer}/> //Homepage
+            <Route exact path="/" component={LoginNav}/>
+            {/* <Route path="/" component={NavBar}/> */}
+            <Route to="/discover" component={DicoverPageContainer}/> 
         </Switch>
         
         <Modal/>

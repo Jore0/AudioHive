@@ -1,6 +1,6 @@
 import React from "react"; 
 import SongButton from "../song_button/song_button"
-
+import SongSlider from "../song_button/song_slider"
 class DiscoverPage extends React.Component {
     constructor(props){
         super(props)
@@ -20,9 +20,7 @@ class DiscoverPage extends React.Component {
         <div className="discover-page-container">
             <h1 className="song-list-header">New Music Now</h1>
             <p className="song-list-subheader">The latest hits, updated all the time</p>
-            <div className="songs-container">
-                {songs}
-            </div>
+            <SongSlider songs={songs}/>
         </div>
         ) 
     }

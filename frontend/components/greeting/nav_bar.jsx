@@ -3,7 +3,7 @@ import React from "react";
 import { Link, Switch, Route } from "react-router-dom";
 import DropDownContainer from '../drop_down/drop_down_container'
 
-class userNav extends React.Component{
+class NavBar extends React.Component{
     constructor(props){
         super(props)
     }
@@ -45,4 +45,4 @@ class userNav extends React.Component{
     }
 }
 
-export default userNav ;
+export default NavBar ;

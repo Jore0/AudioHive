@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Greeting from "./greeting";
+import LoginNav from "./login_nav";
 import {logout,login} from '../../actions/session_action'
 
 import { openModal } from '../../actions/modal_actions';
@@ -16,4 +16,4 @@ const mdp = dispatch => ({
     openModal: modal => dispatch(openModal(modal))
 })
 
-export default connect(msp, mdp)(Greeting)
+export default connect(msp, mdp)(LoginNav)
