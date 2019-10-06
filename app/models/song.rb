@@ -4,5 +4,6 @@ class Song < ApplicationRecord
     #associations
     belongs_to :user
     has_one_attached :album_cover
-    has_one_attached :mp3
+    has_one_attached :song_url
+    
 end 

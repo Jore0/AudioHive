@@ -9,7 +9,7 @@ class userNav extends React.Component{
     }
     
     render(){
-        debugger
+        // debugger
     return (
         <nav className="login-nav">
         <nav className="inner-login-nav">

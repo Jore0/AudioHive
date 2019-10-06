@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
         integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
         
@@ -14,6 +15,7 @@
   </head>
 
   <body>
+
     <script type="text/javascript">
         window.soundcloud = "<%= image_url("soundcloud.png") %>";
         window.create = "<%= image_url("create.png") %>";
@@ -23,6 +25,8 @@
         window.mini = "<%= image_url("miniSoundcloud.png") %>";
         window.github = "<%= image_url("GitHubHive.png") %>";
         window.icon= "<%= image_url("audioHiveIcon.png") %>";
+        window.hiveButton= "<%= image_url("hivebutton.svg") %>";
+        window.hivePause= "<%= image_url("hivePause.svg") %>";
     </script>
     <%= yield %>
   </body>
