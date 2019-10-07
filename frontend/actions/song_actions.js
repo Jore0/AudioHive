@@ -4,7 +4,7 @@ export const RECEIVE_SONG = "RECEIVE_SONG";
 export const REMOVE_SONG = "REMOVE_SONG";
 export const RECEIVE_CURRENT_SONG = "RCEIVE_CURRENT_SONG";
 
-const receiveCurrentSong = (song)=>({
+export const receiveCurrentSong = (song)=>({
     type: RECEIVE_CURRENT_SONG, 
     song
 })

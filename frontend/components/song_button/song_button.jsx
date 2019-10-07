@@ -13,8 +13,6 @@ class SongButton extends React.Component {
         this.hidePlayButton = this.hidePlayButton.bind(this)
    
     }
-
-
     showPlayButton(){
         this.setState({ playButton: true })
     }
@@ -24,15 +22,16 @@ class SongButton extends React.Component {
 
     toggle(){
         let status = this.state.playStatus;
-        let song = document.getElementById(this.props.song.title)
+        // let song = document.getElementById(this.props.song.title)
         // debugger
         if(status === 'play'){
             status = 'pause';
-            song.play();
+            // song.play();
         }else {
             status = 'play'
-            song.pause();
+            // song.pause();
         }
+        this.props.receiveCurrentSong(this.props.song)
         this.setState({playStatus:  status})
     }
 
@@ -55,7 +54,7 @@ class SongButton extends React.Component {
                 onMouseLeave={this.hidePlayButton}
                 onClick={this.toggle}
                 >
-                <audio id={this.props.song.title} src={this.props.song.songUrl} type="audio/mp3" preload="auto"/>
+                {/* <audio id={this.props.song.title} src={this.props.song.songUrl} type="audio/mp3" preload="auto"/> */}
                 {togglebutton}
             </div>
             <h1 className="song-detail">{this.props.song.title} - {this.props.song.artist} </h1>

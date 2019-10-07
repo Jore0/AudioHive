@@ -16,14 +16,14 @@ class DiscoverPage extends React.Component {
     render(){
         // debugger
         const songs = this.props.songs.map(song => {
-            return <SongButton key={song.id} song={song}/>
+            return <SongButton key={song.id} song={song} receiveCurrentSong={this.props.receiveCurrentSong}/>
         })
         return(
         
         <div className="discover-page-container">
             <h1 className="song-list-header">New Music Now</h1>
             <p className="song-list-subheader">The latest hits, updated all the time</p>
-                <SongCarousel songs={songs}/>
+                <SongCarousel songs={songs} receiveCurrentSong={this.props.receiveCurrentSong}/>
         </div>
         ) 
     }

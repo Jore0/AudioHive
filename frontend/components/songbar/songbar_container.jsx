@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from 'react-redux';
 import SongBar from './songbar';
-import receiveCurrentSong from "../../actions/song_actions";
+import {receiveCurrentSong} from "../../actions/song_actions";
 
 
 
