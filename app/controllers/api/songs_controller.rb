@@ -12,12 +12,12 @@ class Api::SongsController < ApplicationController
     end 
 
     def create
+        # debugger
         @song = Song.new(song_params)
-        @song.user_id = current_user.id
         if @song.save
             render :show
         else 
-            render json: @post.errors.full_messages, status: 422
+            render json: @song.errors.full_messages, status: 422
         end 
         
     end
@@ -31,10 +31,19 @@ class Api::SongsController < ApplicationController
         end 
     end 
 
+    def update
+        @song = Song.find(params[:id])
+        if @song.update(song_params)
+            render :show
+        else 
+            render json: @song.errors.full_messages, status: 422
+        end 
+    end 
+
 
     private 
     def song_params
-        params.require(:song).permit(:title, :artist, :genre)
+        params.require(:song).permit(:user_id, :title, :artist, :genre, :release_date, :song_url, :album_cover, :description)
     end 
 
 end

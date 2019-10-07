@@ -12,16 +12,27 @@ export const fetchSong =(id) => (
     })
 )
 
-export const uploadSong = (song) =>{
+export const uploadSong = (formData) =>(
     $.ajax({
         method: "POST",
-        url: `/api/songs/`, 
-        data: {song}
+        url: `/api/songs`, 
+        data: formData, 
+        contentType: false, 
+        processData: false
     })
-}
-export const deleteSong = (id) =>{
+)
+export const updateSong = (song) =>(
+    $.ajax({
+        method: "PATCH",
+        url: `/api/songs/${song.id}`, 
+        data: song,
+        contentType: false,
+        processData: false
+    })
+)
+export const deleteSong = (id) =>(
     $.ajax({
         method: "DELETE",
         url: `/api/songs/${id}`
     })
-}
+)

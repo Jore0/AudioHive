@@ -58,7 +58,7 @@ class SessionForm extends React.Component {
 
                 <div onClick={this.props.closeModal} className="close-x">&#x2715;</div>
 
-                <button type="button" onClick={() => this.props.openModal("initial")}> &#8672;     {this.props.userEmail}</button>
+                <button type="button" onClick={() => this.props.openModal("initial")}> &#8672;   {this.props.userEmail}</button>
                 {usernameHTML}
 
                 <label>{password}<span className="errors">*</span>

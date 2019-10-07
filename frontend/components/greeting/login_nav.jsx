@@ -7,6 +7,9 @@ class LoginNav extends React.Component {
         super(props)
     }
     render (){
+        if (this.props.currentUser){
+            return null
+        } else {
         return (
         <div className="hero-image">
             <nav className="login-signup">
@@ -19,6 +22,7 @@ class LoginNav extends React.Component {
             </nav>
         </div>
         )
+        }
     }
 };
 // return props.currentUser ? personalGreeting() : sessionLinks();

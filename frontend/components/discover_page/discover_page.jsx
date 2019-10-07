@@ -9,6 +9,9 @@ class DiscoverPage extends React.Component {
     componentDidMount(){
         this.props.fetchSongs();
     }
+    // componentDidUpdate(){
+    //     this.props.fetchSongs();
+    // }
 
     render(){
         // debugger

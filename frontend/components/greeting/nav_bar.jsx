@@ -1,23 +1,26 @@
 import React from "react";
 
-import { Link, Switch, Route } from "react-router-dom";
-import DropDownContainer from '../drop_down/drop_down_container'
-``
+import { Link, NavLink } from "react-router-dom";
+import DropDownContainer from '../drop_down/drop_down_container';
+
 class NavBar extends React.Component{
     constructor(props){
         super(props)
     }
     
     render(){
-        // debugger
+        if (!this.props.currentUser){
+            return  null
+        }else {
     return (
+        
         <nav className="login-nav">
         <nav className="inner-login-nav">
             <div className="header-left">
                 <Link className="header-logo-left" to="/"><img src={window.icon} className="icon-logo" /></Link>
                 <div className="header-left-items">
                     <ul>
-                        <li><Link to="/" className="left-nav-button">Home </Link></li>
+                        <li><NavLink to="/discover" className="left-nav-button">Home </NavLink></li>
                         <li><Link to="/" className="left-nav-button">Stream </Link></li>
                         <li><Link to="/" className="left-nav-button">Playlist </Link></li>
                     </ul>
@@ -31,7 +34,7 @@ class NavBar extends React.Component{
             </div>
 
             <div className="header-right">
-                <a href="">Upload</a>
+                    <NavLink to="/upload" className="left-nav-button">Upload</NavLink>
                 <div className="header-right-items">
                     <Link to="/" className="right-nav-button">{this.props.currentUser.username}</Link>
                     <Link to="/" className="right-nav-button"><i className="fas fa-bell"></i></Link>
@@ -43,6 +46,7 @@ class NavBar extends React.Component{
     </nav>
     )
     }
+}
 }
 
 export default NavBar ;

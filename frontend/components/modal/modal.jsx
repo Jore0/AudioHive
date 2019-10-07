@@ -13,6 +13,7 @@ function Modal({ modal, closeModal }) {
         case "initial":
             component = <InitialSessionFormContainer />
         break;
+        
         case 'login':
             component = <LoginFormContainer />;
             break;
