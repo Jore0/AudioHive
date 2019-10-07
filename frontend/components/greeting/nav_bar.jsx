@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link, Switch, Route } from "react-router-dom";
 import DropDownContainer from '../drop_down/drop_down_container'
-
+``
 class NavBar extends React.Component{
     constructor(props){
         super(props)

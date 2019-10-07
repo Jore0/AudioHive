@@ -1,12 +1,15 @@
-.song-button-container{
+.song-button-container, .entire-song-button{
     width:150px;
-    height:150px;
+    height:150px; 
+    display: inline-block;
+    vertical-align: top;
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat; 
-    display: flex;
+    white-space: normal;
     align-content: center;
-    
+    border: 1px solid blue;
+    margin-right: 10px;
 }
 .playButton{
     margin: auto auto;
@@ -20,36 +23,67 @@
 //////outer
 .songs-container{
     position: relative;
-    width: 110%;
+    display: flex;
+    // width: 75%; 
+    border: 3px solid red;
+    padding:5px;
 }
 //inner
-.songs-scroll{
-    width: 990px;
-    min-height: fit-content;
-    overflow: hidden;
-    display: flex;
-    border-bottom: 1px solid  #f2f2f2;
+.carousel-viewport{
+    // width: 100%;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    border: 3px solid green;
+    box-sizing: border-box;
+    z-index: 1;
+    position: relative;
+    padding:20px;
 }
-.songs-container-inner{
-    margin: 0 auto;
-    width: 100%;
-    padding: 20px 20px 20px 1px;
-    min-height: fit-content;
-    display: flex;
-    transition: all ease-in-out 1s;
-    transform: translate(0%, 0%);
+.carousel-viewport::-webkit-scrollbar{
+    display: none;
 }
-.left-arrow, .right-arrow{
+.carousel-nav{
+    position: absolute;
+    top: 0;
+    bottom: 0;
     height: 32px;
     width: 32px;
     color: #333;
     background-color: #fff;
     border-radius: 3px;
     border: 1px solid #e5e5e5;
-    position: relative;
     padding: 2px 11px 2px 10px;
-    z-index: 9;
+    z-index: 3;
     cursor: pointer;
-    right: 85px;
-    top: 90px;
+    
+    transition: opacity .2s ease-in-out;
+}
+
+.carousel-nav:focus {
+    border: 2px solid orange;
+    color: orange;
+}
+.carousel-nav:hover{
+    opacity: 1;
+}
+.left-arrow{
+    left: 0;
+}
+.right-arrow{
+    right: 0;
+}
+
+
+.carousel-nav-disabled{
+    opacity: 0;
+    z-index: 0;
+    cursor: default;
+    user-select: none;
+    pointer-events: none;
+    transition: none;
+}
+
+.entire.song-button{
+    overflow-wrap: break-word;
 }

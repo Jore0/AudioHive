@@ -47,6 +47,8 @@ class SongButton extends React.Component {
         }
     
         return (
+        <>
+            <div className="entire-song-button"> 
             <div className="song-button-container"
                 style={albumCover}  
                 onMouseEnter={this.showPlayButton}
@@ -55,8 +57,10 @@ class SongButton extends React.Component {
                 >
                 <audio id={this.props.song.title} src={this.props.song.songUrl} type="audio/mp3" preload="auto"/>
                 {togglebutton}
-            
             </div>
+            <h1 className="song-detail">{this.props.song.title} - {this.props.song.artist} </h1>
+                </div>
+            </>
         )
     }
 }

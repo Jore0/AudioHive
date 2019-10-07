@@ -11,3 +11,17 @@ export const fetchSong =(id) => (
         url: `/api/songs/${id}`
     })
 )
+
+export const uploadSong = (song) =>{
+    $.ajax({
+        method: "POST",
+        url: `/api/songs/`, 
+        data: {song}
+    })
+}
+export const deleteSong = (id) =>{
+    $.ajax({
+        method: "DELETE",
+        url: `/api/songs/${id}`
+    })
+}
