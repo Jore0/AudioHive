@@ -46,13 +46,16 @@ class SecondSongForm extends React.Component {
         return e => this.setState({ [field]: e.target.value })
     }
     handleImageFile(e){
-        debugger 
-        if (e.target.files[0]) {
-            this.setState({
-                photoFile: e.target.files[0],
-                errors: []
-            })
-        } else {
+        debugger
+        const file = e.target.files[0]
+        const fileReader = new FileReader();
+        fileReader.onloadend=()=>{
+            this.setState({photoFile: file,errors: [], photoUrl: fileReader.result})
+        }
+        debugger
+        if(file){
+            fileReader.readAsDataURL(file);
+        }else {
             this.setState({
                 errors: ['Please upload an image file']
             })
@@ -61,17 +64,20 @@ class SecondSongForm extends React.Component {
 
 
     render() {
+        const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null
         return (
             <div className="upload-form-container">
-                <form className="upload-form-content" onSubmit={this.handleSubmit}>
-                    <div className="right-form">
+                <form className="second-upload-form-content" onSubmit={this.handleSubmit}>
+                    <div className="left-form">
+                            {preview}
                         <label className="custom-file-upload">
                             Upload image<i className="fas fa-camera"></i>
+
                             <input type="file" onChange={this.handleImageFile} />
                         </label>
                         
                     </div>
-                    <div className="left-form">
+                    <div className="right-form">
                     <label>Title<span className="errors">*</span>
                         <input type="text" value={this.state.title} onChange={this.update("title")} placeholder="Title"/>
                     </label>
@@ -105,8 +111,8 @@ class SecondSongForm extends React.Component {
                     <label>
                         <textarea onChange={this.update("description")} placeholder="Describe your track"></textarea>
                     </label>
-                    </div>
                     <input type="submit" value="Save"/>
+                    </div>
                 </form>
             </div>
 

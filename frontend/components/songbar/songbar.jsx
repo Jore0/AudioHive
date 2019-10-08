@@ -5,18 +5,23 @@ class SongBar extends React.Component {
         super(props)
         // debugger
         this.state = {
-            duration:0,
+            duration: 0,
             currentSong: "",
             currentlyPlaying: "playing",
             volume: 0.5,
-            readyToPlay: false
+            readyToPlay: false,
+
         }
       
         this.audio = React.createRef();
         this.volumeBar = React.createRef();
-        // this.resetSong = this.resetSong.bind(this);
+        this.seekBar = React.createRef();
         this.toggle = this.toggle.bind(this);
+        this.changePlace = this.changePlace.bind(this)
+        this.resetSong = this.resetSong.bind(this)
         this.controlVolume = this.controlVolume.bind(this);
+        this.endSong = this.endSong.bind(this)
+        this.loop = this.loop.bind(this)
     }
     secondsToMinutes(time) { 
         // debugger
@@ -30,7 +35,7 @@ class SongBar extends React.Component {
                 // debugger
                 this.audio.current.onloadedmetadata = () => {
                     // debugger
-                    this.setState({ readyToPlay: true, currentlyPlaying: "pause"}, ()=> this.audio.current.play())
+                    this.setState({ readyToPlay: true, currentlyPlaying: "pause", duration: this.audio.current.duration}, ()=> this.audio.current.play())
                 }
             })
         }
@@ -38,11 +43,46 @@ class SongBar extends React.Component {
     
     componentDidMount(){
         this.setState({ readyToPlay: false, currentlyPlaying: "playing"})
+        this.updateTime();
     }
 
     controlVolume(){
         this.audio.current.volume = this.volumeBar.current.value / 100
     }
+
+    updateTime(){
+    
+        this.audio.current.onplaying = () => {
+            this.currentTime = setInterval(() => {
+                this.seekBar.current.value = this.audio.current.currentTime
+                this.setState({ currentTime: this.audio.current.currentTime})
+            }, 1000);
+        }
+
+    }
+    changePlace(e){
+        this.audio.current.currentTime = e.target.value
+        this.setState({ currentTime: e.target.value})
+    }
+
+    resetSong(){
+        this.setState({ readyToPlay: true, })
+        this.audio.current.currentTime = 0;
+    }
+    endSong(){
+        this.audio.current.currentTime = this.audio.current.duration
+        this.setState({ currentlyPlaying: "playing", })
+    }
+
+    loop(){
+        if (this.audio.current.loop === false){
+            this.audio.current.loop = true
+        }else{
+            this.audio.current.loop = false
+        }
+    }
+
+
 
     toggle() {
         debugger
@@ -64,12 +104,13 @@ class SongBar extends React.Component {
     render(){
         const status = this.state.currentlyPlaying === "playing" ? window.play : window.pause
         let currentSong = this.state.currentSong
-        let duration = this.secondsToMinutes(this.state.duration)
-        let start = this.secondsToMinutes(0)
+        let currentTime = this.state.readyToPlay ? this.secondsToMinutes(this.state.currentTime) : 0
+        
+        let end = this.secondsToMinutes(this.state.duration)
 
         let audioVisualPart = this.state.readyToPlay ? (<>
             <section className="songBar-container-parts">
-                <button className="songBar-control left">
+                <button className="songBar-control left" onClick={this.resetSong}>
                     <img className="songBar-image" src={window.left} />
                 </button>
 
@@ -78,16 +119,17 @@ class SongBar extends React.Component {
                 ><img className="songBar-image" src={status} alt="" />
                 </button>
 
-                <button className="songBar-control right">
+                <button className="songBar-control right" onClick={this.endSong}>
                     <img className="songBar-image" src={window.right} />
+                </button>
+                <button className="songBar-control loop" onClick={this.loop}>
+                    <img className="songBar-image" src={window.in} alt=""/>
                 </button>
 
                 <div className="seek-bar-container">
-                    <p>{start}</p>
-                    <input type="range" min={start} max={duration} />
-
-
-                    <p>{duration}</p>
+                    <p>{currentTime}</p>
+                    <input ref={this.seekBar} type="range" min="0" onInput={this.changePlace} max={this.state.duration} />
+                    <p>{end}</p>
                 </div>
                 <div className="seek-bar-volume-container">
                     <i className="fas fa-volume-up"></i>
@@ -102,7 +144,7 @@ class SongBar extends React.Component {
         
             return(
                 <div className="songBar-container">
-                    <audio ref={this.audio} src={currentSong.songUrl} type="audio/mp3" preload="auto" />
+                    <audio ref={this.audio} src={currentSong.songUrl} type="audio/mp3" preload="auto"/>
                     {audioVisualPart}
                 </div>
             )

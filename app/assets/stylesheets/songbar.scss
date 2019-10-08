@@ -16,14 +16,14 @@
 }
 .songBar-image{
   max-height: 100%;
-  max-width: 100%;
-    display: inline-block;
-
+  display: inline-block;
+cursor: pointer;
 }
 .songBar-album-image{
-  max-height: 100%;
-  max-width: 10%;
+    height: 49px;
+  width : 49px;
   // display: inline-block;
+  cursor: pointer;
 
 }
 // max-height: 50px;
@@ -49,5 +49,32 @@
 .seek-bar-volume-container {
     display: flex;
     align-items: center;
+    padding: 10px;
+}
+ main#root {
+    position: relative;
+}
+
+.songBar-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+audio {
+    width: 100%;
+}
+
+section.songBar-container-parts {
+    width: 1240px;
+    margin: 0 auto;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+.songBar-control {
     padding: 10px;
 }

@@ -81,3 +81,16 @@ input[type="file"]{
     border-radius: 5px;
     // height: 40px;
 }
+
+.left-form, .right-form{
+    display: flex;
+    flex-direction: column;
+}
+.second-upload-form-content{
+    display: flex;
+
+    justify-content: space-evenly;
+}
+.right-form{
+    max-height: 100%;
+}
