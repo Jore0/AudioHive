@@ -15,6 +15,7 @@ class FirstSongForm extends React.Component {
        
         this.handleSongFile = this.handleSongFile.bind(this);
         this.dragOverHandler = this.dragOverHandler.bind(this);
+        this.dragOverleave = this.dragOverleave.bind(this)
         this.dropHandler = this.dropHandler.bind(this);
     }
 
@@ -44,7 +45,13 @@ class FirstSongForm extends React.Component {
 
     dragOverHandler(e) {
         e.preventDefault();
+        debugger
         this.setState({ dragged: true})
+    }
+    dragOverleave(e) {
+        e.preventDefault();
+        // debugger  
+        this.setState({ dragged: false})
     }
 
     renderErrors() {
@@ -83,7 +90,7 @@ class FirstSongForm extends React.Component {
             return <SecondSongForm title={this.state.title} songFile={this.state.songFile} userId={this.state.userId} uploadSong={this.props.uploadSong}/>
         } else {
             return(
-                <div className="upload-form-container" onDrop={this.dropHandler} onDrag={this.dragOverHandler} style={style}>
+                <div className="upload-form-container" onDrop={this.dropHandler} onDragOver={this.dragOverHandler} >
                     <h1>Drag and drop your tracks & albums here</h1>
                     <form className="upload-form-content">
                         <label className="custom-file-upload">
@@ -94,6 +101,14 @@ class FirstSongForm extends React.Component {
                     <p>
                         Provide FLAC, WAV, ALAC or AIFF for best audio quality. <a href="https://help.soundcloud.com/hc/en-us/articles/115003452847-Uploading-requirements#typeOfFile" target="_blank">Learn more about high quality audio (HQ).</a>
                     </p>
+
+                    <div className={`drag-over-modal-background ${this.state.dragged ? "show-drag-over" : ""}`} onDragLeave={this.dragOverleave}>
+                        <div className={`drag-over-modal-child ${this.state.dragged ? "show-drag-over" : ""}`} >
+                            <div className={`drag-over-ged-upload ${this.state.dragged ? "show-drag-over" : ""}`} >
+                                Drop your files here
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         }

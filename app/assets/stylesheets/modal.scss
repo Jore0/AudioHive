@@ -1,4 +1,4 @@
-.modal-background {
+.modal-background  {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -8,6 +8,7 @@
   z-index: 10;
   
 }
+
 .modal-child {
   position: absolute;
   top: 50%;
@@ -91,4 +92,43 @@ form >ul >li{
 .errors{
   color: red;
   font-size: 12px;
+}
+
+
+.drag-over-modal-background{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(220,220,220,0.9);
+    z-index: 14;
+}
+
+
+.drag-over-modal-child{
+  display: none;
+  position: absolute;
+  top: 380px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 0 0 5px 2px rgba(0,0,0,0.2)
+
+  }
+.drag-over-ged-upload{
+  width: 800px;
+  height: 400px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: black;
+  font-size: 36px;
+}
+
+.show-drag-over {
+    display: block;
 }

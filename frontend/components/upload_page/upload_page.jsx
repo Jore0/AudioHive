@@ -17,13 +17,14 @@ class UploadPage extends React.Component {
         return(
             <div className="upload-page" onDragOver={this.dragOverHandler}>
                 <nav className="upload-page-nav">
-                    <nav className="upload-page-links">
-                        <NavLink className="upload-page-link" to="/upload">Upload</NavLink>
-                        <NavLink className="upload-page-link" to="/discover">Home</NavLink>
-                    </nav>
+                    <NavLink className="upload-page-link" to="/upload">Upload</NavLink>        
                     <a className="upload-page-link" to="/upload">For Creators on SoundCloud</a>
                 </nav>
                 <FirstSongForm userId={this.props.userId} uploadSong={this.props.uploadSong} history={this.props.history} openModal={this.props.openModal}/>
+                
+            
+            
+            
             </div>
 
         )

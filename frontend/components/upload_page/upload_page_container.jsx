@@ -8,7 +8,7 @@ const msp = (state, ownProps) => ({
 })
 const mdp = dispatch => ({
     uploadSong: (song) => dispatch(uploadSong(song))
-
+    
 })
 
 export default connect(msp, mdp)(UploadPage)

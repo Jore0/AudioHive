@@ -7,10 +7,11 @@ class Api::SongsController < ApplicationController
 
 
     def index
-        @songs = Song.all
+        @songs = Song.with_attached_song_url.with_attached_album_cover.all
         render :index
     end 
-
+   # Completed 200 OK in 51ms (Views: 45.9ms | ActiveRecord: 4.6ms)
+    # Completed 200 OK in 399ms (Views: 299.1ms | ActiveRecord: 95.6ms)
     def create
         # debugger
         @song = Song.new(song_params)

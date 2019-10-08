@@ -11,7 +11,7 @@ const App = () => (
     <>
         <LoginNavContainer/>
         <NavBarContainer/>
-        <Modal/>
+        <Modal/> 
         
         <Switch>
         <ProtectedRoute path="/discover" component={DicoverPageContainer}/>
