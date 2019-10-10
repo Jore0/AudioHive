@@ -51,7 +51,7 @@ class SongButton extends React.Component {
             backgroundImage: `url(${this.props.song.imageUrl})`
         }
         if (this.state.playButton){
-            togglebutton = <img onClick={this.toggle} id="playButton" src={!this.state.playStatus ? window.hiveButton : window.hivePause} alt="play" className="playButton"/>
+            togglebutton = <img onClick={this.toggle} id="playButton" src={!this.props.playing ? window.hiveButton : window.hivePause} alt="play" className="playButton"/>
         }
     
         return (
