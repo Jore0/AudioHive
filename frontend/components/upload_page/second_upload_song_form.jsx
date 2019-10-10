@@ -23,7 +23,7 @@ class SecondSongForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault()
         const formData = new FormData();
-        debugger
+        // debugger
         formData.append('song[song_url]', this.state.songFile)
         formData.append('song[description]', this.state.description)
         formData.append('song[release_date]', this.state.release_date)
@@ -46,13 +46,13 @@ class SecondSongForm extends React.Component {
         return e => this.setState({ [field]: e.target.value })
     }
     handleImageFile(e){
-        debugger
+        // debugger
         const file = e.target.files[0]
         const fileReader = new FileReader();
         fileReader.onloadend=()=>{
             this.setState({photoFile: file,errors: [], photoUrl: fileReader.result})
         }
-        debugger
+        // debugger
         if(file){
             fileReader.readAsDataURL(file);
         }else {
@@ -69,9 +69,13 @@ class SecondSongForm extends React.Component {
             <div className="upload-form-container">
                 <form className="second-upload-form-content" onSubmit={this.handleSubmit}>
                     <div className="left-form">
+                            
+                            <div className="circle-image">
                             {preview}
+                            <i className="fas fa-camera"></i>
+                            </div>
                         <label className="custom-file-upload">
-                            Upload image<i className="fas fa-camera"></i>
+                            Upload image
 
                             <input type="file" onChange={this.handleImageFile} />
                         </label>

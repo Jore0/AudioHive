@@ -7,6 +7,7 @@ import Modal from "./modal/modal";
 import DicoverPageContainer from "./discover_page/discover_page_container";
 import UploadLoadPageContainer from "./upload_page/upload_page_container"
 import SongBar from "./songbar/songbar_container";
+import SongShowPageContainer from "./songs/songs_show_container";
 const App = () => ( 
     <>
         <LoginNavContainer/>
@@ -16,7 +17,8 @@ const App = () => (
         <Switch>
         <ProtectedRoute path="/discover" component={DicoverPageContainer}/>
         <ProtectedRoute path="/upload" component={UploadLoadPageContainer}/> 
-        <ProtectedRoute path="/" component={UploadLoadPageContainer}/> 
+        {/* <ProtectedRoute path="/" component={UploadLoadPageContainer}/>  */}
+        <Route path="/songs/:songId" component={SongShowPageContainer}/>
         </Switch>
         <SongBar/>
         {/* <div className="footerWrap">

@@ -1,12 +1,21 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { receiveCurrentSong } from "../../actions/song_actions";
+
+import {
+    playSong, 
+    pauseSong, 
+    updateCurrentSongTime, 
+    resetCurrentSong
+} from '../../actions/current_song_actions'
+
 
 class SongButton extends React.Component {
     constructor(props) {
         super(props)
         this.state ={
             playButton: false,
-            songTitle: this.props.song.imageUrl,
-            playStatus: 'play'
+            playStatus: this.props.playing
         }
         this.toggle = this.toggle.bind(this);
         this.showPlayButton = this.showPlayButton.bind(this);
@@ -21,20 +30,20 @@ class SongButton extends React.Component {
     }
 
     toggle(){
-        let status = this.state.playStatus;
-        // let song = document.getElementById(this.props.song.title)
-        // debugger
-        if(status === 'play'){
-            status = 'pause';
-            // song.play();
+        // let status = this.state.playStatus;
+            // debugger
+        if(!this.props.playing){
+            // status = 'pause';
+            this.props.playSong()
         }else {
-            status = 'play'
-            // song.pause();
+            // status = 'play'9k
+            this.props.pauseSong()
         }
+        debugger
+        this.setState({playStatus:  !this.props.playing, playButton: !this.props.playing})
         this.props.receiveCurrentSong(this.props.song)
-        this.setState({playStatus:  status})
     }
-
+    
     render() {
         // debugger
         let togglebutton;
@@ -42,7 +51,7 @@ class SongButton extends React.Component {
             backgroundImage: `url(${this.props.song.imageUrl})`
         }
         if (this.state.playButton){
-            togglebutton = <img onClick={this.toggle} id="playButton" src={this.state.playStatus === "play" ? window.hiveButton : window.hivePause} alt="play" className="playButton"/>
+            togglebutton = <img onClick={this.toggle} id="playButton" src={!this.state.playStatus ? window.hiveButton : window.hivePause} alt="play" className="playButton"/>
         }
     
         return (
@@ -52,7 +61,7 @@ class SongButton extends React.Component {
                 style={albumCover}  
                 onMouseEnter={this.showPlayButton}
                 onMouseLeave={this.hidePlayButton}
-                onClick={this.toggle}
+                // onClick={this.toggle}
                 >
                 {/* <audio id={this.props.song.title} src={this.props.song.songUrl} type="audio/mp3" preload="auto"/> */}
                 {togglebutton}
@@ -64,4 +73,23 @@ class SongButton extends React.Component {
     }
 }
 
-export default SongButton
+
+
+const msp = state => {
+    return ({
+        playing: state.ui.currentSong.playing,
+        currentlyPlaying: state.ui.currentSong.currentlyPlaying, 
+        curentTime: state.ui.currentSong.currentTime, 
+        
+    })
+}
+
+const mdp = dispatch => ({
+    playSong: () => dispatch(playSong()),
+    pauseSong: () => dispatch(pauseSong()),
+    updateCurrentSongTime: (time) => dispatch(updateCurrentSongTime(time)), 
+    resetCurrentSong: () => dispatch(resetCurrentSong()), 
+    receiveCurrentSong: (song) => dispatch(receiveCurrentSong(song))
+})
+
+export default connect(msp, mdp)(SongButton)
