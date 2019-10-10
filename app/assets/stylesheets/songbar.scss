@@ -10,7 +10,7 @@
 .songBar-container-parts{
   background-color:#f2f2f2;
   position: relative;
-  border: 1px solid blue;
+  // border: 1px solid blue;
   display: flex;
 
 }
@@ -78,3 +78,34 @@ input[type="range"] {
 .songBar-control {
     padding: 10px;
 }
+
+.songBar-album-image-info{
+  display: flex;
+  flex-direction: column;
+}
+.songBar-album-image-info p{
+  font-size: 11px;
+  color:rgb(65, 65, 65);
+  margin: 0;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.song-bar-info-container{
+  display: flex;
+}
+
+.orange{
+  color: #f50
+}
+
+.songBar-control {
+  border: none;
+  cursor: pointer;
+}
+button:focus {
+  outline:0;
+}
+a:focus {
+  outline:0;
+}
+

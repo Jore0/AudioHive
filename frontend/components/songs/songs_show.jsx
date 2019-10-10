@@ -22,7 +22,7 @@ class SongShowPage extends React.Component {
         // debugger 
         let waveform;
         if (this.props.song){
-            waveform = <WaveForm  song={this.props.song}/>
+            waveform = <WaveForm  song={this.props.song} fetchSong={this.props.fetchSong}/>
 
         }
         return (

@@ -5,7 +5,7 @@ import { receiveCurrentSong } from "../../actions/song_actions";
 import SongShowPage from './songs_show';
 
 const msp = (state, ownProps) => {
-    debugger 
+    // debugger 
     return ({
         currentUserId: state.session.id,
         currentSong: state.entities.songs[state.ui.currentSong.id],

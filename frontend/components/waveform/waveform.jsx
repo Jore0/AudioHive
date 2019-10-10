@@ -1,9 +1,11 @@
 import React from "react";
+import { connect } from 'react-redux';
+
 class WaveForm extends React.Component {
 
     constructor(props) {
         super(props)
-        debugger
+        // debugger
         this.state = {
             readyToPlay: false
         }
@@ -14,12 +16,19 @@ class WaveForm extends React.Component {
     }
     
     componentDidMount(){
+        this.props.fetchSong(this.props.song.id)
         this.showWaveSurfer()
     }
 
-    componentDidUpdate(){
-
-    }
+    // componentDidUpdate(){
+    //     if (this.props.song.title === this.props.currentSong.title && this.state.readyToPlay){
+    //         debugger
+    //         this.wavesurfer.seekTo(this.props.currentTime)
+    //     }else {
+    //         debugger
+    //         this.wavesurfer.seekTo(0);
+    //     }
+    // }
 
     StartPlay(){
         this.wavesurfer.playPause() 
@@ -59,4 +68,22 @@ class WaveForm extends React.Component {
 
 }
 
-export default WaveForm
+// export default WaveForm
+
+
+const msp = (state, ownProps) => {
+    // debugger
+    return ({
+        currentUserId: state.session.id,
+        currentSong: state.entities.songs[state.ui.currentSong.id],
+        curentTime: state.ui.currentSong.currentTime, 
+
+    })
+}
+
+const mdp = dispatch => ({
+    // fetchSong: (id) => dispatch(fetchSong(id)),
+    receiveCurrentSong: (song) => dispatch(receiveCurrentSong(song))
+})
+
+export default connect(msp, mdp)(WaveForm)

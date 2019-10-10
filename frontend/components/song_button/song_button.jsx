@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { receiveCurrentSong } from "../../actions/song_actions";
+import {Link} from "react-router-dom"
 
 import {
     playSong, 
@@ -15,7 +16,8 @@ class SongButton extends React.Component {
         super(props)
         this.state ={
             playButton: false,
-            playStatus: this.props.playing
+            playStatus: this.props.playing, 
+
         }
         this.toggle = this.toggle.bind(this);
         this.showPlayButton = this.showPlayButton.bind(this);
@@ -32,6 +34,8 @@ class SongButton extends React.Component {
     toggle(){
         // let status = this.state.playStatus;
             // debugger
+  
+        
         if(!this.props.playing){
             // status = 'pause';
             this.props.playSong()
@@ -42,6 +46,7 @@ class SongButton extends React.Component {
         // debugger
         this.setState({playStatus:  !this.props.playing, playButton: !this.props.playing})
         this.props.receiveCurrentSong(this.props.song)
+        
     }
     
     render() {
@@ -57,15 +62,17 @@ class SongButton extends React.Component {
         return (
         <>
             <div className="entire-song-button"> 
-            <div className="song-button-container"
+            <Link to={`/songs/${this.props.song.id}`} 
+            className="song-button-container"
                 style={albumCover}  
                 onMouseEnter={this.showPlayButton}
                 onMouseLeave={this.hidePlayButton}
                 // onClick={this.toggle}
+                
                 >
                 {/* <audio id={this.props.song.title} src={this.props.song.songUrl} type="audio/mp3" preload="auto"/> */}
                 {togglebutton}
-            </div>
+            </Link>
             <h1 className="song-detail">{this.props.song.title} - {this.props.song.artist} </h1>
                 </div>
             </>
@@ -77,6 +84,7 @@ class SongButton extends React.Component {
 
 const msp = state => {
     return ({
+        currentSong: state.entities.songs[state.ui.currentSong.id],
         playing: state.ui.currentSong.playing,
         currentlyPlaying: state.ui.currentSong.currentlyPlaying, 
         curentTime: state.ui.currentSong.currentTime, 

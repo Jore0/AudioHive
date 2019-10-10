@@ -5,7 +5,7 @@ class SongBar extends React.Component {
         super(props)
         // debugger
         this.state = {
-            duration: 0,
+            duration: 1,
             currentSong: "",
             currentlyPlaying: this.props.playing,
             volume: 0.5,
@@ -17,15 +17,17 @@ class SongBar extends React.Component {
         this.volumeBar = React.createRef();
         this.seekBar = React.createRef();
         this.toggle = this.toggle.bind(this);
-        this.changePlace = this.changePlace.bind(this)
-        this.resetSong = this.resetSong.bind(this)
+        this.changePlace = this.changePlace.bind(this);
+        this.resetSong = this.resetSong.bind(this);
         this.controlVolume = this.controlVolume.bind(this);
-        this.endSong = this.endSong.bind(this)
-        this.loop = this.loop.bind(this)
-        this.handlePlayPauseButton = this.handlePlayPauseButton.bind(this)
+        this.endSong = this.endSong.bind(this);
+        this.loop = this.loop.bind(this);
+        this.handlePlayPauseButton = this.handlePlayPauseButton.bind(this);
+        this.mute = this.mute.bind(this)
+
     }
     secondsToMinutes(time) { 
-        // debugger
+        debugger
         return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2) 
     }
 
@@ -75,7 +77,8 @@ class SongBar extends React.Component {
                 if (this.audio.current.ended){
                     this.resetSong()
                 }
-            
+                this.props.updateCurrentSongTime(this.state.currentTime / this.state.duration)
+                
             }, 1000);
         }
       
@@ -125,43 +128,55 @@ class SongBar extends React.Component {
     handlePlayPauseButton() {
         this.state.currentlyPlaying ? this.props.pauseSong() : this.props.playSong()
     }
+
+    mute(){
+        this.audio.current.volume = 0;
+        this.volumeBar.current.value =0;
+    }
     render(){
-        const status = !this.state.currentlyPlaying ? window.play : window.pause
+        const status = !this.state.currentlyPlaying ? <i className="fas fa-play"></i> : <i className="fas fa-pause"></i>
         let currentSong = this.state.currentSong
         let currentTime = this.state.readyToPlay ? this.secondsToMinutes(this.state.currentTime) : 0
         
         let end = this.secondsToMinutes(this.state.duration)
-
+        // debugger
         let audioVisualPart = this.state.readyToPlay ? (<>
             <div className="songBar-container">
             <section className="songBar-container-parts">
                 <button className="songBar-control left" onClick={this.resetSong}>
-                    <img className="songBar-image" src={window.left} />
+                        <i className="fas fa-step-backward"></i>
                 </button>
 
                 <button className="songBar-control play pause"
                     onClick={this.handlePlayPauseButton}
-                ><img className="songBar-image" src={status} alt="" />
+                >{status}
                 </button>
 
                 <button className="songBar-control right" onClick={this.endSong}>
-                    <img className="songBar-image" src={window.right} />
+                        <i className="fas fa-step-forward"></i>
                 </button>
+
                 <button className="songBar-control loop" onClick={this.loop}>
-                    <img className="songBar-image" src={window.in} alt=""/>
+                        <i className="fas fa-redo-alt"></i>
                 </button>
 
                 <div className="seek-bar-container">
-                    <p>{currentTime}</p>
-                    <input ref={this.seekBar} type="range" min="0" onInput={this.changePlace} max={this.state.duration} />
+                    <p className="orange">{currentTime}</p>
+                    <input ref={this.seekBar} className="progress-bar" type="range" min="0" onInput={this.changePlace} max={this.state.duration} />
                     <p>{end}</p>
                 </div>
                 <div className="seek-bar-volume-container">
-                    <i className="fas fa-volume-up"></i>
-                    <input type="range" min="0" max="100" defaultValue="50" onChange={this.controlVolume} ref={this.volumeBar} />
+                        <button className="songBar-control" onClick={this.mute}>
+                        <i className="fas fa-volume-up"></i>
+                    </button>
+                    <input  type="range" min="0" max="100" defaultValue="50" onChange={this.controlVolume}  ref={this.volumeBar} />
                 </div>
                 <div className="song-bar-info-container">
                     <img className="songBar-album-image" src={currentSong.imageUrl} />
+                    <div className="songBar-album-image-info">
+                        <p>{currentSong.title}</p>
+                        <p>{currentSong.artist}</p>
+                    </div>
                 </div>
             </section>
             </div>
