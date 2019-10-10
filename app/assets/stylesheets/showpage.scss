@@ -73,3 +73,73 @@
     font-size: 16px;   
     border-radius: 10px; 
 } 
+.wave-form-times{
+    position: relative;
+    top: 110px;
+    margin: 0; 
+    display: flex;
+    justify-content: space-between;
+}
+
+.wave-form-orange{
+    background: black;
+    padding: 3px;
+    font-size: 12px;
+     margin: 0; 
+    color: #f50;
+    display: inline-block;
+}
+.wave-form-transparent{
+    background: black;
+    padding: 3px;
+    font-size: 12px;
+     margin: 0; 
+    color: rgba(255, 255, 255, 0.5);
+    display: inline-block;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 80%;
+  float:left;
+}
+
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #6d6d6d;
+  border-radius: 25px;
+  border: 0px solid #000101;
+  float: left;
+}
+
+input[type=range]::-webkit-slider-thumb {
+//   box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, .1), 0px 5px 10px 2px rgba(0, 0, 0, .15);
+  border: 0px solid #000000;
+  height: 3px;
+  width: 20px;
+//   border-radius: 100%;
+  background: #f00;
+  cursor: pointer;
+  -webkit-appearance: none;
+//   margin-top: -8.5px;
+}
+
+.blackSeekbar{
+
+    position: absolute;
+    top: 125px;
+
+}
+.wave{
+
+}
