@@ -46,25 +46,26 @@ class WaveForm extends React.Component {
         })
         this.wavesurfer.load(this.props.song.songUrl);
 
-        this.wavesurfer.on('ready', function () {
+        this.wavesurfer.on('ready', ()  => {
             this.setState({readyToPlay: true })
         });
     }
 
     render(){
-
-
-
-         return (<>
-             <div className="wave-form-container">
-                <div className="wave" ref={this.waveform} ></div>
-                </div>
-             {/* <button onClick={this.StartPlay}>
-                 Play
-             </button> */}
-        </>
-        )
-    }
+        if (this.wavesurfer){
+            debugger 
+            this.wavesurfer.seekTo(this.props.currentTime)
+        }
+        return (<>
+            <div className="wave-form-container">
+            <div className="wave" ref={this.waveform} ></div>
+            </div>
+            {/* <button onClick={this.StartPlay}>
+                Play
+            </button> */}
+                </>
+                )
+            }
 
 }
 
@@ -76,7 +77,7 @@ const msp = (state, ownProps) => {
     return ({
         currentUserId: state.session.id,
         currentSong: state.entities.songs[state.ui.currentSong.id],
-        curentTime: state.ui.currentSong.currentTime, 
+        currentTime: state.ui.currentSong.currentTime, 
 
     })
 }

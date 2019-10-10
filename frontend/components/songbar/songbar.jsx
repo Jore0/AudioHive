@@ -1,5 +1,6 @@
 import React from "react";
 
+
 class SongBar extends React.Component {
     constructor(props){
         super(props)
@@ -27,7 +28,7 @@ class SongBar extends React.Component {
 
     }
     secondsToMinutes(time) { 
-        debugger
+        // debugger
         return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2) 
     }
 
@@ -36,7 +37,7 @@ class SongBar extends React.Component {
         if (prevProps.currentSong !== this.props.currentSong){
             this.setState({ currentSong: this.props.currentSong, currentlyPlaying: this.props.playing })
         } else if (prevProps.playing !== this.props.playing && (prevProps.currentSong === this.props.currentSong)){
-            debugger
+            // debugger
             // if (this.state.currentlyPlaying !== this.props.playing){
             //     debugger
             //     this.audio.current.pause()
@@ -79,7 +80,17 @@ class SongBar extends React.Component {
                 }
                 this.props.updateCurrentSongTime(this.state.currentTime / this.state.duration)
                 
-            }, 1000);
+            }, 100);
+        }
+
+        this.audio.current.onpause = () => {
+            clearInterval(this.currentTime)
+            this.setState({ currentTime: this.audio.current.currentTime })
+        }
+
+        this.audio.current.onended = () => {
+            clearInterval(0), 
+            this.setState({ currentTime: 0 })
         }
       
     }
@@ -108,7 +119,7 @@ class SongBar extends React.Component {
 
 
     toggle() {
-        debugger
+        // debugger
         // this.props.playing
         let song = this.audio.current
         // debugger

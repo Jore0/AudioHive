@@ -23,7 +23,7 @@ class FirstSongForm extends React.Component {
         // debugger
         e.preventDefault()
         const songFile = e.target.files[0]
-        debugger
+        // debugger
         if (songFile.type === "audio/mp3"){
             this.setState({
                 songFile: songFile, 
@@ -45,7 +45,7 @@ class FirstSongForm extends React.Component {
 
     dragOverHandler(e) {
         e.preventDefault();
-        debugger
+        // debugger
         this.setState({ dragged: true})
     }
     dragOverleave(e) {
