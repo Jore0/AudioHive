@@ -56,14 +56,19 @@ class SongButton extends React.Component {
             backgroundImage: `url(${this.props.song.imageUrl})`
         }
         if (this.state.playButton){
-            togglebutton = <img onClick={this.toggle} id="playButton" src={!this.props.playing ? window.hiveButton : window.hivePause} alt="play" className="playButton"/>
+        // if (true){
+            // debugger
+            togglebutton = <img 
+                onMouseEnter={this.showPlayButton}
+                onMouseLeave={this.hidePlayButton}
+            onClick={this.toggle} className="playButton" src={!this.props.playing ? window.hiveButton : window.hivePause} alt="play" className="playButton"/>
         }
     
         return (
         <>
             <div className="entire-song-button"> 
             <Link to={`/songs/${this.props.song.id}`} 
-            className="song-button-container"
+                className="song-button-container"
                 style={albumCover}  
                 onMouseEnter={this.showPlayButton}
                 onMouseLeave={this.hidePlayButton}
@@ -71,8 +76,10 @@ class SongButton extends React.Component {
                 
                 >
                 {/* <audio id={this.props.song.title} src={this.props.song.songUrl} type="audio/mp3" preload="auto"/> */}
-                {togglebutton}
             </Link>
+                {/* <div className=""> */}
+                {togglebutton}
+                {/* </div> */}
             <h1 className="song-detail">{this.props.song.title} - {this.props.song.artist} </h1>
                 </div>
             </>

@@ -92,3 +92,15 @@
 .entire.song-button{
     overflow-wrap: break-word;
 }
+
+
+img.playButton {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translateY(-50%) translateX(-50%);
+}
+
+.entire-song-button {
+    position: relative;
+}

@@ -4,7 +4,7 @@ class SongShowPage extends React.Component {
     
     constructor(props){
         super(props)
-        debugger 
+        // debugger 
         this.state ={
            
         }
@@ -12,7 +12,7 @@ class SongShowPage extends React.Component {
     }
 
     componentDidMount(){
-        debugger
+        // debugger
         this.props.fetchSong(this.props.match.params.songId);
         
     }
