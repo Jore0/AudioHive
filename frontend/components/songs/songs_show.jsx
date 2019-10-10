@@ -1,5 +1,7 @@
 import React from "react";
 import WaveForm from "../waveform/waveform"
+import { withRouter } from 'react-router-dom';
+
 class SongShowPage extends React.Component {
     
     constructor(props){
@@ -73,4 +75,4 @@ class SongShowPage extends React.Component {
 }
 
 
-export default SongShowPage
+export default withRouter(SongShowPage)

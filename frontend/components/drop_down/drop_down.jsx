@@ -37,7 +37,7 @@ class DropDown extends React.Component {
                     this.state.vis 
                     ? (
                         <div className="dropdown-content" >
-                            <a onClick={this.props.logout} ref={(element) => { this.dropdownMenu = element }}>Log Out</a>
+                            <Link to="/" onClick={this.props.logout} ref={(element) => { this.dropdownMenu = element }}>Log Out</Link>
                         </div>
                         )
                     : (null)

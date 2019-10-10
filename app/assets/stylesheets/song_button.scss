@@ -8,8 +8,8 @@
     background-repeat: no-repeat; 
     white-space: normal;
     align-content: center;
-    border: 1px solid blue;
-    margin-right: 10px;
+    // border: 1px solid blue;
+    margin-right: 20px;
 }
 .playButton{
     margin: auto auto;
@@ -17,7 +17,7 @@
 }
 
 .song-button-container:hover{
-    box-shadow: 0px 0px 26px;
+    // box-shadow: 0px 0px 26px;
     cursor: pointer;
 }
 //////outer
@@ -25,8 +25,8 @@
     position: relative;
     display: flex;
     // width: 75%; 
-    border: 3px solid red;
-    padding:5px;
+    // border: 3px solid red;
+    padding:15px;
 }
 //inner
 .carousel-viewport{
@@ -34,11 +34,11 @@
     white-space: nowrap;
     overflow-y: hidden;
     overflow-x: auto;
-    border: 3px solid green;
+    // border: 3px solid green;
     box-sizing: border-box;
     z-index: 1;
     position: relative;
-    padding:20px;
+    padding-bottom: 45px;
 }
 .carousel-viewport::-webkit-scrollbar{
     display: none;

@@ -72,15 +72,14 @@ class SongButton extends React.Component {
                 style={albumCover}  
                 onMouseEnter={this.showPlayButton}
                 onMouseLeave={this.hidePlayButton}
-                // onClick={this.toggle}
-                
                 >
                 {/* <audio id={this.props.song.title} src={this.props.song.songUrl} type="audio/mp3" preload="auto"/> */}
             </Link>
                 {/* <div className=""> */}
                 {togglebutton}
                 {/* </div> */}
-            <h1 className="song-detail">{this.props.song.title} - {this.props.song.artist} </h1>
+                <h1 className="song-detail">{this.props.song.title}</h1>
+                <h2 className="song-list-subheader">{this.props.song.artist}</h2>
                 </div>
             </>
         )

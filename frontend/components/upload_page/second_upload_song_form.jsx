@@ -1,5 +1,5 @@
 import React from 'react'
-// import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 class SecondSongForm extends React.Component {
@@ -33,7 +33,9 @@ class SecondSongForm extends React.Component {
         formData.append('song[user_id]', this.state.userId)
         if (this.state.photoFile){
             formData.append('song[album_cover]', this.state.photoFile)
-            this.props.uploadSong(formData)
+            this.props.uploadSong(formData).then(songs => {
+                return this.props.history.push("/newSong")
+            })
         } else {
             this.setState({
                 errors: ['Please upload an image file']
@@ -124,4 +126,4 @@ class SecondSongForm extends React.Component {
     }
 
 }
-export default SecondSongForm
+export default withRouter(SecondSongForm)

@@ -15,10 +15,11 @@ const App = () => (
         <Modal/> 
         
         <Switch>
-        <ProtectedRoute path="/discover" component={DicoverPageContainer}/>
+        <ProtectedRoute exact path="/" component={DicoverPageContainer}/>
         <ProtectedRoute path="/upload" component={UploadLoadPageContainer}/> 
-        {/* <ProtectedRoute path="/" component={UploadLoadPageContainer}/>  */}
+
         <Route path="/songs/:songId" component={SongShowPageContainer}/>
+        <Route path="/songs/:songId/newSong" component={SongShowPageContainer}/>
         </Switch>
         <SongBar/>
         {/* <div className="footerWrap">

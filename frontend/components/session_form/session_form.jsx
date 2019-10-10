@@ -18,7 +18,9 @@ class SessionForm extends React.Component {
         // debugger 
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user).then(this.props.closeModal)
+        this.props.processForm(user).then(this.props.closeModal).then(songs => {
+            return this.props.history.push("/")
+        })
     }
 
 
