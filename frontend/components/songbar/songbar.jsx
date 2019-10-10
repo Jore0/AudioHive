@@ -3,7 +3,7 @@ import React from "react";
 class SongBar extends React.Component {
     constructor(props){
         super(props)
-        debugger
+        // debugger
         this.state = {
             duration: 0,
             currentSong: "",
@@ -22,6 +22,7 @@ class SongBar extends React.Component {
         this.controlVolume = this.controlVolume.bind(this);
         this.endSong = this.endSong.bind(this)
         this.loop = this.loop.bind(this)
+        this.handlePlayPauseButton = this.handlePlayPauseButton.bind(this)
     }
     secondsToMinutes(time) { 
         // debugger
@@ -29,25 +30,35 @@ class SongBar extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-      
+        // debugger
         if (prevProps.currentSong !== this.props.currentSong){
-            this.setState({ currentSong: this.props.currentSong, currentlyPlaying: this.props.playing }, ()=> {
-                // debugger
-                this.audio.current.onloadedmetadata = () => {
-                    // debugger
-                    this.setState({ readyToPlay: true, currentlyPlaying: this.props.playing, duration: this.audio.current.duration}, ()=> this.audio.current.play())
-                }
-            })
-        } else if (this.props.playing === false  && (prevProps.currentSong === this.state.currentSong)){
+            this.setState({ currentSong: this.props.currentSong, currentlyPlaying: this.props.playing })
+        } else if (prevProps.playing !== this.props.playing && (prevProps.currentSong === this.props.currentSong)){
             debugger
-            this.audio.current.pause();
-            this.setState({ currentlyPlaying: this.props.playing})
+            // if (this.state.currentlyPlaying !== this.props.playing){
+            //     debugger
+            //     this.audio.current.pause()
+            //     this.setState({ currentlyPlaying: this.props.playing })
+            // }else{
+            //     debugger
+            //     this.audio.current.play()
+            //     this.setState({ currentlyPlaying: this.props.playing })
+                
+            // }
+            this.toggle()
         }
         
     }
     
     componentDidMount(){
-        this.setState({ readyToPlay: false, currentlyPlaying: false})
+        this.setState({ readyToPlay: false, currentlyPlaying: false}, () => {
+        this.audio.current.onloadedmetadata = () => {
+            // debugger
+            this.setState({ readyToPlay: true, currentlyPlaying: this.props.playing, 
+                duration: this.audio.current.duration,
+                currentSong: this.props.currentSong 
+            }, () => this.audio.current.play())
+        }})
         this.updateTime();
     }
 
@@ -98,7 +109,7 @@ class SongBar extends React.Component {
         // this.props.playing
         let song = this.audio.current
         // debugger
-        if (!this.props.playing) {
+        if (this.props.playing) {
             // status = 'pause';
             this.props.playSong()
             song.play();
@@ -108,10 +119,12 @@ class SongBar extends React.Component {
             song.pause();
         }
         
-        this.setState({ currentlyPlaying: !this.props.playing, duration: song.duration })
+        this.setState({ currentlyPlaying: this.props.playing, duration: song.duration })
     }
 
-    
+    handlePlayPauseButton() {
+        this.state.currentlyPlaying ? this.props.pauseSong() : this.props.playSong()
+    }
     render(){
         const status = !this.state.currentlyPlaying ? window.play : window.pause
         let currentSong = this.state.currentSong
@@ -127,7 +140,7 @@ class SongBar extends React.Component {
                 </button>
 
                 <button className="songBar-control play pause"
-                    onClick={this.toggle}
+                    onClick={this.handlePlayPauseButton}
                 ><img className="songBar-image" src={status} alt="" />
                 </button>
 

@@ -39,7 +39,7 @@ class SongButton extends React.Component {
             // status = 'play'9k
             this.props.pauseSong()
         }
-        debugger
+        // debugger
         this.setState({playStatus:  !this.props.playing, playButton: !this.props.playing})
         this.props.receiveCurrentSong(this.props.song)
     }

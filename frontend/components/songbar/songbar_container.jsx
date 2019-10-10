@@ -12,7 +12,7 @@ import {
 
 
 const msp = state => {
-    debugger
+    // debugger
     return (
     {currentUser: state.entities.users[state.session.id],
     currentSong: state.entities.songs[state.ui.currentSong.id],
