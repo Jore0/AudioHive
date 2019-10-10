@@ -10,6 +10,7 @@ class SongBar extends React.Component {
             currentSong: "",
             currentlyPlaying: this.props.playing,
             volume: 0.5,
+            mute: false,
             readyToPlay: false,
 
         }
@@ -67,6 +68,7 @@ class SongBar extends React.Component {
 
     controlVolume(){
         this.audio.current.volume = this.volumeBar.current.value / 100
+        this.setState({volume: this.audio.current.volume})
     }
 
     updateTime(){
@@ -141,8 +143,19 @@ class SongBar extends React.Component {
     }
 
     mute(){
-        this.audio.current.volume = 0;
-        this.volumeBar.current.value =0;
+        // debugger
+
+        if (!this.state.mute) {
+            this.setState({ volume: this.volumeBar.current.value / 100})
+            this.audio.current.volume = 0.0;
+            this.volumeBar.current.value = 0.0;
+            this.setState({mute: true})
+        }else {
+            debugger
+            this.audio.current.volume = this.state.volume;
+            this.volumeBar.current.value = this.state.volume * 100;
+            this.setState({ mute: false })
+        }
     }
     render(){
         const status = !this.state.currentlyPlaying ? <i className="fas fa-play"></i> : <i className="fas fa-pause"></i>
@@ -178,7 +191,7 @@ class SongBar extends React.Component {
                 </div>
                 <div className="seek-bar-volume-container">
                         <button className="songBar-control" onClick={this.mute}>
-                        <i className="fas fa-volume-up"></i>
+                            <i className={!this.state.mute ? "fas fa-volume-up" : "fas fa-volume-mute"  }></i>
                     </button>
                     <input  type="range" min="0" max="100" defaultValue="50" onChange={this.controlVolume}  ref={this.volumeBar} />
                 </div>

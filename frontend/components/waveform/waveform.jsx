@@ -37,6 +37,7 @@ class WaveForm extends React.Component {
     StartPlay(){
         this.wavesurfer.playPause() 
     }
+    
     showWaveSurfer() {
         // debugger
         this.wavesurfer = WaveSurfer.create({
@@ -64,7 +65,7 @@ class WaveForm extends React.Component {
        let currentTime;
        let totalLength;
         if (this.wavesurfer){
-            debugger 
+            // debugger 
             this.wavesurfer.seekTo(this.props.currentTime)
             currentTime = this.secondsToMinutes(this.props.currentTime * this.wavesurfer.getDuration())
             maxy = this.wavesurfer.getDuration()
@@ -73,8 +74,8 @@ class WaveForm extends React.Component {
         }   
         
         return (<>
-            <input className="blackSeekbar" ref={this.seekBar} type="range" min="0" max={maxy}/>
             <div className="wave-form-container">
+            <input className="blackSeekbar" ref={this.seekBar} type="range" min="0" max={maxy}/>
 
             <div className="wave-form-times">
                     <p className="wave-form-orange">{currentTime}</p>
