@@ -71,3 +71,11 @@ header{
 .mini-logo{
   width:184px;
 }
+
+footer{
+  bottom: 40px;
+  padding: 10px;
+  position: fixed;
+  border-top: 1px solid rgb(210, 210, 210);
+  box-sizing: border-box;
+}

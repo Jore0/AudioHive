@@ -8,6 +8,7 @@ import DicoverPageContainer from "./discover_page/discover_page_container";
 import UploadLoadPageContainer from "./upload_page/upload_page_container"
 import SongBar from "./songbar/songbar_container";
 import SongShowPageContainer from "./songs/songs_show_container";
+import {Footer }from "./footer/footer"
 const App = () => ( 
     <>
         <LoginNavContainer/>
@@ -22,11 +23,8 @@ const App = () => (
         <Route path="/songs/:songId/newSong" component={SongShowPageContainer}/>
         </Switch>
         <SongBar/>
-        {/* <div className="footerWrap">
-            <footer>
-                <a target="_blank" href="https://github.com/Jore0/AudioHive"><img src={window.github}  /></a>
-            </footer>
-        </div> */}
+        <Footer/>
+  
     </>
 );
 
