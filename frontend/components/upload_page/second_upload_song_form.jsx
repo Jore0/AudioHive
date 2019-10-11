@@ -24,6 +24,24 @@ class SecondSongForm extends React.Component {
         this.dropHandler = this.dropHandler.bind(this);
         this.update = this.update.bind(this)
     }
+    dropHandler(e) {
+        e.preventDefault()
+        const file =  e.dataTransfer.files[0]
+        // debugger
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            this.setState({ photoFile: file, errors: [], photoUrl: fileReader.result })
+        }
+        // debugger
+        if (file) {
+            fileReader.readAsDataURL(file);
+        } else {
+            this.setState({
+                errors: ['Please upload an image file']
+            })
+        }
+        this.setState({ dragged: false })
+    }
 
     handleSubmit(e) {
         e.preventDefault()
@@ -36,24 +54,23 @@ class SecondSongForm extends React.Component {
         formData.append('song[artist]', this.state.artist)
         formData.append('song[title]', this.state.title)
         formData.append('song[user_id]', this.state.userId)
-        if (this.state.photoFile){
+        if (this.state.photoFile) {
             formData.append('song[album_cover]', this.state.photoFile)
             this.props.uploadSong(formData).then(songs => {
-                return this.props.history.push("/newSong")
+                return this.props.history.push(`/`)
             })
         } else {
             this.setState({
                 errors: ['Please upload an image file']
             })
         }
-            // .then(this.props.closeModal)
+        // .then(this.props.closeModal)
     }
-
     update(field) {
         return e => this.setState({ [field]: e.target.value })
     }
     handleImageFile(e){
-        // debugger
+        debugger
         e.preventDefault()
         const file = e.target.files[0]
         const fileReader = new FileReader();
@@ -81,23 +98,23 @@ class SecondSongForm extends React.Component {
         this.setState({ dragged: false })
     }
 
-    dropHandler(e) {
-        // debugger
-        e.preventDefault()
-        const file = e.target.files[0]
-        const fileReader = new FileReader();
-        fileReader.onloadend = () => {
-            this.setState({ photoFile: file, errors: [], photoUrl: fileReader.result })
-        }
-        // debugger
-        if (file) {
-            fileReader.readAsDataURL(file);
-        } else {
-            this.setState({
-                errors: ['Please upload an image file']
-            })
-        }
-    }
+    // dropHandler(e) {
+        
+    //     e.preventDefault()
+    //     const file = e.target.files[0]
+    //     const fileReader = new FileReader();
+    //     fileReader.onloadend = () => {
+    //         this.setState({ photoFile: file, errors: [], photoUrl: fileReader.result })
+    //     }
+    //     // debugger
+    //     if (file) {
+    //         fileReader.readAsDataURL(file);
+    //     } else {
+    //         this.setState({
+    //             errors: ['Please upload an image file']
+    //         })
+    //     }
+    // }
     render() {
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className="stock-photo" /> : null
         return (
