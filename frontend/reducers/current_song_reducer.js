@@ -29,6 +29,10 @@ const CurrentSongReducer = (state = notPlaying, action) => {
             return merge({}, state, { currentTime: 0 })
             
         case LOGOUT_CURRENT_USER:
+            let nextState = merge({}, state)
+            delete nextState[action.id]
+            //does this key into the state? I need to delete current song
+
             return merge({}, state, { playing: false })
 
         default: 
