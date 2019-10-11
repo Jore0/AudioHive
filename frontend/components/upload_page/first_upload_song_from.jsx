@@ -84,9 +84,8 @@ class FirstSongForm extends React.Component {
     }
 
     render(){
-        const style ={border: "1px solid red"}
         if (this.state.songFile){
-            debugger
+            // debugger
             return <SecondSongForm title={this.state.title} songFile={this.state.songFile} userId={this.state.userId} uploadSong={this.props.uploadSong}/>
         } else {
             return(
