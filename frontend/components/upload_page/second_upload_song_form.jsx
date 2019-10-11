@@ -14,7 +14,8 @@ class SecondSongForm extends React.Component {
             release_date:"", 
             photoFile: null, 
             songFile:  this.props.songFile,
-            dragged: false
+            dragged: false,  
+            photoUrl: window.uploadStock
         }
         this.dragOverHandler = this.dragOverHandler.bind(this);
         this.dragOverleave = this.dragOverleave.bind(this)
@@ -98,9 +99,10 @@ class SecondSongForm extends React.Component {
         }
     }
     render() {
-        const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null
+        const preview = this.state.photoUrl ? <img src={this.state.photoUrl} className="stock-photo" /> : null
         return (
             <div className="upload-form-container" onDragOver={this.dragOverHandler} onDrop={this.dropHandler}>
+                <h1 className="seond-form-info">Basic info</h1>
                 <form className="second-upload-form-content" onSubmit={this.handleSubmit}>
                     <div className="left-form">
                             
