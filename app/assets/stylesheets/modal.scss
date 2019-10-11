@@ -130,5 +130,13 @@ form >ul >li{
 }
 
 .show-drag-over {
-    display: block;
+    // display: block;
+    display: flex;
+    border: 1px dashed grey;
+    padding: 40px;
+    box-sizing: border-box;
+    text-shadow: 7px 4px 6px #636363;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black
 }

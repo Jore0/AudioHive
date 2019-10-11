@@ -13,10 +13,14 @@ class SecondSongForm extends React.Component {
             description: "",
             release_date:"", 
             photoFile: null, 
-            songFile:  this.props.songFile
+            songFile:  this.props.songFile,
+            dragged: false
         }
+        this.dragOverHandler = this.dragOverHandler.bind(this);
+        this.dragOverleave = this.dragOverleave.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleImageFile = this.handleImageFile.bind(this);
+        this.dropHandler = this.dropHandler.bind(this);
         this.update = this.update.bind(this)
     }
 
@@ -49,6 +53,7 @@ class SecondSongForm extends React.Component {
     }
     handleImageFile(e){
         // debugger
+        e.preventDefault()
         const file = e.target.files[0]
         const fileReader = new FileReader();
         fileReader.onloadend=()=>{
@@ -64,18 +69,43 @@ class SecondSongForm extends React.Component {
         }
     }
 
+    dragOverHandler(e) {
+        e.preventDefault();
+        // debugger
+        this.setState({ dragged: true })
+    }
+    dragOverleave(e) {
+        e.preventDefault();
+        // debugger  
+        this.setState({ dragged: false })
+    }
 
+    dropHandler(e) {
+        // debugger
+        e.preventDefault()
+        const file = e.target.files[0]
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            this.setState({ photoFile: file, errors: [], photoUrl: fileReader.result })
+        }
+        // debugger
+        if (file) {
+            fileReader.readAsDataURL(file);
+        } else {
+            this.setState({
+                errors: ['Please upload an image file']
+            })
+        }
+    }
     render() {
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null
         return (
-            <div className="upload-form-container">
+            <div className="upload-form-container" onDragOver={this.dragOverHandler} onDrop={this.dropHandler}>
                 <form className="second-upload-form-content" onSubmit={this.handleSubmit}>
                     <div className="left-form">
                             
-                            <div className="circle-image">
                             {preview}
                             <i className="fas fa-camera"></i>
-                            </div>
                         <label className="custom-file-upload">
                             Upload image
 
@@ -84,15 +114,14 @@ class SecondSongForm extends React.Component {
                         
                     </div>
                     <div className="right-form">
-                    <label>Title<span className="errors">*</span>
+                        <label>Title<span className="errors">*</span></label>
                         <input type="text" value={this.state.title} onChange={this.update("title")} placeholder="Title"/>
-                    </label>
-                    <label>Artist<span className="errors">*</span>
+                    
+                        <label>Artist<span className="errors">*</span></label>
                         <input type="text" value={this.state.artist} onChange={this.update("artist")} placeholder="Artist Name"/>
-                    </label>
+                    
 
-                    <label>
-                        Genre <span className="errors">*</span>
+                    <label>Genre <span className="errors">*</span></label>
                     <select value={this.state.genre} onChange={this.update("genre")}>
                         <option value="Alternative Rock">Alternative Rock</option>
                         <option value="Classis Rock">Classic Rock</option>
@@ -109,17 +138,19 @@ class SecondSongForm extends React.Component {
                         <option value="Rock">Rock</option>
                         <option value="Trap">Trap</option>
                     </select>
-                    </label>
-                    <label>
-                        Release Date
-                        <input type="date" onChange={this.update("release_date")}/>
-                    </label>
-                    <label>
+                    
+                    <label>Description</label>
                         <textarea onChange={this.update("description")} placeholder="Describe your track"></textarea>
-                    </label>
-                    <input type="submit" value="Save"/>
+                    <input className="custom-file-upload"type="submit" value="Save"/>
                     </div>
                 </form>
+                <div className={`drag-over-modal-background ${this.state.dragged ? "show-drag-over" : ""}`} onDragLeave={this.dragOverleave}>
+                    <div className={`drag-over-modal-child ${this.state.dragged ? "show-drag-over" : ""}`} >
+                        <div className={`drag-over-ged-upload ${this.state.dragged ? "show-drag-over" : ""}`} >
+                            Drop your files here
+                            </div>
+                    </div>
+                </div>
             </div>
 
         )
