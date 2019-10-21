@@ -9,6 +9,14 @@ class Api::UsersController < ApplicationController
         end 
     end 
 
+    def show 
+        @user = User.new(id: params[:id])
+        if @user 
+            render "api/users/show" 
+        else 
+             render json: ['Profile doesnt exist'], status: 422
+        end 
+    end 
     def user_params
         params.require(:user).permit(:username, :password, :email)
     end 

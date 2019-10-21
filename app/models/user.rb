@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
     has_many :songs, :dependent => :delete_all
+    has_one_attached :avatar
     
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)

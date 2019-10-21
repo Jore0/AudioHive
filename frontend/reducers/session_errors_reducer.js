@@ -7,6 +7,7 @@ import {OPEN_MODAL} from "../actions/modal_actions"
 const sessionErrorsReducer = (state =[], action) =>{
     // debugger
     Object.freeze(state);
+    debugger
     switch(action.type){
         case RECEIVE_ERRORS:
             return action.errors

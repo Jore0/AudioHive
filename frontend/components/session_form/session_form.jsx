@@ -44,7 +44,7 @@ class SessionForm extends React.Component {
             username = "Choose a username";
             password = "Choose a password";
             usernameHTML = <label>{username}<span className="errors">*</span>
-                <input type="text" value={this.state.username} onChange={this.update("username")} autofocus/>
+                <input type="text" value={this.state.username} onChange={this.update("username")} autoFocus/>
             </label>
         }else {
             image = <img src={window.login} className="socialButton" />
@@ -64,7 +64,7 @@ class SessionForm extends React.Component {
                 {usernameHTML}
 
                 <label>{password}<span className="errors">*</span>
-                        <input type="password" value={this.state.password} onChange={this.update("password")} autofocus/>
+                        <input type="password" value={this.state.password} onChange={this.update("password")} autoFocus/>
                 </label>
 
                 {this.renderErrors()}
