@@ -6,9 +6,9 @@ const receiveUser = payload => {
   return {
     type: RECEIVE_USER,
     songs: payload.songs,
-    user: plaload.user
+    user: payload.user
   };
 };
 
-export const fetchuser = id => dispatch =>
+export const fetchUser = id => dispatch =>
   APIUtil.fetchUser(id).then(payload => dispatch(receiveUser(payload)));

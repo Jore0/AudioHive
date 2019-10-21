@@ -8,6 +8,7 @@ import DicoverPageContainer from "./discover_page/discover_page_container";
 import UploadLoadPageContainer from "./upload_page/upload_page_container";
 import SongBar from "./songbar/songbar_container";
 import SongShowPageContainer from "./songs/songs_show_container";
+import UserShowPageContainer from "./users/user_show_page_container";
 import { Footer } from "./footer/footer";
 const App = () => (
   <>
@@ -20,7 +21,7 @@ const App = () => (
       <ProtectedRoute path="/upload" component={UploadLoadPageContainer} />
 
       <Route path="/songs/:songId" component={SongShowPageContainer} />
-      {/* <Route path="/users/:userId" component={SongShowPageContainer}/> */}
+      <Route path="/users/:userId" component={UserShowPageContainer} />
       <Route path="/songs/:songId/newSong" component={SongShowPageContainer} />
     </Switch>
     <SongBar />

@@ -1,5 +1,6 @@
 json.user do 
-    json.partial! "api/users/user", user: @user
+    # debugger
+    json.extract! @user, :id, :username, :email, :song_ids
 end 
 json.songs do 
     # debugger

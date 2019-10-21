@@ -10,7 +10,8 @@ class Api::UsersController < ApplicationController
     end 
 
     def show 
-        @user = User.new(id: params[:id])
+        @user = User.find(params[:id])
+        # debugger
         if @user 
             render "api/users/show" 
         else 

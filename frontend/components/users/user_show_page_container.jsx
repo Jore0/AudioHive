@@ -8,18 +8,21 @@ import {
   updateCurrentSongTime,
   resetCurrentSong
 } from "../../actions/current_song_actions";
+import { fetchUser } from "../../actions/user_actions";
 
 const msp = (state, ownProps) => {
-  // debugger
+  debugger;
   return {
     currentUserId: state.session.id,
     songs: state.entities.songs,
     playing: state.ui.currentSong.playing
+    // user: state.entities.session.users[ownProps.match.params.userId]
   };
 };
 
 const mdp = dispatch => ({
   fetchSong: id => dispatch(fetchSong(id)),
+  fetchUser: id => dispatch(fetchUser(id)),
   playSong: () => dispatch(playSong()),
   pauseSong: () => dispatch(pauseSong()),
   updateCurrentSongTime: time => dispatch(updateCurrentSongTime(time)),
@@ -30,4 +33,4 @@ const mdp = dispatch => ({
 export default connect(
   msp,
   mdp
-)(SongShowPage);
+)(UserShowPage);
