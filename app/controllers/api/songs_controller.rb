@@ -24,11 +24,12 @@ class Api::SongsController < ApplicationController
     end
 
     def destroy 
-        @song = Song.find(params[:id])
-        if @song.destroy
-            render :index 
+        #backend protection
+        @song = current_user.songs.find(params[:id])
+        if @song
+            @song.destroy
         else 
-            render json: @post.errors.full_messages, status: 422
+            render json: ["404 not found"], status: 422
         end 
     end 
 
