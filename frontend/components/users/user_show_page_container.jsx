@@ -14,9 +14,9 @@ const msp = (state, ownProps) => {
   debugger;
   return {
     currentUserId: state.session.id,
-    songs: state.entities.songs,
-    playing: state.ui.currentSong.playing
-    // user: state.entities.session.users[ownProps.match.params.userId]
+    songs: Object.values(state.entities.songs),
+    playing: state.ui.currentSong.playing,
+    user: state.entities.users[ownProps.match.params.userId]
   };
 };
 

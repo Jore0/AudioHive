@@ -2,10 +2,10 @@ import * as APIUtil from "../util/user_info_util";
 export const RECEIVE_USER = "RECEIVE_USER";
 
 const receiveUser = payload => {
-  debugger;
+  // debugger;
   return {
     type: RECEIVE_USER,
-    songs: payload.songs,
+    songs: payload.songs || {},
     user: payload.user
   };
 };
