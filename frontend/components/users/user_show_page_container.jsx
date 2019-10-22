@@ -11,11 +11,12 @@ import {
 import { fetchUser } from "../../actions/user_actions";
 
 const msp = (state, ownProps) => {
-  debugger;
+  // debugger;
   return {
     currentUserId: state.session.id,
     songs: Object.values(state.entities.songs),
     playing: state.ui.currentSong.playing,
+    currentSongId: state.ui.currentSong.id,
     user: state.entities.users[ownProps.match.params.userId]
   };
 };
