@@ -2,6 +2,7 @@ import React from "react";
 import WaveForm from "../waveform/waveform";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { sign } from "crypto";
 
 class UserShowPage extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class UserShowPage extends React.Component {
       playStatus: this.props.playing
       // userPageId: this.props.user.id
     };
+
     this.toggle = this.toggle.bind(this);
   }
 
@@ -18,16 +20,17 @@ class UserShowPage extends React.Component {
     debugger;
     this.props.fetchUser(this.props.match.params.userId);
   }
-  // componentDidUpdate(prevProps, prevState) {
-  //   debugger;
-  //   if (prevProps.user.id !== this.props.user.id) {
-  //     this.props.fetchUser(this.props.match.params.userId);
-  //     this.setState({
-  //       profileImageUrl: this.props.user.profileImageUrl,
-  //       userPageId: this.props.user.id
-  //     });
-  //   }
-  // }
+
+  componentDidUpdate(prevProps, prevState) {
+    debugger;
+    if (prevProps.user.id !== this.props.user.id) {
+      this.props.fetchUser(this.props.match.params.userId);
+      this.setState({
+        profileImageUrl: this.props.user.profileImageUrl,
+        userPageId: this.props.user.id
+      });
+    }
+  }
   toggle(e) {
     let song = this.props.songs.find(song => song.id === parseInt(e.target.id));
     if (!this.props.playing) {
@@ -61,7 +64,7 @@ class UserShowPage extends React.Component {
       songs = this.props.songs.map(song => {
         debugger;
         return (
-          <div className="small-waveform-container">
+          <div key={song.id} className="small-waveform-container">
             <img src={song.imageUrl} />
             <img
               id={song.id}
@@ -79,21 +82,6 @@ class UserShowPage extends React.Component {
       });
     }
 
-    // let waveform;
-    // let info;
-    // let genre;
-    // if (this.props.song) {
-    //   waveform = (
-    //     <WaveForm song={this.props.song} fetchSong={this.props.fetchSong} />
-    //   );
-    //   info = (
-    //     <div className="play-pause-show-info">
-    //       <p className="play-pause-show-artist">{this.props.song.artist}</p>
-    //       <p className="play-pause-show-title">{this.props.song.title}</p>
-    //     </div>
-    //   );
-    //   genre = <p className="play-pause-show-genre">#{this.props.song.genre}</p>;
-    // }
     return (
       <div className="user-page-container">
         <div className="song-show-page">
