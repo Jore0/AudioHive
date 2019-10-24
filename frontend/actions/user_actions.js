@@ -1,5 +1,6 @@
 import * as APIUtil from "../util/user_info_util";
 export const RECEIVE_USER = "RECEIVE_USER";
+export const UPDATE_USER = "UPDATE_USER";
 
 const receiveUser = payload => {
   // debugger;
@@ -12,3 +13,6 @@ const receiveUser = payload => {
 
 export const fetchUser = id => dispatch =>
   APIUtil.fetchUser(id).then(payload => dispatch(receiveUser(payload)));
+
+export const updateUser = user => dispatch =>
+  APIUtil.updateUser(user).then(payload => dispatch(receiveUser(payload)));

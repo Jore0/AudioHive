@@ -1,0 +1,26 @@
+.user-page-container {
+  border: 3px solid red;
+}
+
+.user-show-page {
+  margin-top: 50px;
+  border: 3px solid blue;
+  box-sizing: border-box;
+  padding: 20px 20px 20px 30px;
+}
+
+.hero-song-display {
+  border: 3px solid green;
+}
+
+.profile-pic {
+  background-color: grey;
+  border-radius: 50%;
+  min-height: 200px;
+  min-width: 200px;
+  color: white;
+  font-size: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
