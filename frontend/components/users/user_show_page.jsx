@@ -9,60 +9,38 @@ class UserShowPage extends React.Component {
     super(props);
     this.state = {
       playStatus: this.props.playing,
-      profileImageUrl: null
+      profileImageUrl: null,
+      uploadButton: false
       // userPageId: this.props.user.id
     };
+    this.mounted = false;
     this.toggle = this.toggle.bind(this);
     this.handleImageFile = this.handleImageFile.bind(this);
   }
-
+  showUploadButton() {
+    this.setState({ uploadButton: true });
+  }
+  hideUploadButton() {
+    this.setState({ uploadButton: false });
+  }
   handleImageFile(e) {
     e.preventDefault();
-    debugger;
+    // debugger;
 
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("user[id]", this.props.currentUserId);
     formData.append("user[image_url]", file);
-    debugger;
-    this.props.updateUser(formData);
-
-    // const fileReader = new FileReader();
-    // fileReader.onloadend = () => {
-    //   debugger; /// not hitting this
-    //   this.setState({
-    //     profileImageUrl: file,
-    //     errors: [],
-    //     imageUrl: fileReader.result
-    //   });
-    // };
     // debugger;
-
-    // if (file) {
-    //   fileReader.readAsDataURL(file);
-    // } else {
-    //   this.setState({
-    //     errors: ["Please upload an image file"]
-    //   });
-    // }
-    // this.handleSubmit();
+    this.props.updateUser(formData);
   }
   componentDidMount() {
     // debugger;
     this.props.fetchUser(this.props.match.params.userId);
     this.setState({ color: this.props.currentUserId % 360 });
+    this.mounted = true;
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   debugger;
-  //   if (prevProps.user.id !== this.props.user.id) {
-  //     this.props.fetchUser(this.props.match.params.userId);
-  //     this.setState({
-  //       profileImageUrl: this.props.user.profileImageUrl,
-  //       userPageId: this.props.user.id
-  //     });
-  //   }
-  // }
   toggle(e) {
     let song = this.props.songs.find(song => song.id === parseInt(e.target.id));
     if (!this.props.playing) {
@@ -78,8 +56,10 @@ class UserShowPage extends React.Component {
     let styleColor = {
       background: `linear-gradient(to right, hsla(${this.state.color}, 50% , 50%, 0.7) 0%, hsla(0, 0%, 100%, 0.7) 115% )`
     };
+    let styleImage = {
+      "background-image": `url(${this.props.user.profileImageUrl})`
+    };
     let songs;
-    // debugger;
     if (this.props.songs.length < 1 && this.props.currentUserId) {
       <Link to="/upload" className={"orange-button"}>
         Upload now
@@ -113,12 +93,32 @@ class UserShowPage extends React.Component {
         );
       });
     }
-    // debugger;
     let profile;
+    let info;
     if (this.props.user) {
+      info = (
+        <div className="user-info">
+          <p className="user-title">{this.props.user.username}</p>
+        </div>
+      );
       let initials = this.props.user.username[0].toUpperCase();
-      if (this.state.profileImageUrl) {
-        profile = <img src={this.state.profileImageUrl} />;
+      if (this.props.user.profileImageUrl) {
+        profile = (
+          <div className="user-image-container">
+            <div
+              className="user-image"
+              style={styleImage}
+              onMouseEnter={this.showUploadButton}
+              onMouseLeave={this.hideUploadButton}
+            >
+              <label className="custom-image-upload">
+                <i className="fas fa-camera"></i>
+                <p>Upload image</p>
+                <input type="file" onChange={this.handleImageFile} />
+              </label>
+            </div>
+          </div>
+        );
       } else if (
         this.props.currentUserId === this.props.user.id &&
         !this.state.profileImageUrl
@@ -135,13 +135,14 @@ class UserShowPage extends React.Component {
         );
       }
     }
-    // profile = <div className="profile-pic">{initials}</div>;
 
     return (
       <div className="user-page-container">
         <div className="user-show-page" style={styleColor}>
-          fafaer
-          <div className="hero-song-display">{profile}</div>
+          <div className="hero-user-display">
+            {profile}
+            {info}
+          </div>
         </div>
         {songs}
       </div>

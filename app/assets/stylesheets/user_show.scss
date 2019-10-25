@@ -3,7 +3,7 @@
 }
 
 .user-show-page {
-  margin-top: 50px;
+  margin-top: 42px;
   border: 3px solid blue;
   box-sizing: border-box;
   padding: 20px 20px 20px 30px;
@@ -23,4 +23,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.user-image {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.custom-image-upload {
+  background: #fff;
+  color: black;
+  border: 1px solid black;
+  padding: 2px 5px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-image-upload p {
+  margin: 0;
 }
