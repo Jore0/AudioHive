@@ -9,7 +9,7 @@ class WaveForm extends React.Component {
       readyToPlay: false,
       duration: this.props.song.duration || 0
     };
-
+    this.is_Mounted;
     this.waveform = React.createRef();
     this.seekBar = React.createRef();
     this.wavesurfer = null;
@@ -20,6 +20,10 @@ class WaveForm extends React.Component {
   componentDidMount() {
     this.props.fetchSong(this.props.song.id);
     this.showWaveSurfer();
+    this.is_Mounted = true;
+  }
+  componentWillUnmount() {
+    this.is_Mounted = false;
   }
 
   // componentDidUpdate(){
@@ -49,7 +53,9 @@ class WaveForm extends React.Component {
     this.wavesurfer.load(this.props.song.songUrl);
 
     this.wavesurfer.on("ready", () => {
-      this.setState({ readyToPlay: true });
+      if (this.is_Mounted) {
+        this.setState({ readyToPlay: true });
+      }
     });
   }
   secondsToMinutes(time) {

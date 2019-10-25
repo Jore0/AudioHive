@@ -14,7 +14,7 @@ class DiscoverPage extends React.Component {
   }
 
   render() {
-    debugger;
+    // debugger;
     const songs = this.props.songs.map(song => {
       return (
         <SongButton

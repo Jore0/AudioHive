@@ -34,7 +34,7 @@ class UserShowPage extends React.Component {
     const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      debugger;
+      debugger; /// not hitting this
       this.setState({
         profileImageUrl: file,
         errors: [],
@@ -57,16 +57,16 @@ class UserShowPage extends React.Component {
     this.setState({ color: this.props.currentUserId % 360 });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // debugger;
-    if (prevProps.user.id !== this.props.user.id) {
-      this.props.fetchUser(this.props.match.params.userId);
-      this.setState({
-        profileImageUrl: this.props.user.profileImageUrl,
-        userPageId: this.props.user.id
-      });
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   debugger;
+  //   if (prevProps.user.id !== this.props.user.id) {
+  //     this.props.fetchUser(this.props.match.params.userId);
+  //     this.setState({
+  //       profileImageUrl: this.props.user.profileImageUrl,
+  //       userPageId: this.props.user.id
+  //     });
+  //   }
+  // }
   toggle(e) {
     let song = this.props.songs.find(song => song.id === parseInt(e.target.id));
     if (!this.props.playing) {
@@ -119,25 +119,26 @@ class UserShowPage extends React.Component {
     }
     // debugger;
     let profile;
-    let initials = this.props.user.username[0].toUpperCase();
-    if (this.state.profileImageUrl) {
-      profile = <img src={this.state.profileImageUrl} />;
-    } else if (
-      this.props.currentUserId === this.props.user.id &&
-      !this.state.profileImageUrl
-    ) {
-      profile = (
-        <div className="profile-pic">
-          {initials}
-          <i className="fas fa-camera"></i>
-          <label className="custom-image-upload">
-            Upload image
-            <input type="file" onChange={this.handleImageFile} />
-          </label>
-        </div>
-      );
+    if (this.props.user) {
+      let initials = this.props.user.username[0].toUpperCase();
+      if (this.state.profileImageUrl) {
+        profile = <img src={this.state.profileImageUrl} />;
+      } else if (
+        this.props.currentUserId === this.props.user.id &&
+        !this.state.profileImageUrl
+      ) {
+        profile = (
+          <div className="profile-pic">
+            {initials}
+            <i className="fas fa-camera"></i>
+            <label className="custom-image-upload">
+              Upload image
+              <input type="file" onChange={this.handleImageFile} />
+            </label>
+          </div>
+        );
+      }
     }
-
     // profile = <div className="profile-pic">{initials}</div>;
 
     return (
