@@ -15,4 +15,7 @@ export const fetchUser = id => dispatch =>
   APIUtil.fetchUser(id).then(payload => dispatch(receiveUser(payload)));
 
 export const updateUser = user => dispatch =>
-  APIUtil.updateUser(user).then(payload => dispatch(receiveUser(payload)));
+  APIUtil.updateUser(user).then(payload => {
+    debugger;
+    return dispatch(receiveUser(payload));
+  });

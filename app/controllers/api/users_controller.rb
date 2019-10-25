@@ -21,8 +21,9 @@ class Api::UsersController < ApplicationController
     end 
 
     def update 
+        debugger 
+        @user = User.find(params[:user][:id])
         debugger
-        @user = user.find(id: params[:id])
         if @user.update(user_params)
             render "api/users/show" 
         else 

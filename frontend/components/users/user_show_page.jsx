@@ -13,18 +13,7 @@ class UserShowPage extends React.Component {
       // userPageId: this.props.user.id
     };
     this.toggle = this.toggle.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleImageFile = this.handleImageFile.bind(this);
-  }
-
-  handleSubmit() {
-    const formData = new FormData();
-    if (this.state.profileImageUrl) {
-      formData.append("user[id]", this.props.currentUserId);
-      formData.append("user[image_url]", this.state.photoFile);
-      debugger;
-      this.props.updateUser(formData);
-    }
   }
 
   handleImageFile(e) {
@@ -32,24 +21,31 @@ class UserShowPage extends React.Component {
     debugger;
 
     const file = e.target.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      debugger; /// not hitting this
-      this.setState({
-        profileImageUrl: file,
-        errors: [],
-        imageUrl: fileReader.result
-      });
-    };
+    const formData = new FormData();
+    formData.append("user[id]", this.props.currentUserId);
+    formData.append("user[image_url]", file);
     debugger;
-    this.handleSubmit();
-    if (file) {
-      fileReader.readAsDataURL(file);
-    } else {
-      this.setState({
-        errors: ["Please upload an image file"]
-      });
-    }
+    this.props.updateUser(formData);
+
+    // const fileReader = new FileReader();
+    // fileReader.onloadend = () => {
+    //   debugger; /// not hitting this
+    //   this.setState({
+    //     profileImageUrl: file,
+    //     errors: [],
+    //     imageUrl: fileReader.result
+    //   });
+    // };
+    // debugger;
+
+    // if (file) {
+    //   fileReader.readAsDataURL(file);
+    // } else {
+    //   this.setState({
+    //     errors: ["Please upload an image file"]
+    //   });
+    // }
+    // this.handleSubmit();
   }
   componentDidMount() {
     // debugger;
