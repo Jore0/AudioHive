@@ -3,6 +3,7 @@ import WaveForm from "../waveform/waveform";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { sign } from "crypto";
+import { updateCurrentSongTime } from "../../actions/current_song_actions";
 
 class UserShowPage extends React.Component {
   constructor(props) {
@@ -15,12 +16,16 @@ class UserShowPage extends React.Component {
     };
     this.mounted = false;
     this.toggle = this.toggle.bind(this);
+    this.showUploadButton = this.showUploadButton.bind(this);
+    this.hideUploadButton = this.hideUploadButton.bind(this);
     this.handleImageFile = this.handleImageFile.bind(this);
   }
   showUploadButton() {
+    // debugger;
     this.setState({ uploadButton: true });
   }
   hideUploadButton() {
+    // debugger;
     this.setState({ uploadButton: false });
   }
   handleImageFile(e) {
@@ -54,7 +59,7 @@ class UserShowPage extends React.Component {
 
   render() {
     let styleColor = {
-      background: `linear-gradient(to right, hsla(${this.state.color}, 50% , 50%, 0.7) 0%, hsla(0, 0%, 100%, 0.7) 115% )`
+      background: `linear-gradient(to right, hsla(${this.state.color}, 50% , 50%, 0.7) 0%,  #70929c 115% )`
     };
     let styleImage = {
       "background-image": `url(${this.props.user.profileImageUrl})`
@@ -76,18 +81,27 @@ class UserShowPage extends React.Component {
       songs = this.props.songs.map(song => {
         // debugger;
         return (
-          <div key={song.id} className="small-waveform-container">
-            <img src={song.imageUrl} />
-            <img
-              id={song.id}
-              className="play-pause-show"
-              onClick={this.toggle}
-              src={
-                this.props.playing && song.id === this.props.currentSongId
-                  ? window.hivePause
-                  : window.hiveButton
-              }
-            />
+          <div key={song.id} className="medium-waveform-container">
+            <img src={song.imageUrl} className="medium-image" />
+            <div className="medium-info-container">
+              <img
+                id={song.id}
+                className="play-pause-show-medium"
+                onClick={this.toggle}
+                src={
+                  this.props.playing && song.id === this.props.currentSongId
+                    ? window.hivePause
+                    : window.hiveButton
+                }
+              />
+              <div className="medium-user-song-info">
+                <p className="username">{this.props.user.username}</p>
+
+                <Link to={`/songs/${song.id}`} className="songtitle">
+                  {song.title}
+                </Link>
+              </div>
+            </div>
             <WaveForm song={song} fetchSong={this.props.fetchSong} />
           </div>
         );
@@ -111,7 +125,13 @@ class UserShowPage extends React.Component {
               onMouseEnter={this.showUploadButton}
               onMouseLeave={this.hideUploadButton}
             >
-              <label className="custom-image-upload">
+              <label
+                className={
+                  this.state.uploadButton
+                    ? "custom-image-upload"
+                    : "custom-image-upload hide"
+                }
+              >
                 <i className="fas fa-camera"></i>
                 <p>Upload image</p>
                 <input type="file" onChange={this.handleImageFile} />

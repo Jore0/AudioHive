@@ -1,10 +1,10 @@
 .user-page-container {
-  border: 3px solid red;
+  // border: 3px solid red;
 }
 
 .user-show-page {
   margin-top: 42px;
-  border: 3px solid blue;
+
   box-sizing: border-box;
   padding: 20px 20px 20px 30px;
 }
@@ -33,16 +33,25 @@
   box-sizing: border-box;
 }
 .custom-image-upload {
-  background: #fff;
-  color: black;
+  background: rgba(255, 255, 255, 0.7);
+  color: #333;
   border: 1px solid black;
   padding: 2px 5px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
+.custom-image-upload:hover {
+  background-color: #fff;
+}
 .custom-image-upload p {
-  margin: 0;
+  margin: 0px 0px 0px 3px;
+}
+
+.hide {
+  display: none;
 }

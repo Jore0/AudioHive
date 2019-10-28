@@ -25,7 +25,7 @@ const App = () => (
       <Route path="/songs/:songId/newSong" component={SongShowPageContainer} />
     </Switch>
     <SongBar />
-    <Footer />
+    {/* <Footer /> */}
   </>
 );
 

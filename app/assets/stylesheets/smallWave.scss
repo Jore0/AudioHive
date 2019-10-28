@@ -1,0 +1,31 @@
+.medium-waveform-container {
+  padding: 20px;
+  display: flex;
+}
+.medium-info-container {
+  display: flex;
+  padding: 10px 5px;
+}
+.medium-image {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.username {
+  margin: 0;
+  font-size: 12px;
+  color: #999999;
+}
+.songtitle {
+  font-size: 15px;
+  text-decoration: none;
+  color: #333333;
+  cursor: pointer;
+}
+
+.play-pause-show-medium {
+  max-width: 50px;
+  max-height: 50px;
+  margin-right: 10px;
+  cursor: pointer;
+}
