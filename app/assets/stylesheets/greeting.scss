@@ -1,16 +1,29 @@
-.login-signup{
-    display: flex;
-    justify-content: space-between;
-    // background-color: blue;
-    padding: 10px 20px;
-    height: 50px;
-    width: 100%;
+.login-signup {
+  display: flex;
+  justify-content: space-between;
+  // background-color: blue;
+  padding: 10px 20px;
+  height: 50px;
+  width: 100%;
 }
 
-.buttons{
-    width: 375px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    // background-color: red;
+.buttons {
+  width: 375px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  // background-color: red;
+}
+
+.home {
+  text-align: center;
+  font-size: 40px;
+  top: 0;
+}
+
+.song-detail {
+  font-size: 12px;
+}
+.song-list-subheader {
+  font-size: 10px;
 }

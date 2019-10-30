@@ -1,24 +1,41 @@
-.discover-page-container{
-    height: 100%;
-    position: relative;
-    top: 50px;
-    background: white;
-    padding: 10px 30px;
-    box-sizing: border-box;
-    z-index: 0;
+.discover-page-container {
+  // height: 100%;
+  position: relative;
+  top: 50px;
+  background: white;
+  padding: 10px 30px;
+  box-sizing: border-box;
+  z-index: 0;
 }
 .song-list-header {
-    // background-color:green;
-    font-size: 25px;
-    font-weight: 100;
-    text-align: left;
-    color: #333
+  // background-color:green;
+  font-size: 25px;
+  font-weight: 100;
+  text-align: left;
+  color: #333;
 }
-.song-list-subheader{
-    color: #999;
-    font-size: 14px;
+.song-list-subheader {
+  color: #999;
+  font-size: 14px;
 }
 
-.playButton{
-    cursor: pointer;
+.playButton {
+  cursor: pointer;
+}
+.hero-image-text {
+  margin: auto auto;
+  padding-bottom: 10px;
+}
+.hero-image-text > h1 {
+  text-align: center;
+  color: white;
+  font-size: 36px;
+  font-weight: 300;
+}
+
+.hero-image-text > h2 {
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 300;
 }

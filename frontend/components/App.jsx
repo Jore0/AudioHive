@@ -25,7 +25,12 @@ const App = () => (
       <Route path="/songs/:songId/newSong" component={SongShowPageContainer} />
     </Switch>
     <SongBar />
-    {/* <Footer /> */}
+
+    <footer>
+      <Link to="https://github.com/Jore0/AudioHive" target="_blank">
+        <img src={window.github} />
+      </Link>
+    </footer>
   </>
 );
 
