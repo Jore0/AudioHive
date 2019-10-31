@@ -2,7 +2,6 @@ import React from "react";
 import WaveForm from "../waveform/waveform";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { sign } from "crypto";
 import { updateCurrentSongTime } from "../../actions/current_song_actions";
 
 class UserShowPage extends React.Component {
@@ -21,17 +20,13 @@ class UserShowPage extends React.Component {
     this.handleImageFile = this.handleImageFile.bind(this);
   }
   showUploadButton() {
-    // debugger;
     this.setState({ uploadButton: true });
   }
   hideUploadButton() {
-    // debugger;
     this.setState({ uploadButton: false });
   }
   handleImageFile(e) {
     e.preventDefault();
-    // debugger;
-
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("user[id]", this.props.currentUserId);
@@ -39,10 +34,14 @@ class UserShowPage extends React.Component {
     // debugger;
     this.props.updateUser(formData);
   }
+
   componentDidMount() {
     // debugger;
-    this.props.fetchUser(this.props.match.params.userId);
-    this.setState({ color: this.props.currentUserId % 360 });
+    this.props.fetchUser(this.props.match.params.userId || "");
+    debugger;
+    this.setState({
+      color: this.props.currentUserId % 360
+    });
     this.mounted = true;
   }
 
@@ -61,9 +60,7 @@ class UserShowPage extends React.Component {
     let styleColor = {
       background: `linear-gradient(to right, hsla(${this.state.color}, 50% , 50%, 0.7) 0%,  #70929c 115% )`
     };
-    let styleImage = {
-      "background-image": `url(${this.props.user.profileImageUrl})`
-    };
+    let styleImage;
     let songs;
     if (this.props.songs.length < 1 && this.props.currentUserId) {
       <Link to="/upload" className={"orange-button"}>
@@ -77,7 +74,7 @@ class UserShowPage extends React.Component {
         </Link>
         ;
       </div>;
-    } else {
+    } else if (this.mounted) {
       songs = this.props.songs.map(song => {
         // debugger;
         return (
@@ -117,6 +114,9 @@ class UserShowPage extends React.Component {
       );
       let initials = this.props.user.username[0].toUpperCase();
       if (this.props.user.profileImageUrl) {
+        styleImage = {
+          "background-image": `url(${this.props.user.profileImageUrl})` || " "
+        };
         profile = (
           <div className="user-image-container">
             <div
