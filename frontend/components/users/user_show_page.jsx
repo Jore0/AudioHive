@@ -74,7 +74,7 @@ class UserShowPage extends React.Component {
         </Link>
         ;
       </div>;
-    } else if (this.mounted) {
+    } else {
       songs = this.props.songs.map(song => {
         // debugger;
         return (

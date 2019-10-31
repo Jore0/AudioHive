@@ -65,7 +65,7 @@ class LoginNav extends React.Component {
 
           <div className="discover-page-container home">
             <h1 className="song-list-header home">Discover trending music</h1>
-            <p className="song-list-subheader">
+            <p className="song-list-subheader-title">
               The latest hits, updated all the time
             </p>
             <div className="discover-songs">
