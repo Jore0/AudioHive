@@ -69,7 +69,7 @@ class UserShowPage extends React.Component {
     } else if (this.props.songs.length < 1) {
       <div className="noSongs-container">
         <h1>This user has no songs...</h1>
-        <Link to="/" className={"orange-button"}>
+        <Link to="/discover" className={"orange-button"}>
           Discover Songs
         </Link>
         ;

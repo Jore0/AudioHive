@@ -12,12 +12,13 @@ import UserShowPageContainer from "./users/user_show_page_container";
 import { Footer } from "./footer/footer";
 const App = () => (
   <>
-    <LoginNavContainer />
+    <AuthRoute component={LoginNavContainer} />
+
     <NavBarContainer />
     <Modal />
 
     <Switch>
-      <ProtectedRoute exact path="/" component={DicoverPageContainer} />
+      <ProtectedRoute exact path="/discover" component={DicoverPageContainer} />
       <ProtectedRoute path="/upload" component={UploadLoadPageContainer} />
 
       <Route path="/songs/:songId" component={SongShowPageContainer} />

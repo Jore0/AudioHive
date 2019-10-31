@@ -12,6 +12,7 @@ class NavBar extends React.Component {
     if (!this.props.currentUser) {
       return null;
     } else {
+      // debugger;
       return (
         <div className="logged-nav-container">
           <nav className="login-nav">
@@ -23,17 +24,17 @@ class NavBar extends React.Component {
                 <div className="header-left-items">
                   <ul>
                     <li>
-                      <NavLink to="/" className="left-nav-button">
+                      <NavLink to="/discover" className="left-nav-button">
                         Home{" "}
                       </NavLink>
                     </li>
                     <li>
-                      <Link to="/" className="left-nav-button">
+                      <Link to="/discover" className="left-nav-button">
                         Stream{" "}
                       </Link>
                     </li>
                     <li>
-                      <Link to="/" className="left-nav-button">
+                      <Link to="/discover" className="left-nav-button">
                         Playlist{" "}
                       </Link>
                     </li>
@@ -55,10 +56,12 @@ class NavBar extends React.Component {
                 </NavLink>
                 <div className="header-right-items">
                   <Link
-                    to={`/users/${this.props.currentUser.id}`}
+                    to={`/users/${this.props.currentUser.id ||
+                      this.props.currentUser.user.id}`}
                     className="right-nav-button"
                   >
-                    {this.props.currentUser.username}
+                    {this.props.currentUser.username ||
+                      this.props.currentUser.user.username}
                   </Link>
                   <Link to="/" className="right-nav-button">
                     <i className="fas fa-bell"></i>

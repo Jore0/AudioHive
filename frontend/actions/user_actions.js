@@ -13,9 +13,9 @@ const receiveUser = payload => {
 
 export const fetchUser = id =>
   function(dispatch) {
-    debugger;
+    // debugger;
     APIUtil.fetchUser(id).then(payload => {
-      debugger;
+      // debugger;
       return dispatch(receiveUser(payload));
     });
   };
