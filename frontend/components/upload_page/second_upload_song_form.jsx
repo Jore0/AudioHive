@@ -78,7 +78,7 @@ class SecondSongForm extends React.Component {
     const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      debugger;
+      // debugger;
       this.setState({
         photoFile: file,
         errors: [],

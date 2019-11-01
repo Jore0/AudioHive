@@ -1,19 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import Loader from "react-loader-spinner";
+import {
+  playSong,
+  pauseSong,
+  updateCurrentSongTime,
+  resetCurrentSong
+} from "../../actions/current_song_actions";
 class WaveForm extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
+
     this.state = {
       readyToPlay: false,
-      duration: this.props.song.duration || 0
+      duration: this.props.song.duration || 0,
+      loading: true
     };
     this.is_Mounted;
     this.waveform = React.createRef();
     this.seekBar = React.createRef();
     this.wavesurfer = null;
-    // this.updateTime = this.updateTime.bind(this)
+
     this.showWaveSurfer = this.showWaveSurfer.bind(this);
     this.StartPlay = this.StartPlay.bind(this);
   }
@@ -47,14 +54,17 @@ class WaveForm extends React.Component {
       waveColor: "#cdcfd1",
       progressColor: "#f50",
       cursorColor: "transparent",
+
       barGraph: 10,
+      barHeight: 0.75,
       barWidth: 2
     });
     this.wavesurfer.load(this.props.song.songUrl);
 
     this.wavesurfer.on("ready", () => {
+      // debugger;
       if (this.is_Mounted) {
-        this.setState({ readyToPlay: true });
+        this.setState({ readyToPlay: true, loading: false });
       }
     });
   }
@@ -69,7 +79,14 @@ class WaveForm extends React.Component {
     let maxy;
     let currentTime;
     let totalLength;
-    if (this.wavesurfer) {
+    let loader;
+
+    this.props.playing && song.id === this.props.currentSongId;
+    if (
+      this.wavesurfer &&
+      this.props.playing &&
+      song.id === this.props.currentSongId
+    ) {
       // debugger
       this.wavesurfer.seekTo(this.props.currentTime);
       currentTime = this.secondsToMinutes(
@@ -79,6 +96,17 @@ class WaveForm extends React.Component {
       totalLength = this.secondsToMinutes(this.wavesurfer.getDuration());
       this.seekBar.current.value =
         this.props.currentTime * this.wavesurfer.getDuration();
+    }
+    if (this.state.loading) {
+      loader = (
+        <Loader
+          className="loader"
+          type="Bars"
+          color="#cdcfd1"
+          height={50}
+          width={80}
+        />
+      );
     }
 
     return (
@@ -96,6 +124,7 @@ class WaveForm extends React.Component {
             <p className="wave-form-orange">{currentTime}</p>
             <p className="wave-form-transparent">{totalLength}</p>
           </div>
+          {loader}
           <div className="wave" ref={this.waveform}></div>
         </div>
       </>

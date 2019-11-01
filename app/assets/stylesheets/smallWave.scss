@@ -3,8 +3,9 @@
   display: flex;
 }
 .medium-info-container {
-  display: flex;
+  // display: flex;
   padding: 10px 5px;
+  width: 100%;
 }
 .medium-image {
   max-height: 200px;
@@ -28,4 +29,19 @@
   max-height: 50px;
   margin-right: 10px;
   cursor: pointer;
+}
+.wave-container {
+  position: relative;
+}
+.loader {
+  position: absolute;
+  top: 47%;
+  left: 47%;
+}
+.user-show-page {
+  background: linear-gradient(
+    to right,
+    hsla(3, 50%, 50%, 0.7) 0%,
+    #70929c 115%
+  );
 }

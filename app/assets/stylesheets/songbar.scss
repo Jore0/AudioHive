@@ -1,36 +1,33 @@
-.songBar-container{
+.songBar-container {
   border-top: 1px solid #cecece;
   height: 50px;
   margin: auto 0;
   display: flex;
   justify-content: center;
-  background-color:#f2f2f2;
-
+  background-color: #f2f2f2;
 }
-.songBar-container-parts{
-  background-color:#f2f2f2;
+.songBar-container-parts {
+  background-color: #f2f2f2;
   position: relative;
   // border: 1px solid blue;
   display: flex;
-
 }
-.songBar-image{
+.songBar-image {
   max-height: 100%;
   display: inline-block;
-cursor: pointer;
+  cursor: pointer;
 }
-.songBar-album-image{
-    height: 49px;
-  width : 49px;
+.songBar-album-image {
+  height: 49px;
+  width: 49px;
   // display: inline-block;
   cursor: pointer;
-
 }
 // max-height: 50px;
 //     padding: 15px;
 //     box-sizing: border-box;
 
-.songBar-control{
+.songBar-control {
   max-height: 100%;
   display: inline-block;
   background: none;
@@ -40,62 +37,63 @@ cursor: pointer;
 }
 
 .seek-bar-container {
-    display: flex;
-    padding: 10px;
-    align-items: center;
-    flex: 2;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  flex: 2;
 }
 
 .seek-bar-volume-container {
-    display: flex;
-    align-items: center;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
- main#root {
-    position: relative;
+main#root {
+  position: relative;
 }
 
 .songBar-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 audio {
-    width: 100%;
+  width: 100%;
 }
 
 section.songBar-container-parts {
-    width: 1240px;
-    margin: 0 auto;
+  width: 1240px;
+  margin: 0 auto;
 }
 
 input[type="range"] {
-    width: 100%;
+  width: 100%;
 }
 
 .songBar-control {
-    padding: 10px;
+  padding: 10px;
 }
 
-.songBar-album-image-info{
+.songBar-album-image-info {
   display: flex;
   flex-direction: column;
 }
-.songBar-album-image-info p{
+.songBar-album-image-info p {
   font-size: 11px;
-  color:rgb(65, 65, 65);
+  color: rgb(65, 65, 65);
   margin: 0;
   padding: 5px;
   box-sizing: border-box;
 }
-.song-bar-info-container{
+.song-bar-info-container {
   display: flex;
+  z-index: 2;
 }
 
-.orange{
-  color: #f50
+.orange {
+  color: #f50;
 }
 
 .songBar-control {
@@ -103,9 +101,8 @@ input[type="range"] {
   cursor: pointer;
 }
 button:focus {
-  outline:0;
+  outline: 0;
 }
 a:focus {
-  outline:0;
+  outline: 0;
 }
-

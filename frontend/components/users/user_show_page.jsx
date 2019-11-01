@@ -10,8 +10,8 @@ class UserShowPage extends React.Component {
     this.state = {
       playStatus: this.props.playing,
       profileImageUrl: null,
-      uploadButton: false,
-      username: ""
+      uploadButton: false
+
       // userPageId: this.props.user.id
     };
     this.mounted = false;
@@ -39,11 +39,7 @@ class UserShowPage extends React.Component {
   componentDidMount() {
     // debugger;
     this.props.fetchUser(this.props.match.params.userId);
-    debugger;
-    this.setState({
-      color: this.props.currentUserId % 360
-      // username: this.props.user.username
-    });
+    // debugger;
     this.mounted = true;
   }
 
@@ -83,32 +79,37 @@ class UserShowPage extends React.Component {
           <div key={song.id} className="medium-waveform-container">
             <img src={song.imageUrl} className="medium-image" />
             <div className="medium-info-container">
-              <img
-                id={song.id}
-                className="play-pause-show-medium"
-                onClick={this.toggle}
-                src={
-                  this.props.playing && song.id === this.props.currentSongId
-                    ? window.hivePause
-                    : window.hiveButton
-                }
-              />
-              <div className="medium-user-song-info">
-                <p className="username">{this.state.username}</p>
+              <div className="wave-container">
+                <div className="button-info">
+                  <img
+                    id={song.id}
+                    className="play-pause-show-medium"
+                    onClick={this.toggle}
+                    src={
+                      this.props.playing && song.id === this.props.currentSongId
+                        ? window.hivePause
+                        : window.hiveButton
+                    }
+                  />
+                  <div className="medium-user-song-info">
+                    <p className="username">{this.props.user.username}</p>
 
-                <Link to={`/songs/${song.id}`} className="songtitle">
-                  {song.title}
-                </Link>
+                    <Link to={`/songs/${song.id}`} className="songtitle">
+                      {song.title}
+                    </Link>
+                  </div>
+                </div>
+
+                <WaveForm song={song} fetchSong={this.props.fetchSong} />
               </div>
             </div>
-            <WaveForm song={song} fetchSong={this.props.fetchSong} />
           </div>
         );
       });
     }
     let profile;
     let info;
-
+    let username;
     if (this.mounted) {
       if (this.props.user) {
         info = (
@@ -121,7 +122,7 @@ class UserShowPage extends React.Component {
           styleImage = {
             "background-image": `url(${this.props.user.profileImageUrl})` || " "
           };
-          debugger;
+          // debugger;
           profile = (
             <div className="user-image-container">
               <div
@@ -148,7 +149,7 @@ class UserShowPage extends React.Component {
           this.props.currentUserId === this.props.user.id &&
           !this.state.profileImageUrl
         ) {
-          debugger;
+          // debugger;
           profile = (
             <div className="profile-pic">
               {initials}
