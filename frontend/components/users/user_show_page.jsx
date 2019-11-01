@@ -10,7 +10,8 @@ class UserShowPage extends React.Component {
     this.state = {
       playStatus: this.props.playing,
       profileImageUrl: null,
-      uploadButton: false
+      uploadButton: false,
+      username: ""
       // userPageId: this.props.user.id
     };
     this.mounted = false;
@@ -37,10 +38,11 @@ class UserShowPage extends React.Component {
 
   componentDidMount() {
     // debugger;
-    this.props.fetchUser(this.props.match.params.userId || "");
+    this.props.fetchUser(this.props.match.params.userId);
     debugger;
     this.setState({
       color: this.props.currentUserId % 360
+      // username: this.props.user.username
     });
     this.mounted = true;
   }
@@ -92,7 +94,7 @@ class UserShowPage extends React.Component {
                 }
               />
               <div className="medium-user-song-info">
-                <p className="username">{this.props.user.username}</p>
+                <p className="username">{this.state.username}</p>
 
                 <Link to={`/songs/${song.id}`} className="songtitle">
                   {song.title}
@@ -106,53 +108,60 @@ class UserShowPage extends React.Component {
     }
     let profile;
     let info;
-    if (this.props.user) {
-      info = (
-        <div className="user-info">
-          <p className="user-title">{this.props.user.username}</p>
-        </div>
-      );
-      let initials = this.props.user.username[0].toUpperCase();
-      if (this.props.user.profileImageUrl) {
-        styleImage = {
-          "background-image": `url(${this.props.user.profileImageUrl})` || " "
-        };
-        profile = (
-          <div className="user-image-container">
-            <div
-              className="user-image"
-              style={styleImage}
-              onMouseEnter={this.showUploadButton}
-              onMouseLeave={this.hideUploadButton}
-            >
-              <label
-                className={
-                  this.state.uploadButton
-                    ? "custom-image-upload"
-                    : "custom-image-upload hide"
-                }
+
+    if (this.mounted) {
+      if (this.props.user) {
+        info = (
+          <div className="user-info">
+            <p className="user-title">{this.props.user.username}</p>
+          </div>
+        );
+        let initials = this.props.user.username[0].toUpperCase();
+        if (this.props.user.profileImageUrl) {
+          styleImage = {
+            "background-image": `url(${this.props.user.profileImageUrl})` || " "
+          };
+          debugger;
+          profile = (
+            <div className="user-image-container">
+              <div
+                className="user-image"
+                style={styleImage}
+                onMouseEnter={this.showUploadButton}
+                onMouseLeave={this.hideUploadButton}
               >
-                <i className="fas fa-camera"></i>
-                <p>Upload image</p>
+                <label
+                  className={
+                    this.state.uploadButton
+                      ? "custom-image-upload"
+                      : "custom-image-upload hide"
+                  }
+                >
+                  <i className="fas fa-camera"></i>
+                  <p>Upload image</p>
+                  <input type="file" onChange={this.handleImageFile} />
+                </label>
+              </div>
+            </div>
+          );
+        } else if (
+          this.props.currentUserId === this.props.user.id &&
+          !this.state.profileImageUrl
+        ) {
+          debugger;
+          profile = (
+            <div className="profile-pic">
+              {initials}
+              <i className="fas fa-camera"></i>
+              <label className="custom-image-upload">
+                Upload image
                 <input type="file" onChange={this.handleImageFile} />
               </label>
             </div>
-          </div>
-        );
-      } else if (
-        this.props.currentUserId === this.props.user.id &&
-        !this.state.profileImageUrl
-      ) {
-        profile = (
-          <div className="profile-pic">
-            {initials}
-            <i className="fas fa-camera"></i>
-            <label className="custom-image-upload">
-              Upload image
-              <input type="file" onChange={this.handleImageFile} />
-            </label>
-          </div>
-        );
+          );
+        } else {
+          profile = <div className="profile-pic">{initials}</div>;
+        }
       }
     }
 
@@ -160,11 +169,11 @@ class UserShowPage extends React.Component {
       <div className="user-page-container">
         <div className="user-show-page" style={styleColor}>
           <div className="hero-user-display">
-            {profile}
-            {info}
+            {profile || ""}
+            {info || ""}
           </div>
         </div>
-        {songs}
+        {songs || ""}
       </div>
     );
   }
