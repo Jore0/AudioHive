@@ -80,22 +80,24 @@ class WaveForm extends React.Component {
     let currentTime;
     let totalLength;
     let loader;
-
-    this.props.playing && song.id === this.props.currentSongId;
-    if (
-      this.wavesurfer &&
-      this.props.playing &&
-      song.id === this.props.currentSongId
-    ) {
-      // debugger
-      this.wavesurfer.seekTo(this.props.currentTime);
+    if (this.wavesurfer) {
+      this.seekBar.current.value = 0;
       currentTime = this.secondsToMinutes(
         this.props.currentTime * this.wavesurfer.getDuration()
       );
-      maxy = this.wavesurfer.getDuration();
       totalLength = this.secondsToMinutes(this.wavesurfer.getDuration());
+    }
+    if (
+      this.wavesurfer &&
+      this.props.playing &&
+      this.props.song.id === this.props.currentSongId
+    ) {
+      this.wavesurfer.seekTo(this.props.currentTime);
+
+      maxy = this.wavesurfer.getDuration();
+
       this.seekBar.current.value =
-        this.props.currentTime * this.wavesurfer.getDuration();
+        this.props.currentTime * this.wavesurfer.getDuration() || "0";
     }
     if (this.state.loading) {
       loader = (
@@ -137,7 +139,9 @@ const msp = (state, ownProps) => {
   return {
     currentUserId: state.session.id,
     currentSong: state.entities.songs[state.ui.currentSong.id],
-    currentTime: state.ui.currentSong.currentTime
+    currentTime: state.ui.currentSong.currentTime,
+    currentSongId: state.ui.currentSong.id,
+    playing: state.ui.currentSong.playing
   };
 };
 

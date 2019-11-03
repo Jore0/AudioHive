@@ -89,7 +89,6 @@ input[type="range"] {
 }
 .song-bar-info-container {
   display: flex;
-  z-index: 2;
 }
 
 .orange {
@@ -105,4 +104,7 @@ button:focus {
 }
 a:focus {
   outline: 0;
+}
+.songBar-container {
+  z-index: 2;
 }
