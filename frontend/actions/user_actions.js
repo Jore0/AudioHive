@@ -3,7 +3,7 @@ export const RECEIVE_USER = "RECEIVE_USER";
 export const UPDATE_USER = "UPDATE_USER";
 
 const receiveUser = payload => {
-  debugger;
+  // debugger;
   return {
     type: RECEIVE_USER,
     songs: payload.songs || {},

@@ -12,7 +12,7 @@ import UserShowPageContainer from "./users/user_show_page_container";
 import { Footer } from "./footer/footer";
 const App = () => (
   <>
-    <AuthRoute component={LoginNavContainer} />
+    <AuthRoute exact path="/" component={LoginNavContainer} />
 
     <NavBarContainer />
     <Modal />
