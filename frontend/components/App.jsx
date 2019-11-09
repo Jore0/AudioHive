@@ -27,11 +27,11 @@ const App = () => (
     </Switch>
     <SongBar />
 
-    <footer>
+    {/* <footer>
       <Link to="https://github.com/Jore0/AudioHive" target="_blank">
         <img src={window.github} />
       </Link>
-    </footer>
+    </footer> */}
   </>
 );
 

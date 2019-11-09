@@ -7,47 +7,46 @@
   margin: 0;
   left: 0;
   display: flex;
-  color:#ccc;
+  color: #ccc;
   justify-content: center;
   font-size: 14px;
-  
 }
-.inner-login-nav{
+.inner-login-nav {
   width: 1240px;
   display: flex;
   justify-content: space-evenly;
 }
-.header-middle, .header-left, .header-right {
+.header-middle,
+.header-left,
+.header-right {
   display: flex;
 }
-.header-middle{
+.header-middle {
   justify-content: center;
   align-content: center;
   align-items: center;
   height: 45px;
 }
-.inner-login-nav a:hover{
+.inner-login-nav a:hover {
   color: white;
-} 
-.inner-login-nav a{
-  color:#ccc;
-text-decoration: none;
-} 
+}
+.inner-login-nav a {
+  color: #ccc;
+  text-decoration: none;
+}
 
 .login-nav ul {
   display: flex;
 }
 
-
 .header-search-form {
   width: 450px;
-  height:25px;
+  height: 25px;
   background: #ffffff;
   border-radius: 6px;
   flex-direction: row;
   // padding: 9px 10px 8px;
   box-sizing: border-box;
-  
 }
 .header-search-form input[type="search"] {
   width: 90%;
@@ -57,9 +56,7 @@ text-decoration: none;
   padding: 5px 7px;
   background: #e5e5e5;
   box-sizing: border-box;
- 
 }
-
 
 button.search-button {
   width: auto;
@@ -70,7 +67,8 @@ button.search-button {
   padding: 20px;
   border-right: 0.5px solid #111;
 }
-.header-left-items, .header-right{
+.header-left-items,
+.header-right {
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -84,42 +82,36 @@ button.search-button {
   padding: 0px 20px;
 }
 
-
-// main#root {
-//     box-sizing: border-box;
-// }
-
 a.header-logo-left {
-    align-items: center;
-    display: flex;
+  align-items: center;
+  display: flex;
 }
 
-
 .header-left {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 form.header-search-form {
-    display: flex;
-    width: auto;
-    flex: 1;
+  display: flex;
+  width: auto;
+  flex: 1;
 }
 
 form.header-search-form input[type="search"] {
-    border-bottom-left-radius: 6px;
-    border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
 }
 
 .header-middle {
-    padding: 0px 20px;
-    flex: 1;
+  padding: 0px 20px;
+  flex: 1;
 }
 
 .header-search-form input[type="search"] {
-    width: 100%;
+  width: 100%;
 }
 
 button.search-button {
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 }

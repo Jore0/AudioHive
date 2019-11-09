@@ -1,8 +1,8 @@
 import React from "react";
 import SongButton from "../song_button/song_button";
 import SongCarousel from "../song_button/song_carousel";
-import SongBar from "../songbar/songbar_container";
 import { withRouter } from "react-router-dom";
+import { Footer } from "../footer/footer";
 class DiscoverPage extends React.Component {
   constructor(props) {
     super(props);
@@ -39,6 +39,7 @@ class DiscoverPage extends React.Component {
             />
           </div>
         </div>
+        <Footer />
       </>
     );
   }
