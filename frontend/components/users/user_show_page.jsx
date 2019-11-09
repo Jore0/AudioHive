@@ -153,11 +153,24 @@ class UserShowPage extends React.Component {
           profile = (
             <div className="profile-pic">
               {initials}
-              <i className="fas fa-camera"></i>
-              <label className="custom-image-upload">
-                Upload image
-                <input type="file" onChange={this.handleImageFile} />
-              </label>
+              <div
+                className="user-image"
+                style={styleImage}
+                onMouseEnter={this.showUploadButton}
+                onMouseLeave={this.hideUploadButton}
+              >
+                <label
+                  className={
+                    this.state.uploadButton
+                      ? "custom-image-upload"
+                      : "custom-image-upload hide"
+                  }
+                >
+                  <i className="fas fa-camera"></i>
+                  <p>Upload image</p>
+                  <input type="file" onChange={this.handleImageFile} />
+                </label>
+              </div>
             </div>
           );
         } else {
