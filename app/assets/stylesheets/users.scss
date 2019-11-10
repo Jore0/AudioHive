@@ -32,3 +32,17 @@
   color: #fff;
   font-weight: 100;
 }
+
+.profile-pic {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-pic > h1 {
+  position: relative;
+}
+
+.user-image {
+  z-index: 1;
+  position: absolute;
+}

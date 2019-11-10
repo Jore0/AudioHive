@@ -3,6 +3,7 @@ import WaveForm from "../waveform/waveform";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { updateCurrentSongTime } from "../../actions/current_song_actions";
+import { Footer } from "../footer/footer";
 
 class UserShowPage extends React.Component {
   constructor(props) {
@@ -11,8 +12,6 @@ class UserShowPage extends React.Component {
       playStatus: this.props.playing,
       profileImageUrl: null,
       uploadButton: false
-
-      // userPageId: this.props.user.id
     };
     this.mounted = false;
     this.toggle = this.toggle.bind(this);
@@ -72,7 +71,7 @@ class UserShowPage extends React.Component {
         </Link>
         ;
       </div>;
-    } else {
+    } else if (this.mounted) {
       songs = this.props.songs.map(song => {
         // debugger;
         return (
@@ -117,7 +116,8 @@ class UserShowPage extends React.Component {
             <p className="user-title">{this.props.user.username}</p>
           </div>
         );
-        let initials = this.props.user.username[0].toUpperCase();
+        let initials = <h1>{this.props.user.username[0].toUpperCase()}</h1>;
+
         if (this.props.user.profileImageUrl) {
           styleImage = {
             "background-image": `url(${this.props.user.profileImageUrl})` || " "
@@ -180,15 +180,18 @@ class UserShowPage extends React.Component {
     }
 
     return (
-      <div className="user-page-container">
-        <div className="user-show-page" style={styleColor}>
-          <div className="hero-user-display">
-            {profile || ""}
-            {info || ""}
+      <>
+        <div className="user-page-container">
+          <div className="user-show-page" style={styleColor}>
+            <div className="hero-user-display">
+              {profile || ""}
+              {info || ""}
+            </div>
           </div>
+          {songs || ""}
         </div>
-        {songs || ""}
-      </div>
+        <Footer />
+      </>
     );
   }
 }
