@@ -2,6 +2,7 @@ import React from "react";
 import SongButton from "../song_button/song_button";
 import SongCarousel from "../song_button/song_carousel";
 import { Link } from "react-router-dom";
+import { Footer } from "../footer/footer";
 class LoginNav extends React.Component {
   constructor(props) {
     super(props);
@@ -75,6 +76,8 @@ class LoginNav extends React.Component {
               />
             </div>
           </div>
+
+          <Footer />
         </>
       );
     }
