@@ -20,12 +20,8 @@
 .songBar-album-image {
   height: 49px;
   width: 49px;
-  // display: inline-block;
   cursor: pointer;
 }
-// max-height: 50px;
-//     padding: 15px;
-//     box-sizing: border-box;
 
 .songBar-control {
   max-height: 100%;
@@ -69,7 +65,7 @@ section.songBar-container-parts {
 }
 
 input[type="range"] {
-  width: 100%;
+  width: 97%;
 }
 
 .songBar-control {

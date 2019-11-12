@@ -24,6 +24,7 @@ class CommentIndex extends React.Component {
         />
       );
     });
+    const numComments = Object.values(this.props.comments).length;
     const userImage = this.props.currentUser.profileImageUrl ? (
       <img src={this.props.currentUser.profileImageUrl} alt="" />
     ) : (
@@ -35,17 +36,24 @@ class CommentIndex extends React.Component {
     ) : null;
     return (
       <div className="comments-container">
-        {songOwnerImage}
         <div className="comment-form-container">
-          {userImage}
-          <form action="">
-            <input type="text" placeholder="Write a comment" />
-          </form>
+          <div className="comment-form">
+            {userImage}
+            <form action="">
+              <input type="text" placeholder="Write a comment" />
+            </form>
+          </div>
+          <hr />
+          <div className="inner-comment-container">
+            {songOwnerImage}
+            <div className="right-comment-container">
+              <i className="fas fa-comment">
+                <span className="comments"> {numComments} comments</span>
+              </i>
+              <div className="comments-index-container">{comments}</div>
+            </div>
+          </div>
         </div>
-
-        <hr />
-
-        <div className="comments-index-container">{comments}</div>
       </div>
     );
   }

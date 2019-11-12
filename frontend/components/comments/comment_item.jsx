@@ -8,16 +8,19 @@ class CommentItem extends React.Component {
   }
   render() {
     return (
-      <div className="comment-index-container">
-        <img src={this.props.imageUrl} className="profile-comment-pic" />
-        <div className="comment-information">
-          <div className="comment-owner">
-            <p>{this.props.username}</p>
-            <p>{this.props.song_time}</p>
+      <>
+        <div className="single-comment-container">
+          <img src={this.props.imageUrl} className="profile-comment-pic" />
+          <div className="comment-information">
+            <div className="comment-owner">
+              <p>
+                {this.props.username} at {this.props.song_time}{" "}
+              </p>
+            </div>
+            <p>{this.props.body}</p>
           </div>
-          <p>{this.props.body}</p>
         </div>
-      </div>
+      </>
     );
   }
 }
