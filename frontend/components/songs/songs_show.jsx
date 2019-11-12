@@ -37,6 +37,7 @@ class SongShowPage extends React.Component {
         currentUser={this.props.currentUser}
         comments={comments}
         songId={this.props.song.id}
+        songOwner={this.props.song.songOwner}
         currentUserId={this.props.currentUserId}
       />
     ) : null;

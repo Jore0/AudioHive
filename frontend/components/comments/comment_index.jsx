@@ -70,17 +70,24 @@ class CommentIndex extends React.Component {
     const userImage = this.props.currentUser.profileImageUrl ? (
       <img src={this.props.currentUser.profileImageUrl} alt="" />
     ) : (
-      <p> {this.props.currentUser.username[0].toUpperCase()}</p>
+      <div className="small-profile-pic-square">
+        <p> {this.props.currentUser.username[0].toUpperCase()}</p>
+      </div>
     );
     debugger;
     const songOwnerImage = this.props.ownerImage ? (
       <img src={this.props.ownerImage} className="songOwnerImage" />
-    ) : null;
+    ) : (
+      <div className="small-profile-pic">
+        <p> {this.props.songOwner[0].toUpperCase()}</p>
+      </div>
+    );
     return (
       <div className="comments-container">
         <div className="comment-form-container">
           <div className="comment-form">
             {userImage}
+
             <form onSubmit={this.handleSubmit}>
               <input
                 type="text"
@@ -93,7 +100,11 @@ class CommentIndex extends React.Component {
           </div>
           <hr />
           <div className="inner-comment-container">
-            {songOwnerImage}
+            <div className="left-comment-container">
+              {songOwnerImage}
+              <p>Creator: {this.props.songOwner}</p>
+            </div>
+
             <div className="right-comment-container">
               <i className="fas fa-comment">
                 <span className="comments"> {numComments} comments</span>
