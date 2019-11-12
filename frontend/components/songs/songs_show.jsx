@@ -2,6 +2,7 @@ import React from "react";
 import WaveForm from "../waveform/waveform";
 import { withRouter } from "react-router-dom";
 import CommentIndex from "../comments/comment_index";
+import { Footer } from "../footer/footer";
 class SongShowPage extends React.Component {
   constructor(props) {
     super(props);
@@ -75,6 +76,7 @@ class SongShowPage extends React.Component {
           </div>
         </div>
         {comments}
+        <Footer />
       </>
     );
   }

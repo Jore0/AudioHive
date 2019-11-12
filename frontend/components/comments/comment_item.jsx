@@ -14,7 +14,8 @@ class CommentItem extends React.Component {
           <div className="comment-information">
             <div className="comment-owner">
               <p>
-                {this.props.username} at {this.props.song_time}{" "}
+                <span className="grey">{this.props.username}</span> at{" "}
+                <span className="grey">{this.props.song_time}</span>
               </p>
             </div>
             <p>{this.props.body}</p>

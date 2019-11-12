@@ -106,7 +106,7 @@ const msp = state => {
     playing: state.ui.currentSong.playing,
     currentSongId: state.ui.currentSong.id,
     currentlyPlaying: state.ui.currentSong.currentlyPlaying,
-    curentTime: state.ui.currentSong.currentTime
+    currentTime: state.ui.currentSong.currentTime
   };
 };
 
