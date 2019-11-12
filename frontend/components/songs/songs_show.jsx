@@ -1,7 +1,7 @@
 import React from "react";
 import WaveForm from "../waveform/waveform";
 import { withRouter } from "react-router-dom";
-
+import CommentIndex from "../comments/comment_index";
 class SongShowPage extends React.Component {
   constructor(props) {
     super(props);
@@ -15,24 +15,30 @@ class SongShowPage extends React.Component {
   }
 
   componentDidMount() {
-    // debugger
+    this.props.fetchComments(this.props.match.params.songId);
     this.props.fetchSong(this.props.match.params.songId);
   }
   toggle() {
     if (!this.props.playing) {
-      // status = 'pause';
       this.props.playSong();
     } else {
-      // status = 'play'9k
       this.props.pauseSong();
     }
-    // debugger
+
     this.setState({ playStatus: !this.props.playing });
     this.props.receiveCurrentSong(this.props.song);
   }
 
   render() {
-    // debugger
+    const comments = this.props.song ? (
+      <CommentIndex
+        ownerImage={this.props.song.userImage}
+        currentUser={this.props.currentUser}
+        comments={comments}
+        songId={this.props.song.id}
+        currentUserId={this.props.currentUserId}
+      />
+    ) : null;
     let waveform;
     let info;
     let genre;
@@ -49,24 +55,27 @@ class SongShowPage extends React.Component {
       genre = <p className="play-pause-show-genre">#{this.props.song.genre}</p>;
     }
     return (
-      <div className="song-show-page">
-        <div className="hero-song-display">
-          <div className="play-pause-show-container">
+      <>
+        <div className="song-show-page">
+          <div className="hero-song-display">
+            <div className="play-pause-show-container">
+              <img
+                className="play-pause-show"
+                onClick={this.toggle}
+                src={this.props.playing ? window.hivePause : window.hiveButton}
+              />
+              {info}
+            </div>
+            {genre}
+            <div className="wave-container">{waveform}</div>
             <img
-              className="play-pause-show"
-              onClick={this.toggle}
-              src={this.props.playing ? window.hivePause : window.hiveButton}
+              src={this.props.song ? this.props.song.imageUrl : ""}
+              className="large-ablum-cover"
             />
-            {info}
           </div>
-          {genre}
-          <div className="wave-container">{waveform}</div>
-          <img
-            src={this.props.song ? this.props.song.imageUrl : ""}
-            className="large-ablum-cover"
-          />
         </div>
-      </div>
+        {comments}
+      </>
     );
   }
 }

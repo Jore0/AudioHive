@@ -30,7 +30,7 @@ class Api::CommentsController < ApplicationController
 
     private 
     def comment_params
-        params.require(:comment).permit(:body, :song_time, :song_id)
+        params.require(:comment).permit(:body, :song_time, :song_id, :parent_comment_id)
     end 
 
 

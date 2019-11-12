@@ -1,7 +1,5 @@
 .song-show-page {
-  margin-top: 50px;
-  // min-height: 380px;
-  // max-height: 380px;
+  margin-top: 46px;
   background: linear-gradient(135deg, #846170, #70929c);
   box-sizing: border-box;
   padding: 20px 20px 20px 30px;
@@ -76,11 +74,13 @@
 }
 .wave-form-times {
   position: relative;
-  top: 25%;
+  top: 12%;
   margin: 0;
   display: flex;
   justify-content: space-between;
   z-index: 1;
+  padding: 13px;
+  padding-left: 0px;
 }
 
 .wave-form-orange {
@@ -150,4 +150,8 @@ input[type="range"]::-webkit-slider-thumb {
 
 input.blackSeekbar {
   top: 55%;
+}
+
+input.blackSeekbar {
+  top: 34%;
 }

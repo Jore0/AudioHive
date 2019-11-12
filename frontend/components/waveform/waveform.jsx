@@ -33,16 +33,6 @@ class WaveForm extends React.Component {
     this.is_Mounted = false;
   }
 
-  // componentDidUpdate(){
-  //     if (this.props.song.title === this.props.currentSong.title && this.state.readyToPlay){
-  //         debugger
-  //         this.wavesurfer.seekTo(this.props.currentTime)
-  //     }else {
-  //         debugger
-  //         this.wavesurfer.seekTo(0);
-  //     }
-  // }
-
   StartPlay() {
     this.wavesurfer.playPause();
   }
