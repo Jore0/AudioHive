@@ -59,6 +59,9 @@ class UserShowPage extends React.Component {
     };
     let styleImage;
     let songs;
+    let name = this.props.user ? (
+      <p className="username">{this.props.user.username}</p>
+    ) : null;
     if (this.props.songs.length < 1 && this.props.currentUserId) {
       <Link to="/upload" className={"orange-button"}>
         Upload now
@@ -72,39 +75,42 @@ class UserShowPage extends React.Component {
         ;
       </div>;
     } else if (this.mounted) {
-      songs = this.props.songs.map(song => {
-        // debugger;
-        return (
-          <div key={song.id} className="medium-waveform-container">
-            <img src={song.imageUrl} className="medium-image" />
-            <div className="medium-info-container">
-              <div className="wave-container">
-                <div className="button-info">
-                  <img
-                    id={song.id}
-                    className="play-pause-show-medium"
-                    onClick={this.toggle}
-                    src={
-                      this.props.playing && song.id === this.props.currentSongId
-                        ? window.hivePause
-                        : window.hiveButton
-                    }
-                  />
-                  <div className="medium-user-song-info">
-                    <p className="username">{this.props.user.username}</p>
-
-                    <Link to={`/songs/${song.id}`} className="songtitle">
-                      {song.title}
-                    </Link>
+      debugger;
+      if (this.props.songs.length >= 1) {
+        songs = this.props.songs.map(song => {
+          // debugger;
+          return (
+            <div key={song.id} className="medium-waveform-container">
+              <img src={song.imageUrl} className="medium-image" />
+              <div className="medium-info-container">
+                <div className="wave-container">
+                  <div className="button-info">
+                    <img
+                      id={song.id}
+                      className="play-pause-show-medium"
+                      onClick={this.toggle}
+                      src={
+                        this.props.playing &&
+                        song.id === this.props.currentSongId
+                          ? window.hivePause
+                          : window.hiveButton
+                      }
+                    />
+                    <div className="medium-user-song-info">
+                      {name}
+                      <Link to={`/songs/${song.id}`} className="songtitle">
+                        {song.title}
+                      </Link>
+                    </div>
                   </div>
-                </div>
 
-                <WaveForm song={song} fetchSong={this.props.fetchSong} />
+                  <WaveForm song={song} fetchSong={this.props.fetchSong} />
+                </div>
               </div>
             </div>
-          </div>
-        );
-      });
+          );
+        });
+      }
     }
     let profile;
     let info;
