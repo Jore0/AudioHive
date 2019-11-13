@@ -39,9 +39,12 @@ class NavBar extends React.Component {
                       </NavLink>
                     </li>
                     <li>
-                      <Link to="/discover" className="left-nav-button">
-                        Stream{" "}
-                      </Link>
+                      <a
+                        href="https://www.linkedin.com/in/jose-orea/"
+                        className="left-nav-button"
+                      >
+                        Linkedin{" "}
+                      </a>
                     </li>
                     <li>
                       <Link to="/discover" className="left-nav-button">
@@ -53,7 +56,7 @@ class NavBar extends React.Component {
               </div>
               <div className="header-middle">
                 <form className="header-search-form">
-                  <input type="search" placeholder="search" />
+                  <input type="search" placeholder="Search Coming Soon" />
                   <button className="search-button">
                     <i className="fas fa-search"></i>
                   </button>

@@ -34,6 +34,15 @@ class DiscoverPage extends React.Component {
               songs={songs}
               receiveCurrentSong={this.props.receiveCurrentSong}
             />
+            <hr />
+            <h1 className="song-list-header">AudioHive Charts</h1>
+            <p className="song-list-subheader">
+              The most played tracks on AudioHive this week{" "}
+            </p>
+            <SongCarousel
+              songs={songs}
+              receiveCurrentSong={this.props.receiveCurrentSong}
+            />
           </div>
         </div>
         <Footer />
