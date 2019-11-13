@@ -154,3 +154,15 @@ i.fas.fa-comment {
   align-items: center;
   justify-content: center;
 }
+
+.small-profile-pic-circle {
+  background-color: rgb(31, 144, 220);
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+}

@@ -79,9 +79,12 @@ button.search-button {
 }
 
 .header-right-items > * {
+  // display: flex;
   padding: 0px 20px;
 }
-
+.header-right-items {
+  display: flex;
+}
 a.header-logo-left {
   // align-items: center;
   display: flex;
@@ -114,4 +117,8 @@ form.header-search-form input[type="search"] {
 button.search-button {
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
+}
+
+a.right-nav-button {
+  padding: 8px 0px 0px 19px;
 }

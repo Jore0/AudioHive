@@ -9,6 +9,17 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const userImage = this.props.currentUser.profileImageUrl ? (
+      <img
+        className="small-profile-pic-circle"
+        src={this.props.currentUser.profileImageUrl}
+        alt=""
+      />
+    ) : (
+      <div className="small-profile-pic-circle">
+        <p> {this.props.currentUser.username[0].toUpperCase()}</p>
+      </div>
+    );
     if (!this.props.currentUser) {
       return null;
     } else {
@@ -59,11 +70,15 @@ class NavBar extends React.Component {
                       this.props.currentUser.user.id}`}
                     className="right-nav-button"
                   >
+                    {userImage}
+                  </Link>
+                  <Link
+                    to={`/users/${this.props.currentUser.id ||
+                      this.props.currentUser.user.id}`}
+                    className="right-nav-button"
+                  >
                     {this.props.currentUser.username ||
                       this.props.currentUser.user.username}
-                  </Link>
-                  <Link to="/" className="right-nav-button">
-                    <i className="fas fa-bell"></i>
                   </Link>
                   <Link to="/" className="right-nav-button">
                     <i className="fas fa-envelope"></i>
