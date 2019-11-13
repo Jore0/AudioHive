@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchComments, createComment } from "../../actions/comment_actions";
 import CommentItem from "./comment_item";
+import { Link } from "react-router-dom";
 
 class CommentIndex extends React.Component {
   constructor(props) {
@@ -11,14 +12,13 @@ class CommentIndex extends React.Component {
       song_time: "00:00",
       song_id: this.props.songId
     };
-    // this.form = React.createRef();
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.clearform = this.clearform.bind(this);
     this.createSongTime = this.createSongTime.bind(this);
   }
   secondsToMinutes(time) {
-    // debugger
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
@@ -29,41 +29,39 @@ class CommentIndex extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let comment = Object.assign({}, this.state);
-    debugger;
+
     this.props.createComment(comment).then(() => {
       this.clearform();
       this.props.fetchComments(this.state.song_id);
     });
   }
   update(field) {
-    // debugger;
     return e => this.setState({ [field]: e.target.value });
   }
   createSongTime() {
-    // debugger;
     if (this.props.songId === this.props.currentSongId) {
-      // debugger;
       if (typeof this.props.currentTime === "undefined") {
         this.setState({
           song_time: "00:00"
         });
       } else {
-        debugger;
         let time = this.secondsToMinutes(this.props.currentTimeMins);
         this.setState({
           song_time: time
         });
-        debugger;
       }
     }
-    // // else {
-    // //   debugger;
-    // //   this.setState({ song_time: "00:00" });
-    // }
   }
 
   render() {
-    // debugger;
+    const creatorLink = this.props.songOwnerId ? (
+      <p>
+        Creator:{" "}
+        <Link to={`/users/${this.props.songOwnerId}`}>
+          {this.props.songOwner}
+        </Link>
+      </p>
+    ) : null;
     const comments = Object.values(this.props.comments).map(comment => {
       return (
         <CommentItem
@@ -87,7 +85,7 @@ class CommentIndex extends React.Component {
         <p> {this.props.currentUser.username[0].toUpperCase()}</p>
       </div>
     );
-    // debugger;
+
     const songOwnerImage = this.props.ownerImage ? (
       <img src={this.props.ownerImage} className="songOwnerImage" />
     ) : (
@@ -115,7 +113,7 @@ class CommentIndex extends React.Component {
           <div className="inner-comment-container">
             <div className="left-comment-container">
               {songOwnerImage}
-              <p>Creator: {this.props.songOwner}</p>
+              {creatorLink}
             </div>
 
             <div className="right-comment-container">

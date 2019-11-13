@@ -38,7 +38,6 @@ class WaveForm extends React.Component {
   }
 
   showWaveSurfer() {
-    // debugger
     this.wavesurfer = WaveSurfer.create({
       container: this.waveform.current,
       waveColor: "#cdcfd1",
@@ -52,14 +51,12 @@ class WaveForm extends React.Component {
     this.wavesurfer.load(this.props.song.songUrl);
 
     this.wavesurfer.on("ready", () => {
-      // debugger;
       if (this.is_Mounted) {
         this.setState({ readyToPlay: true, loading: false });
       }
     });
   }
   secondsToMinutes(time) {
-    // debugger
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
@@ -105,7 +102,7 @@ class WaveForm extends React.Component {
       <>
         <div className="wave-form-container">
           <input
-            className="blackSeekbar"
+            className={this.props.user ? "blackSeekbar plus" : "blackSeekbar"}
             ref={this.seekBar}
             type="range"
             min="0"
@@ -125,7 +122,6 @@ class WaveForm extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-  // debugger
   return {
     currentUserId: state.session.id,
     currentSong: state.entities.songs[state.ui.currentSong.id],

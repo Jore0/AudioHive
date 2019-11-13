@@ -15,16 +15,9 @@ class SessionForm extends React.Component {
     return e => this.setState({ [field]: e.target.value });
   }
   handleSubmit(e) {
-    // debugger;
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    // debugger;
-    // this.props.history.push("/discover");
     this.props.processForm(user).then(this.props.closeModal);
-    // .then(songs => {
-    //   debugger;
-    //   return this.props.history.push("/discover");
-    // });
   }
 
   renderErrors() {

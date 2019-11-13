@@ -8,7 +8,6 @@ class LoginNav extends React.Component {
     super(props);
   }
   componentDidMount() {
-    // debugger;
     this.props.fetchSongs();
   }
   render() {

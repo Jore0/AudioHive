@@ -1,7 +1,7 @@
 class Api::SongsController < ApplicationController
 
     def show 
-        @song = Song.find(params[:id])
+        @song = Song.includes(:comments, :users).find(params[:id])
         render :show
     end 
 
@@ -13,7 +13,6 @@ class Api::SongsController < ApplicationController
    # Completed 200 OK in 51ms (Views: 45.9ms | ActiveRecord: 4.6ms)
     # Completed 200 OK in 399ms (Views: 299.1ms | ActiveRecord: 95.6ms)
     def create
-        # debugger
         @song = Song.new(song_params)
         if @song.save
             render :show

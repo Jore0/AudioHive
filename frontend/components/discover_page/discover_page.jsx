@@ -9,12 +9,10 @@ class DiscoverPage extends React.Component {
   }
 
   componentDidMount() {
-    // debugger;
     this.props.fetchSongs();
   }
 
   render() {
-    // debugger;
     const songs = this.props.songs.map(song => {
       return (
         <SongButton
@@ -24,7 +22,6 @@ class DiscoverPage extends React.Component {
         />
       );
     });
-    // debugger
     return (
       <>
         <div className="discover-page-container">

@@ -2,6 +2,7 @@ json.extract! comment, :id, :body, :song_time, :user_id, :song_id, :parent_comme
 
 json.username comment.user.username
 
+
 if comment.user.image_url.attached? 
   json.imageUrl url_for(comment.user.image_url)
 else 

@@ -10,9 +10,7 @@ class Api::UsersController < ApplicationController
     end 
 
     def show 
-        # debugger
         @user = User.find(params[:id])
-        # debugger
         if @user 
             render "api/users/show" 
         else 
@@ -20,10 +18,8 @@ class Api::UsersController < ApplicationController
         end 
     end 
 
-    def update 
-        # debugger 
+    def update  
         @user = User.find(params[:user][:id])
-        # debugger
         if @user.update(user_params)
             render "api/users/show" 
         else 

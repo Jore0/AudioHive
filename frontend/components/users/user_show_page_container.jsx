@@ -11,7 +11,6 @@ import {
 import { fetchUser, updateUser } from "../../actions/user_actions";
 
 const msp = (state, ownProps) => {
-  debugger;
   return {
     currentUserId: state.session.id,
     songs:
@@ -22,7 +21,6 @@ const msp = (state, ownProps) => {
             }
           )
         : Object.values(state.entities.songs),
-    // songs: Object.values(state.entities.songs),
     playing: state.ui.currentSong.playing,
     currentSongId: state.ui.currentSong.id,
     user: state.entities.users[ownProps.match.params.userId]

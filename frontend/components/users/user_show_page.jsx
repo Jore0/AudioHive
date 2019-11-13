@@ -31,14 +31,13 @@ class UserShowPage extends React.Component {
     const formData = new FormData();
     formData.append("user[id]", this.props.currentUserId);
     formData.append("user[image_url]", file);
-    // debugger;
+
     this.props.updateUser(formData);
   }
 
   componentDidMount() {
-    // debugger;
     this.props.fetchUser(this.props.match.params.userId);
-    // debugger;
+
     this.mounted = true;
   }
 
@@ -75,10 +74,8 @@ class UserShowPage extends React.Component {
         ;
       </div>;
     } else if (this.mounted) {
-      debugger;
       if (this.props.songs.length >= 1) {
         songs = this.props.songs.map(song => {
-          // debugger;
           return (
             <div key={song.id} className="medium-waveform-container">
               <img src={song.imageUrl} className="medium-image" />
@@ -104,7 +101,11 @@ class UserShowPage extends React.Component {
                     </div>
                   </div>
 
-                  <WaveForm song={song} fetchSong={this.props.fetchSong} />
+                  <WaveForm
+                    song={song}
+                    fetchSong={this.props.fetchSong}
+                    user={this.props.user}
+                  />
                 </div>
               </div>
             </div>
@@ -128,7 +129,7 @@ class UserShowPage extends React.Component {
           styleImage = {
             "background-image": `url(${this.props.user.profileImageUrl})` || " "
           };
-          // debugger;
+
           profile = (
             <div className="user-image-container">
               <div
@@ -155,7 +156,6 @@ class UserShowPage extends React.Component {
           this.props.currentUserId === this.props.user.id &&
           !this.state.profileImageUrl
         ) {
-          // debugger;
           profile = (
             <div className="profile-pic">
               {initials}

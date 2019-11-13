@@ -4,7 +4,6 @@ import { fetchSongs, fetchSong } from "../../actions/song_actions";
 import { receiveCurrentSong } from "../../actions/song_actions";
 
 const msp = state => {
-  //   debugger;
   return {
     songs: Object.values(state.entities.songs),
     currentSong: state.entities.songs[state.ui.currentSong]

@@ -7,7 +7,6 @@ class CommentItem extends React.Component {
     super(props);
   }
   render() {
-    debugger;
     return (
       <>
         <div className="single-comment-container">

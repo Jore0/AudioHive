@@ -6,7 +6,7 @@ import { Footer } from "../footer/footer";
 class SongShowPage extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
+
     this.state = {
       playStatus: this.props.playing,
       title: "",
@@ -38,6 +38,7 @@ class SongShowPage extends React.Component {
         comments={comments}
         songId={this.props.song.id}
         songOwner={this.props.song.songOwner}
+        songOwnerId={this.props.song.songOwnerId}
         currentUserId={this.props.currentUserId}
       />
     ) : null;

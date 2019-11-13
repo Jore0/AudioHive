@@ -6,7 +6,6 @@ import { receiveCurrentSong } from "../../actions/song_actions";
 import { openModal } from "../../actions/modal_actions";
 
 const msp = state => {
-  // debugger
   return {
     songs: Object.values(state.entities.songs),
     currentUser: state.entities.users[state.session.id]

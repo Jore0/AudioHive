@@ -29,9 +29,6 @@ class SongButton extends React.Component {
   }
 
   toggle() {
-    // let status = this.state.playStatus;
-    // debugger
-
     if (!this.props.playing) {
       // status = 'pause';
       this.props.playSong();
@@ -39,7 +36,6 @@ class SongButton extends React.Component {
       // status = 'play'9k
       this.props.pauseSong();
     }
-    // debugger
     this.setState({
       playStatus: !this.props.playing,
       playButton: !this.props.playing
@@ -48,14 +44,11 @@ class SongButton extends React.Component {
   }
 
   render() {
-    // debugger
     let togglebutton;
     const albumCover = {
       backgroundImage: `url(${this.props.song.imageUrl})`
     };
     if (this.state.playButton) {
-      // if (true){
-      // debugger
       togglebutton = (
         <img
           onMouseEnter={this.showPlayButton}
@@ -86,13 +79,14 @@ class SongButton extends React.Component {
             style={albumCover}
             onMouseEnter={this.showPlayButton}
             onMouseLeave={this.hidePlayButton}
-          >
-            {/* <audio id={this.props.song.title} src={this.props.song.songUrl} type="audio/mp3" preload="auto"/> */}
-          </Link>
-          {/* <div className=""> */}
+          ></Link>
+
           {togglebutton}
-          {/* </div> */}
-          <h1 className="song-detail">{this.props.song.title}</h1>
+          <Link className="song-detail" to={`/songs/${this.props.song.id}`}>
+            {" "}
+            {this.props.song.title}
+          </Link>
+          {/* <h1 className="song-detail"></h1> */}
           <h2 className="song-list-subheader">{this.props.song.artist}</h2>
         </div>
       </>

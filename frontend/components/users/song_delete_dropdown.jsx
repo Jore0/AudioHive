@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 class DeleteDropDown extends React.Component {
   constructor(props) {
-    // debugger
     super(props);
     this.state = {
       vis: false
@@ -55,7 +54,6 @@ class DeleteDropDown extends React.Component {
 }
 
 const msp = state => {
-  // debugger
   return {
     currentUser: state.entities.users[state.session.id],
     showMenu: false

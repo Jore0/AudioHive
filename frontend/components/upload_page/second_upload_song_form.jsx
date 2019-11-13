@@ -26,7 +26,7 @@ class SecondSongForm extends React.Component {
   dropHandler(e) {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
-    // debugger
+
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       this.setState({
@@ -35,7 +35,7 @@ class SecondSongForm extends React.Component {
         photoUrl: fileReader.result
       });
     };
-    // debugger
+
     if (file) {
       fileReader.readAsDataURL(file);
     } else {
@@ -49,7 +49,7 @@ class SecondSongForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    // debugger
+
     formData.append("song[song_url]", this.state.songFile);
     formData.append("song[description]", this.state.description);
     formData.append("song[release_date]", this.state.release_date);
@@ -73,19 +73,17 @@ class SecondSongForm extends React.Component {
     return e => this.setState({ [field]: e.target.value });
   }
   handleImageFile(e) {
-    // debugger;
     e.preventDefault();
     const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      // debugger;
       this.setState({
         photoFile: file,
         errors: [],
         photoUrl: fileReader.result
       });
     };
-    // debugger
+
     if (file) {
       fileReader.readAsDataURL(file);
     } else {
@@ -97,32 +95,15 @@ class SecondSongForm extends React.Component {
 
   dragOverHandler(e) {
     e.preventDefault();
-    // debugger
+
     this.setState({ dragged: true });
   }
   dragOverleave(e) {
     e.preventDefault();
-    // debugger
+
     this.setState({ dragged: false });
   }
 
-  // dropHandler(e) {
-
-  //     e.preventDefault()
-  //     const file = e.target.files[0]
-  //     const fileReader = new FileReader();
-  //     fileReader.onloadend = () => {
-  //         this.setState({ photoFile: file, errors: [], photoUrl: fileReader.result })
-  //     }
-  //     // debugger
-  //     if (file) {
-  //         fileReader.readAsDataURL(file);
-  //     } else {
-  //         this.setState({
-  //             errors: ['Please upload an image file']
-  //         })
-  //     }
-  // }
   render() {
     const preview = this.state.photoUrl ? (
       <img src={this.state.photoUrl} className="stock-photo" />

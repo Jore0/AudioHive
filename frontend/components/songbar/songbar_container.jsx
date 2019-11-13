@@ -12,7 +12,6 @@ import {
 } from "../../actions/current_song_actions";
 
 const msp = state => {
-  // debugger
   return {
     currentUser: state.entities.users[state.session.id],
     currentSong: state.entities.songs[state.ui.currentSong.id],

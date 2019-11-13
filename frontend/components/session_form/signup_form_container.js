@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { openModal, closeModal } from "../../actions/modal_actions";
 
 const msp = (state, ownProps) => ({
-  // debugger
   currentUser: state.entities.users[state.session.id],
   errors: state.errors.session,
   userEmail: state.session.currentUserEmail,

@@ -11,7 +11,6 @@ import {
 import { fetchComments } from "../../actions/comment_actions";
 
 const msp = (state, ownProps) => {
-  // debugger
   return {
     currentUser: state.entities.users[state.session.id],
     currentUserId: state.session.id,

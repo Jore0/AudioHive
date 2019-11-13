@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 class DropDown extends React.Component {
   constructor(props) {
-    // debugger
     super(props);
     this.state = {
       vis: false

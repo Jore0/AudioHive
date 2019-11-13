@@ -12,7 +12,6 @@ class NavBar extends React.Component {
     if (!this.props.currentUser) {
       return null;
     } else {
-      // debugger;
       return (
         <div className="logged-nav-container">
           <nav className="login-nav">

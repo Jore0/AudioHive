@@ -3,7 +3,7 @@ import React from "react";
 class SongBar extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
+
     this.state = {
       duration: 1,
       currentSong: "",
@@ -26,14 +26,12 @@ class SongBar extends React.Component {
     this.mute = this.mute.bind(this);
   }
   secondsToMinutes(time) {
-    // debugger
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
   }
 
   componentDidUpdate(prevProps) {
-    // debugger
     if (prevProps.currentSong !== this.props.currentSong) {
       this.setState({
         currentSong: this.props.currentSong,
@@ -43,17 +41,6 @@ class SongBar extends React.Component {
       prevProps.playing !== this.props.playing &&
       prevProps.currentSong === this.props.currentSong
     ) {
-      // debugger
-      // if (this.state.currentlyPlaying !== this.props.playing){
-      //     debugger
-      //     this.audio.current.pause()
-      //     this.setState({ currentlyPlaying: this.props.playing })
-      // }else{
-      //     debugger
-      //     this.audio.current.play()
-      //     this.setState({ currentlyPlaying: this.props.playing })
-
-      // }
       this.toggle();
     }
   }
@@ -61,7 +48,6 @@ class SongBar extends React.Component {
   componentDidMount() {
     this.setState({ readyToPlay: false, currentlyPlaying: false }, () => {
       this.audio.current.onloadedmetadata = () => {
-        // debugger
         this.setState(
           {
             readyToPlay: true,
@@ -128,10 +114,9 @@ class SongBar extends React.Component {
   }
 
   toggle() {
-    // debugger
     // this.props.playing
     let song = this.audio.current;
-    // debugger
+
     if (this.props.playing) {
       // status = 'pause';
       this.props.playSong();
@@ -155,15 +140,12 @@ class SongBar extends React.Component {
   }
 
   mute() {
-    // debugger
-
     if (!this.state.mute) {
       this.setState({ volume: this.volumeBar.current.value / 100 });
       this.audio.current.volume = 0.0;
       this.volumeBar.current.value = 0.0;
       this.setState({ mute: true });
     } else {
-      debugger;
       this.audio.current.volume = this.state.volume;
       this.volumeBar.current.value = this.state.volume * 100;
       this.setState({ mute: false });
@@ -181,7 +163,7 @@ class SongBar extends React.Component {
       : 0;
 
     let end = this.secondsToMinutes(this.state.duration);
-    // debugger
+
     let audioVisualPart = this.state.readyToPlay ? (
       <>
         <div className="songBar-container">
