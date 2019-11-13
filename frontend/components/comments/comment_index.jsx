@@ -11,9 +11,11 @@ class CommentIndex extends React.Component {
       song_time: "00:00",
       song_id: this.props.songId
     };
+    // this.form = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.clearform = this.clearform.bind(this);
+    this.createSongTime = this.createSongTime.bind(this);
   }
   secondsToMinutes(time) {
     // debugger
@@ -27,26 +29,37 @@ class CommentIndex extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let comment = Object.assign({}, this.state);
+    debugger;
     this.props.createComment(comment).then(() => {
       this.clearform();
       this.props.fetchComments(this.state.song_id);
     });
   }
   update(field) {
+    // debugger;
     return e => this.setState({ [field]: e.target.value });
   }
   createSongTime() {
+    // debugger;
     if (this.props.songId === this.props.currentSongId) {
+      // debugger;
       if (typeof this.props.currentTime === "undefined") {
-        song_time = "00:00";
-      } else {
         this.setState({
-          song_time: this.secondsToMinutes(this.props.currentTime)
+          song_time: "00:00"
         });
+      } else {
+        debugger;
+        let time = this.secondsToMinutes(this.props.currentTimeMins);
+        this.setState({
+          song_time: time
+        });
+        debugger;
       }
-    } else {
-      this.setState({ song_time: "00:00" });
     }
+    // // else {
+    // //   debugger;
+    // //   this.setState({ song_time: "00:00" });
+    // }
   }
 
   render() {
@@ -74,7 +87,7 @@ class CommentIndex extends React.Component {
         <p> {this.props.currentUser.username[0].toUpperCase()}</p>
       </div>
     );
-    debugger;
+    // debugger;
     const songOwnerImage = this.props.ownerImage ? (
       <img src={this.props.ownerImage} className="songOwnerImage" />
     ) : (
@@ -121,6 +134,7 @@ class CommentIndex extends React.Component {
 const msp = (state, ownProps) => ({
   comments: state.entities.comments,
   currentTime: state.ui.currentSong.currentTime,
+  currentTimeMins: state.ui.currentSong.currentTimeMins,
   currentSongId: state.ui.currentSong.id
 });
 

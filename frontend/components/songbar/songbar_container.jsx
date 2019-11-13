@@ -7,7 +7,8 @@ import {
   playSong,
   pauseSong,
   updateCurrentSongTime,
-  resetCurrentSong
+  resetCurrentSong,
+  currentSongTimeMins
 } from "../../actions/current_song_actions";
 
 const msp = state => {
@@ -27,7 +28,8 @@ const mdp = dispatch => ({
   pauseSong: () => dispatch(pauseSong()),
   updateCurrentSongTime: time => dispatch(updateCurrentSongTime(time)),
   resetCurrentSong: () => dispatch(resetCurrentSong()),
-  receiveCurrentSong: song => dispatch(receiveCurrentSong(song))
+  receiveCurrentSong: song => dispatch(receiveCurrentSong(song)),
+  currentSongTimeMins: min => dispatch(currentSongTimeMins(min))
 });
 
 export default connect(
