@@ -65,7 +65,11 @@ class SongShowPage extends React.Component {
               <img
                 className="play-pause-show"
                 onClick={this.toggle}
-                src={this.props.playing ? window.hivePause : window.hiveButton}
+                src={
+                  this.props.playing && this.props.songId === this.props.song.id
+                    ? window.hivePause
+                    : window.hiveButton
+                }
               />
               {info}
             </div>
