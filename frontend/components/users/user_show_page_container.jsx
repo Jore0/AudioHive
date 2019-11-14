@@ -11,7 +11,7 @@ import {
 import { fetchUser, updateUser } from "../../actions/user_actions";
 
 const msp = (state, ownProps) => {
-  debugger;
+  // debugger;
   return {
     user: state.entities.users[ownProps.match.params.userId],
     currentUserId: state.session.id,
@@ -21,14 +21,6 @@ const msp = (state, ownProps) => {
             return song.songOwnerId === parseInt(ownProps.match.params.userId);
           })
         : Object.values(state.entities.songs),
-    // songs:
-    //   Object.values(state.entities.songs).length >= 1
-    //     ? state.entities.users[ownProps.match.params.userId].song_ids.map(
-    //         songId => {
-    //           return state.entities.songs[songId];
-    //         }
-    //       )
-    //     : Object.values(state.entities.songs),
     playing: state.ui.currentSong.playing,
     currentSongId: state.ui.currentSong.id
   };

@@ -47,3 +47,40 @@
   z-index: 1;
   position: absolute;
 }
+
+.noSongs-container {
+  background-image: image-url("header2.jpg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: center;
+  padding: 100px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  margin: 20px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.noSongs-container > h1 {
+  color: white;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+a.orange-button-upload {
+  background: #f50;
+  font-size: 18px;
+  border-radius: 5px;
+  // border: 1px solid white;
+  color: white;
+  width: 100px;
+  height: 30px;
+  padding: 2px 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+a.orange-button-upload:hover {
+  background: rgba(255, 85, 0, 0.515);
+}

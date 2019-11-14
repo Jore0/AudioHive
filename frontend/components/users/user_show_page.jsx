@@ -61,18 +61,26 @@ class UserShowPage extends React.Component {
     let name = this.props.user ? (
       <p className="username">{this.props.user.username}</p>
     ) : null;
+    debugger;
     if (this.props.songs.length < 1 && this.props.currentUserId) {
-      <Link to="/upload" className={"orange-button"}>
-        Upload now
-      </Link>;
+      songs = (
+        <div className="noSongs-container">
+          <h1>You have no songs yet...</h1>
+          <Link to="/upload" className={"orange-button-upload"}>
+            Upload now
+          </Link>
+        </div>
+      );
     } else if (this.props.songs.length < 1) {
-      <div className="noSongs-container">
-        <h1>This user has no songs...</h1>
-        <Link to="/discover" className={"orange-button"}>
-          Discover Songs
-        </Link>
-        ;
-      </div>;
+      songs = (
+        <div className="noSongs-container">
+          <h1>This user has no songs...</h1>
+          <Link to="/discover" className={"orange-button"}>
+            Discover Songs
+          </Link>
+          ;
+        </div>
+      );
     } else if (this.mounted) {
       if (this.props.songs.length >= 1) {
         songs = this.props.songs.map(song => {
