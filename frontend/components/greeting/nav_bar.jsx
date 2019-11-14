@@ -13,7 +13,7 @@ class NavBar extends React.Component {
     if (!this.props.currentUser) {
       return null;
     } else {
-      const userImage = this.props.currentUser ? (
+      const userImage = this.props.currentUser.profileImageUrl ? (
         <img
           className="small-profile-pic-circle"
           src={this.props.currentUser.profileImageUrl}
