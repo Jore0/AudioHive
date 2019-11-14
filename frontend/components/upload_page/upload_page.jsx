@@ -21,7 +21,7 @@ class UploadPage extends React.Component {
               Upload
             </NavLink>
             <a className="upload-page-link" to="/upload">
-              For Creators on SoundCloud
+              For Creators on AudioHive
             </a>
           </nav>
           <FirstSongForm

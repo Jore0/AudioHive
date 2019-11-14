@@ -55,9 +55,9 @@ class LoginNav extends React.Component {
               </div>
             </nav>
             <div className="hero-image-text">
-              <h1>Discover more with SoundCloud Go+</h1>
+              <h1>Discover more with AudioHive Go+</h1>
               <h2>
-                SoundCloud Go+ lets you listen offline, ad-free, with over 150
+                AudioHive Go+ lets you listen offline, ad-free, with over 150
                 million tracks — and growing.
               </h2>
             </div>

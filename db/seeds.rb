@@ -47,6 +47,10 @@ song8 = open('https://audio-hive-seeds.s3.amazonaws.com/TimeinaTree.mp3')
 song9 = open('https://audio-hive-seeds.s3.amazonaws.com/Redemptionmp3.mp3')
 
 
+avatar1 = open('https://audio-hive-seeds.s3.amazonaws.com/jose.JPG')
+avatar2 = open('https://audio-hive-seeds.s3.amazonaws.com/marissa.jpg')
+s1.image_url.attach(io: avatar1, filename: "jose.JPG")
+s2.image_url.attach(io: avatar2, filename: "marissa.jpg")
 
 cover1 = open("https://audio-hive-seeds.s3.amazonaws.com/scorpion.jpg")
 cover2 = open("https://audio-hive-seeds.s3.amazonaws.com/wolfmother.jpg")
@@ -57,7 +61,6 @@ cover6 = open("https://audio-hive-seeds.s3.amazonaws.com/invasionofPrivacy.png")
 cover7 = open("https://audio-hive-seeds.s3.amazonaws.com/Iloveyoutheneighbourhood.jpeg")
 cover8 = open("https://audio-hive-seeds.s3.amazonaws.com/timeInATree.jpg")
 cover9 = open("https://audio-hive-seeds.s3.amazonaws.com/blackpanther.jpg")
-
 
 
 s1.song_url.attach(io: song1, filename: 'Nonstop.mp3')
@@ -79,3 +82,4 @@ s6.album_cover.attach(io: cover6, filename: "invasionofPrivacy.png")
 s7.album_cover.attach(io: cover7, filename: "Iloveyoutheneighbourhood.jpeg")
 s8.album_cover.attach(io: cover8, filename: "Iloveyoutheneighbourhood.jpeg")
 s9.album_cover.attach(io: cover9, filename: "blackpanther.jpg")
+

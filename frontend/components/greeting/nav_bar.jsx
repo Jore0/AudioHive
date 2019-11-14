@@ -8,21 +8,22 @@ class NavBar extends React.Component {
     super(props);
   }
 
+  componentDidMount() {}
   render() {
-    const userImage = this.props.currentUser.profileImageUrl ? (
-      <img
-        className="small-profile-pic-circle"
-        src={this.props.currentUser.profileImageUrl}
-        alt=""
-      />
-    ) : (
-      <div className="small-profile-pic-circle">
-        <p> {this.props.currentUser.username[0].toUpperCase()}</p>
-      </div>
-    );
     if (!this.props.currentUser) {
       return null;
     } else {
+      const userImage = this.props.currentUser ? (
+        <img
+          className="small-profile-pic-circle"
+          src={this.props.currentUser.profileImageUrl}
+          alt=""
+        />
+      ) : (
+        <div className="small-profile-pic-circle">
+          <p> {this.props.currentUser.username[0].toUpperCase()}</p>
+        </div>
+      );
       return (
         <div className="logged-nav-container">
           <nav className="login-nav">
