@@ -17,6 +17,11 @@ u1.save
 u2.save
 u3.save
 
+avatar1 = open('https://audio-hive-seeds.s3.amazonaws.com/jose.JPG')
+avatar2 = open('https://audio-hive-seeds.s3.amazonaws.com/marissa.jpg')
+u1.image_url.attach(io: avatar1, filename: 'jose.JPG')
+u2.image_url.attach(io: avatar2, filename: 'marissa.jpg')
+
 s1 = Song.new({title: "Nonstop", user_id: u1.id, artist: "Drake", genre: "Hip Hop", likes: 0, replays: 0, release_date: "July 21, 2018" })
 s2 = Song.new({title: "Joker & the Thief", user_id: u2.id, artist: "Wolfmother", genre: "Rock", likes: 0, replays: 0, release_date: "October 28, 2006"})
 s3 = Song.new({title: "Que Calor", user_id: u2.id, artist: "Major Lazor(feat. JBalvin & El Alfa)", genre: "Latin", likes: 0, replays: 0, release_date: "September 15, 2019"})
@@ -46,12 +51,6 @@ song7 = open('https://audio-hive-seeds.s3.amazonaws.com/SweaterWeatherTheNeighbo
 song8 = open('https://audio-hive-seeds.s3.amazonaws.com/TimeinaTree.mp3')
 song9 = open('https://audio-hive-seeds.s3.amazonaws.com/Redemptionmp3.mp3')
 
-
-avatar1 = open('https://audio-hive-seeds.s3.amazonaws.com/jose.JPG')
-avatar2 = open('https://audio-hive-seeds.s3.amazonaws.com/marissa.jpg')
-s1.image_url.attach(io: avatar1, filename: "jose.JPG")
-s2.image_url.attach(io: avatar2, filename: "marissa.jpg")
-
 cover1 = open("https://audio-hive-seeds.s3.amazonaws.com/scorpion.jpg")
 cover2 = open("https://audio-hive-seeds.s3.amazonaws.com/wolfmother.jpg")
 cover3 = open("https://audio-hive-seeds.s3.amazonaws.com/queCalorAlbumCover.jpg")
@@ -80,6 +79,6 @@ s4.album_cover.attach(io: cover4, filename: "beautyBehindtheMadness.png")
 s5.album_cover.attach(io: cover5, filename: "NirvanaNevermind.jpg")
 s6.album_cover.attach(io: cover6, filename: "invasionofPrivacy.png")
 s7.album_cover.attach(io: cover7, filename: "Iloveyoutheneighbourhood.jpeg")
-s8.album_cover.attach(io: cover8, filename: "Iloveyoutheneighbourhood.jpeg")
+s8.album_cover.attach(io: cover8, filename: "timeInATree.jpg")
 s9.album_cover.attach(io: cover9, filename: "blackpanther.jpg")
 
