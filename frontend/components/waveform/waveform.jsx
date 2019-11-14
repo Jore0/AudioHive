@@ -69,9 +69,13 @@ class WaveForm extends React.Component {
     let loader;
     if (this.wavesurfer) {
       this.seekBar.current.value = 0;
-      currentTime = this.secondsToMinutes(
-        this.props.currentTime * this.wavesurfer.getDuration()
-      );
+      if (this.props.song.id === this.props.currentSongId) {
+        currentTime = this.secondsToMinutes(
+          this.props.currentTime * this.wavesurfer.getDuration()
+        );
+      } else {
+        currentTime = "0:00";
+      }
       totalLength = this.secondsToMinutes(this.wavesurfer.getDuration());
     }
     if (
