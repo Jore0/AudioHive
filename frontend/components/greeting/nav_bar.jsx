@@ -50,11 +50,11 @@ class NavBar extends React.Component {
                     </li>
                     <li>
                       <a
-                        href="joseorea.io"
+                        href="http://joseorea.io/"
                         target="_blank"
                         className="left-nav-button"
                       >
-                        Learn More{" "}
+                        Portfolio{" "}
                       </a>
                     </li>
                   </ul>
